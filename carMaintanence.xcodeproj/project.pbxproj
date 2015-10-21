@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5052DBD1BD69870009000EA /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5052DBC1BD6986F009000EA /* LoginScreenModel.swift */; settings = {ASSET_TAGS = (); }; };
 		D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */; };
 		D54B3DD51BCFA4E1009B9D9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD41BCFA4E1009B9D9C /* ViewController.swift */; };
 		D54B3DD81BCFA4E1009B9D9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54B3DD61BCFA4E1009B9D9C /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D5052DBC1BD6986F009000EA /* LoginScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginScreenModel.swift; path = ../LoginScreenModel.swift; sourceTree = "<group>"; };
 		D54B3DCF1BCFA4E1009B9D9C /* carMaintanence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carMaintanence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D54B3DD41BCFA4E1009B9D9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		D54B3DD11BCFA4E1009B9D9C /* carMaintanence */ = {
 			isa = PBXGroup;
 			children = (
+				D5052DBC1BD6986F009000EA /* LoginScreenModel.swift */,
 				D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */,
 				D54B3DD41BCFA4E1009B9D9C /* ViewController.swift */,
 				D54B3DD61BCFA4E1009B9D9C /* Main.storyboard */,
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D54B3DD51BCFA4E1009B9D9C /* ViewController.swift in Sources */,
+				D5052DBD1BD69870009000EA /* LoginScreenModel.swift in Sources */,
 				D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +487,7 @@
 				D54B3DF91BCFA4E2009B9D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D54B3DFA1BCFA4E2009B9D9C /* Build configuration list for PBXNativeTarget "carMaintanenceTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +496,7 @@
 				D54B3DFC1BCFA4E2009B9D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D54B3DFD1BCFA4E2009B9D9C /* Build configuration list for PBXNativeTarget "carMaintanenceUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +505,7 @@
 				D54B3DFF1BCFA4E2009B9D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,13 +11,15 @@ import UIKit
 class ViewController: UIViewController {
 
     var labelText = 0;
-    @IBOutlet weak var LabelNumber: UILabel!
-    
-    @IBAction func ButtonClick() {
-        labelText += 1;
-        LabelNumber.text = "\(labelText)"
+    var LogScreen = LoginScreenModel();
+    @IBAction func buttonClick(sender: UIButton) {
+        let digit = sender.currentTitle
+        LogScreen.addDigit("\(digit)");
     }
     
+    @IBAction func nextButton(sender: UIButton) {
+        print("why do I crash? :(")
+    }
 
 
 }
