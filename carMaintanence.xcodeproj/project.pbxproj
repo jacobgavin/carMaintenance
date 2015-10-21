@@ -15,6 +15,7 @@
 		D54B3DDD1BCFA4E1009B9D9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */; };
 		D54B3DE81BCFA4E1009B9D9C /* carMaintanenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DE71BCFA4E1009B9D9C /* carMaintanenceTests.swift */; };
 		D54B3DF31BCFA4E2009B9D9C /* carMaintanenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DF21BCFA4E2009B9D9C /* carMaintanenceUITests.swift */; };
+		D59D977F1BD7D4ED00F0F053 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D59D977E1BD7D4ED00F0F053 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D54B3DEE1BCFA4E2009B9D9C /* carMaintanenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carMaintanenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54B3DF21BCFA4E2009B9D9C /* carMaintanenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carMaintanenceUITests.swift; sourceTree = "<group>"; };
 		D54B3DF41BCFA4E2009B9D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D59D977E1BD7D4ED00F0F053 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				D54B3DD41BCFA4E1009B9D9C /* ViewController.swift */,
 				D54B3DD61BCFA4E1009B9D9C /* Main.storyboard */,
 				D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */,
+				D59D977E1BD7D4ED00F0F053 /* Images.xcassets */,
 				D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */,
 				D54B3DDE1BCFA4E1009B9D9C /* Info.plist */,
 			);
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D54B3DDD1BCFA4E1009B9D9C /* LaunchScreen.storyboard in Resources */,
+				D59D977F1BD7D4ED00F0F053 /* Images.xcassets in Resources */,
 				D54B3DDA1BCFA4E1009B9D9C /* Assets.xcassets in Resources */,
 				D54B3DD81BCFA4E1009B9D9C /* Main.storyboard in Resources */,
 			);

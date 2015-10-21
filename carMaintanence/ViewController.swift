@@ -10,17 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var pincodeLabel: UILabel!
     var labelText = 0;
     var LogScreen = LoginScreenModel();
     @IBAction func buttonClick(sender: UIButton) {
-        let digit = sender.currentTitle
+        let digit = sender.currentTitle!
         LogScreen.addDigit("\(digit)");
+        pincodeLabel.text = LogScreen.getPinLabel()
     }
-    
-    @IBAction func nextButton(sender: UIButton) {
-        print("why do I crash? :(")
-    }
-
-
 }
 
