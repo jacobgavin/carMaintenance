@@ -483,6 +483,7 @@
 				D54B3DF91BCFA4E2009B9D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D54B3DFA1BCFA4E2009B9D9C /* Build configuration list for PBXNativeTarget "carMaintanenceTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +492,7 @@
 				D54B3DFC1BCFA4E2009B9D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D54B3DFD1BCFA4E2009B9D9C /* Build configuration list for PBXNativeTarget "carMaintanenceUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +501,7 @@
 				D54B3DFF1BCFA4E2009B9D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
