@@ -14,6 +14,7 @@
 		D57531451BE225F0004B98CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57531431BE225F0004B98CA /* LaunchScreen.storyboard */; };
 		D57531501BE225F0004B98CA /* carMaintenanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575314F1BE225F0004B98CA /* carMaintenanceTests.swift */; };
 		D575315B1BE225F0004B98CA /* carMaintenanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575315A1BE225F0004B98CA /* carMaintenanceUITests.swift */; };
+		D5F311211BE232EA00C5638A /* newActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F311201BE232EA00C5638A /* newActivityController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D57531561BE225F0004B98CA /* carMaintenanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carMaintenanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D575315A1BE225F0004B98CA /* carMaintenanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carMaintenanceUITests.swift; sourceTree = "<group>"; };
 		D575315C1BE225F0004B98CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5F311201BE232EA00C5638A /* newActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newActivityController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				D575313A1BE225F0004B98CA /* AppDelegate.swift */,
 				D575313C1BE225F0004B98CA /* ViewController.swift */,
+				D5F311201BE232EA00C5638A /* newActivityController.swift */,
 				D575313E1BE225F0004B98CA /* Main.storyboard */,
 				D57531411BE225F0004B98CA /* Assets.xcassets */,
 				D57531431BE225F0004B98CA /* LaunchScreen.storyboard */,
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F311211BE232EA00C5638A /* newActivityController.swift in Sources */,
 				D575313D1BE225F0004B98CA /* ViewController.swift in Sources */,
 				D575313B1BE225F0004B98CA /* AppDelegate.swift in Sources */,
 			);
@@ -483,6 +487,7 @@
 				D57531611BE225F0004B98CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D57531621BE225F0004B98CA /* Build configuration list for PBXNativeTarget "carMaintenanceTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +496,7 @@
 				D57531641BE225F0004B98CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D57531651BE225F0004B98CA /* Build configuration list for PBXNativeTarget "carMaintenanceUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +505,7 @@
 				D57531671BE225F0004B98CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

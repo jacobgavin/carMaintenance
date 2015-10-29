@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--New Activity Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="newActivityController" customModule="carMaintenance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,135 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Lo-t2-qHj">
+                                <rect key="frame" x="10" y="519" width="408" height="73"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="Nieuwe activiteit indienen">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eYK-Gc-Xtx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oW-V0-Fq1">
+                                <rect key="frame" x="426" y="519" width="75" height="73"/>
+                                <animations/>
+                                <state key="normal" backgroundImage="camera-icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcF-pZ-jwY">
+                                <rect key="frame" x="514" y="519" width="78" height="73"/>
+                                <animations/>
+                                <state key="normal" backgroundImage="edit-icon"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title of activity" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="22" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vPu-Sy-E8J">
+                                <rect key="frame" x="10" y="167" width="582" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.50375626890000003" green="0.18092902720000001" blue="0.76008262429999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reg #" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sa0-au-lDx">
+                                <rect key="frame" x="10" y="105" width="206" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.88641334029999996" blue="0.13961494029999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Work #, Car model" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="UHx-BG-DCa">
+                                <rect key="frame" x="232" y="105" width="360" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c6-F9-kGu">
+                                <rect key="frame" x="417" y="20" width="175" height="68"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.015686274510000001" green="1" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Uitklokken">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ingeklokt op werkorder 1460 (9-ZKR-3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tlc-dI-Fpe">
+                                <rect key="frame" x="10" y="20" width="399" height="68"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.015686274510000001" green="1" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="A0X-6Q-K5f">
+                                <rect key="frame" x="10" y="217" width="582" height="275"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Wielophanging aan voorzijde heeft gebroken draagarm. Als hier mee wordt doorgereden zal dit voor schade aan de wielophanging zorgen.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sa0-au-lDx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="0jj-0b-gXA"/>
+                            <constraint firstItem="UHx-BG-DCa" firstAttribute="top" secondItem="Tlc-dI-Fpe" secondAttribute="bottom" constant="17" id="0un-9p-Zcx"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="A0X-6Q-K5f" secondAttribute="bottom" constant="108" id="2D7-sB-Yvz"/>
+                            <constraint firstItem="vPu-Sy-E8J" firstAttribute="top" secondItem="UHx-BG-DCa" secondAttribute="bottom" constant="32" id="3nR-qo-W4X"/>
+                            <constraint firstItem="vPu-Sy-E8J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="104" id="4TS-Nk-dcd"/>
+                            <constraint firstItem="1oW-V0-Fq1" firstAttribute="width" secondItem="qcF-pZ-jwY" secondAttribute="height" multiplier="75:73" id="4ah-V8-YLe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2c6-F9-kGu" secondAttribute="trailing" constant="-20" id="5bQ-4X-Ndw"/>
+                            <constraint firstItem="qcF-pZ-jwY" firstAttribute="top" secondItem="A0X-6Q-K5f" secondAttribute="bottom" constant="27" id="7cA-2A-TWn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UHx-BG-DCa" secondAttribute="trailing" constant="-20" id="7jT-TG-ugD"/>
+                            <constraint firstItem="sa0-au-lDx" firstAttribute="top" secondItem="Tlc-dI-Fpe" secondAttribute="bottom" constant="17" id="A1v-TT-AO9"/>
+                            <constraint firstItem="qcF-pZ-jwY" firstAttribute="leading" secondItem="1oW-V0-Fq1" secondAttribute="trailing" constant="13" id="BD5-fJ-4iu"/>
+                            <constraint firstItem="A0X-6Q-K5f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-10" id="E6s-Vd-hdv"/>
+                            <constraint firstItem="8Lo-t2-qHj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Gdi-7b-z4m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A0X-6Q-K5f" secondAttribute="trailing" constant="-12" id="Pss-Nh-yZN"/>
+                            <constraint firstItem="Tlc-dI-Fpe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="QNW-yS-y87"/>
+                            <constraint firstItem="Tlc-dI-Fpe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Quj-eK-9aQ"/>
+                            <constraint firstItem="1oW-V0-Fq1" firstAttribute="leading" secondItem="8Lo-t2-qHj" secondAttribute="trailing" constant="8" id="RFf-AJ-t82"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vPu-Sy-E8J" secondAttribute="trailing" constant="104" id="S0A-6K-5PU"/>
+                            <constraint firstItem="2c6-F9-kGu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="S7K-Xd-mYR"/>
+                            <constraint firstItem="2c6-F9-kGu" firstAttribute="leading" secondItem="Tlc-dI-Fpe" secondAttribute="trailing" constant="8" id="Shq-If-ZEV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qcF-pZ-jwY" secondAttribute="trailing" constant="-12" id="V8h-Py-ULx"/>
+                            <constraint firstItem="8Lo-t2-qHj" firstAttribute="top" secondItem="A0X-6Q-K5f" secondAttribute="bottom" constant="27" id="Vrl-BM-ihF"/>
+                            <constraint firstItem="1oW-V0-Fq1" firstAttribute="top" secondItem="A0X-6Q-K5f" secondAttribute="bottom" constant="27" id="Xme-Ov-nlc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Lo-t2-qHj" secondAttribute="trailing" constant="162" id="bIy-2p-Roi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8Lo-t2-qHj" secondAttribute="bottom" constant="8" id="ixh-0S-8Ac"/>
+                            <constraint firstItem="UHx-BG-DCa" firstAttribute="leading" secondItem="sa0-au-lDx" secondAttribute="trailing" constant="16" id="ntb-mh-l7a"/>
+                            <constraint firstItem="sa0-au-lDx" firstAttribute="width" secondItem="UHx-BG-DCa" secondAttribute="height" multiplier="36:5" id="sIU-na-Oyg"/>
+                            <constraint firstItem="8Lo-t2-qHj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="uJo-Xu-yFf"/>
+                            <constraint firstItem="A0X-6Q-K5f" firstAttribute="top" secondItem="vPu-Sy-E8J" secondAttribute="bottom" constant="20" id="vpy-IR-xhj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1oW-V0-Fq1" secondAttribute="bottom" constant="8" id="xiT-oP-iW6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qcF-pZ-jwY" secondAttribute="bottom" constant="8" id="yVE-8l-pb3"/>
+                            <constraint firstItem="UHx-BG-DCa" firstAttribute="top" secondItem="2c6-F9-kGu" secondAttribute="bottom" constant="17" id="yvv-sm-RDC"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="1oW-V0-Fq1" id="Hfp-ey-pp5"/>
+                        <outlet property="descTextField" destination="A0X-6Q-K5f" id="sFm-Tb-hFM"/>
+                        <outlet property="editButton" destination="qcF-pZ-jwY" id="Z53-uB-S4k"/>
+                        <outlet property="logOutButton" destination="2c6-F9-kGu" id="mi0-QT-mM7"/>
+                        <outlet property="loggedInOnWorkOrder" destination="Tlc-dI-Fpe" id="Avv-bF-bnY"/>
+                        <outlet property="newActivityButton" destination="8Lo-t2-qHj" id="d8K-Pj-qyT"/>
+                        <outlet property="regNumberOfCar" destination="sa0-au-lDx" id="wm1-KS-N0Q"/>
+                        <outlet property="titleOfNewActivity" destination="vPu-Sy-E8J" id="88W-ec-Pz1"/>
+                        <outlet property="workNumAndCarModel" destination="UHx-BG-DCa" id="i3R-GN-p9a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera-icon" width="512" height="512"/>
+        <image name="edit-icon" width="512" height="512"/>
+    </resources>
 </document>
