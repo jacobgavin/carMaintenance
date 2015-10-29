@@ -583,14 +583,30 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="2QS-ge-GfS">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <animations/>
+                                            <variation key="widthClass=regular" fixedFrame="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            </variation>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <animations/>
-                                <color key="backgroundColor" red="0.24327503180000001" green="1" blue="0.041193238309999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="2QS-ge-GfS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="2QS-ge-GfS"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <segue destination="j5H-Qd-y9o" kind="show" id="CsS-SF-2T0"/>
+                                    <segue destination="j5H-Qd-y9o" kind="show" identifier="monteursNaarLogin" id="CsS-SF-2T0"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -603,7 +619,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oce-r8-5a9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="244" y="288"/>
+            <point key="canvasLocation" x="243.75" y="288"/>
         </scene>
     </scenes>
     <resources>
