@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginSchermViewController: UIViewController {
 
     @IBOutlet weak var pincodeLabel: UILabel!
     var labelText = 0;
