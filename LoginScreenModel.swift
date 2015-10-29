@@ -22,6 +22,10 @@ class LoginScreenModel {
                 pinLabel += "•"
             }
         }
+        else
+        {
+            pinLabel = " "
+        }
     }
     
     func getPinLabel() -> String //lets the model have the representation of the pincode label

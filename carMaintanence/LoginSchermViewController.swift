@@ -13,6 +13,7 @@ class LoginSchermViewController: UIViewController {
     @IBOutlet weak var pincodeLabel: UILabel!
     var labelText = 0;
     var LogScreen = LoginScreenModel(pincode: "1234");
+    var werknemerLabelTekst = ""
     @IBAction func buttonClick(sender: UIButton) {
         let digit = sender.currentTitle! //get the value of tthe pressed number
         LogScreen.addDigit("\(digit)"); //add it to the string of the pin
