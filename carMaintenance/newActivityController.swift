@@ -13,6 +13,7 @@ import UIKit
 class newActivityController: UIViewController {
     var regNum = "ABC 123"
     var workOrder = "1460"
+    var carModel = "Volvo V70"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,7 @@ class newActivityController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         regNumberOfCar.text = regNum
-        workNumAndCarModel.text = "WO "+workOrder
+        workNumAndCarModel.text = "WO " + workOrder + ", " + carModel
         loggedInOnWorkOrder.text = "Ingeklokt op werkorder " + workOrder + "("+regNum+")"
     }
     
