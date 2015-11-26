@@ -9,10 +9,10 @@
 
 import UIKit
 class TableViewCellForActivity: UITableViewCell {
+    var column1: String = ""
+    var column2: String = ""
+    var column3: String = ""
     
-    @IBOutlet weak var column1: UILabel!
-    @IBOutlet weak var column2: UILabel!
-    @IBOutlet weak var column3: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,14 +28,22 @@ class TableViewCellForActivity: UITableViewCell {
     func setValueForColumn(string: String, col:Int) {
         
         if (col==1) {
-            column1.text = string
+            let newLabel = UILabel(frame: CGRectMake(0.0, 14.0, 300.0, 30.0))
+            newLabel.text = string
+            self.contentView.addSubview(newLabel)
         }
         if (col==2) {
-            column2.text = string
+            let newLabel = UILabel(frame: CGRectMake(350.0, 14.0, 300.0, 30.0))
+            newLabel.text = string
+            self.contentView.addSubview(newLabel)
+            
         }
         if (col==3) {
-            column3.text = string
+            let newLabel = UILabel(frame: CGRectMake(700.0, 14.0, 300.0, 30.0))
+            newLabel.text = string
+            self.contentView.addSubview(newLabel)
         }
+        
         
     }
     
@@ -46,14 +54,15 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     @IBOutlet weak var tableViewContainer: UITableView!
     
-    @IBOutlet var tableCell: TableViewCellForActivity!
-    
     var tableData = [[1.1,1.2,1.3],[2.1,2.2,2.3],[3.1,3.2,3.3]] // illustration only
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableViewContainer.delegate = self
         tableViewContainer.dataSource = self
+        
+        tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,9 +86,9 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
         
         // var row = indexPath.row
-        cell.setValueForColumn("col1", col:1)
-        cell.setValueForColumn("col2", col:2)
-        cell.setValueForColumn("col3", col:3)
+        cell.setValueForColumn("col1 j jsdad aksjd asd mkasjf imfds ndsonf iondf ", col:1)
+        cell.setValueForColumn("col2 sajdkl jsknf jsdnf udjn jndfjk nfdn sa da sd a", col:2)
+        cell.setValueForColumn("jsahdj", col:3)
         
         // cell.column1.text = "\(tableData[row][0])"// fill in your value for column 1 (e.g. from an array)
         // cell.column2.text = "\(tableData[row][1])" // fill in your value for column 2
