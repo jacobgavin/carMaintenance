@@ -452,6 +452,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pow-Np-lfz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5ID-tw-eQu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activiteitDummy" translatesAutoresizingMaskIntoConstraints="NO" id="sSw-FN-bNc">
@@ -474,6 +475,25 @@
                                     <segue destination="udg-xO-p58" kind="show" id="ZeC-w7-Nvu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIs-gc-lxe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Terug naar Werkorder"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="52" y="285" width="150" height="30"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdt-Bj-cOw">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Naar non-Workorder"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="272" y="172" width="141" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="Pm7-oW-iFj" kind="show" identifier="activiteitenNaarNonWorkorder" id="w6c-40-y2p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -492,16 +512,18 @@
                                 <exclude reference="sSw-FN-bNc"/>
                                 <exclude reference="Khl-Uz-B0Q"/>
                                 <exclude reference="bos-bA-6zH"/>
+                                <exclude reference="UIs-gc-lxe"/>
+                                <exclude reference="Pdt-Bj-cOw"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="TIO-Ff-NjM"/>
-                                <exclude reference="VVw-La-bSB"/>
-                                <exclude reference="nAM-iQ-0V9"/>
+                                <exclude reference="OBW-E7-lVd"/>
                                 <exclude reference="YMO-0y-GtZ"/>
                                 <exclude reference="eI3-SM-Op1"/>
                                 <exclude reference="Tq8-z7-Hm7"/>
                                 <exclude reference="bKH-M6-8YB"/>
-                                <exclude reference="OBW-E7-lVd"/>
+                                <exclude reference="TIO-Ff-NjM"/>
+                                <exclude reference="VVw-La-bSB"/>
+                                <exclude reference="nAM-iQ-0V9"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -509,16 +531,18 @@
                                 <include reference="sSw-FN-bNc"/>
                                 <include reference="Khl-Uz-B0Q"/>
                                 <include reference="bos-bA-6zH"/>
+                                <include reference="UIs-gc-lxe"/>
+                                <include reference="Pdt-Bj-cOw"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="TIO-Ff-NjM"/>
-                                <include reference="VVw-La-bSB"/>
-                                <include reference="nAM-iQ-0V9"/>
+                                <include reference="OBW-E7-lVd"/>
                                 <include reference="YMO-0y-GtZ"/>
                                 <include reference="eI3-SM-Op1"/>
                                 <include reference="Tq8-z7-Hm7"/>
                                 <include reference="bKH-M6-8YB"/>
-                                <include reference="OBW-E7-lVd"/>
+                                <include reference="TIO-Ff-NjM"/>
+                                <include reference="VVw-La-bSB"/>
+                                <include reference="nAM-iQ-0V9"/>
                             </mask>
                         </variation>
                     </view>
@@ -694,6 +718,14 @@
                                     <rect key="frame" x="0.0" y="106" width="800" height="483"/>
                                 </variation>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8M-J7-8IT">
+                                <rect key="frame" x="0.0" y="20" width="430" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.35060096149999997" blue="0.1601058232" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cIv-1S-PQH">
                                 <rect key="frame" x="0.0" y="70" width="600" height="29"/>
                                 <animations/>
@@ -704,17 +736,8 @@
                                 <color key="tintColor" red="0.0" green="0.35060096149999997" blue="0.1601058232" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="segmentWerkOrderAction:" destination="No5-Ba-JT0" eventType="valueChanged" id="6Vg-bY-UZK"/>
-                                    <segue destination="Pm7-oW-iFj" kind="show" id="Z0I-ey-Pfb"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8M-J7-8IT">
-                                <rect key="frame" x="0.0" y="20" width="430" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.35060096149999997" blue="0.1601058232" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -753,26 +776,27 @@
                         <viewControllerLayoutGuide type="bottom" id="CeN-rO-5Ir"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bH9-fx-WV9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WerkOrdersDummy" translatesAutoresizingMaskIntoConstraints="NO" id="0eZ-6B-yhs">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apt-he-Wfw">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Naar improductieve uren"/>
-                                <connections>
-                                    <segue destination="Pm7-oW-iFj" kind="show" id="DTa-3H-2UW"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKG-2z-ebw">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="naar Werkorder"/>
                                 <connections>
-                                    <segue destination="Fvw-SB-A04" kind="show" id="Ukg-KR-alJ"/>
+                                    <segue destination="Fvw-SB-A04" kind="show" identifier="" id="Ukg-KR-alJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apt-he-Wfw">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Naar improductieve uren"/>
+                                <connections>
+                                    <segue destination="Pm7-oW-iFj" kind="show" identifier="activiteitenNaarNonWorkorder" id="DTa-3H-2UW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7Z-nx-P4e">
@@ -780,7 +804,7 @@
                                 <animations/>
                                 <state key="normal" title="Terug naar Inloggen"/>
                                 <connections>
-                                    <segue destination="udg-xO-p58" kind="show" id="gOO-Mk-RqF"/>
+                                    <segue destination="udg-xO-p58" kind="show" identifier="workorderNaarNonWorkorder" id="gOO-Mk-RqF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -801,41 +825,41 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="0eZ-6B-yhs"/>
-                                <exclude reference="apt-he-Wfw"/>
                                 <exclude reference="rKG-2z-ebw"/>
+                                <exclude reference="apt-he-Wfw"/>
                                 <exclude reference="U7Z-nx-P4e"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="4hP-Yb-kQf"/>
-                                <exclude reference="JHy-Vb-Wpu"/>
-                                <exclude reference="rXH-4o-o7S"/>
-                                <exclude reference="7Qj-c6-deH"/>
-                                <exclude reference="gQ3-Sl-xst"/>
                                 <exclude reference="OkK-9W-lVH"/>
                                 <exclude reference="XHE-E5-USU"/>
+                                <exclude reference="7Qj-c6-deH"/>
+                                <exclude reference="gQ3-Sl-xst"/>
                                 <exclude reference="FBq-l1-bAj"/>
                                 <exclude reference="ZM8-Bu-R9r"/>
                                 <exclude reference="zHe-Qh-oID"/>
+                                <exclude reference="4hP-Yb-kQf"/>
+                                <exclude reference="JHy-Vb-Wpu"/>
+                                <exclude reference="rXH-4o-o7S"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
                             <mask key="subviews">
                                 <include reference="0eZ-6B-yhs"/>
-                                <include reference="apt-he-Wfw"/>
                                 <include reference="rKG-2z-ebw"/>
+                                <include reference="apt-he-Wfw"/>
                                 <include reference="U7Z-nx-P4e"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="4hP-Yb-kQf"/>
-                                <include reference="JHy-Vb-Wpu"/>
-                                <include reference="rXH-4o-o7S"/>
-                                <include reference="7Qj-c6-deH"/>
-                                <include reference="gQ3-Sl-xst"/>
                                 <include reference="OkK-9W-lVH"/>
                                 <include reference="XHE-E5-USU"/>
+                                <include reference="7Qj-c6-deH"/>
+                                <include reference="gQ3-Sl-xst"/>
                                 <include reference="FBq-l1-bAj"/>
                                 <include reference="ZM8-Bu-R9r"/>
                                 <include reference="zHe-Qh-oID"/>
+                                <include reference="4hP-Yb-kQf"/>
+                                <include reference="JHy-Vb-Wpu"/>
+                                <include reference="rXH-4o-o7S"/>
                             </mask>
                         </variation>
                     </view>
@@ -868,9 +892,6 @@
                                 <state key="normal" title="Halen / brengen">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="tcc-dx-YoY" kind="show" id="Ny0-ve-UbX"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JU6-p2-cSN">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -879,9 +900,6 @@
                                 <state key="normal" title="Geen werk">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="tcc-dx-YoY" kind="show" id="6k6-8C-75o"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xby-fb-zo9">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -890,9 +908,6 @@
                                 <state key="normal" title="Vegen / opruimen">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="tcc-dx-YoY" kind="show" id="5sS-LL-N8x"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJb-A6-38o">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -901,11 +916,8 @@
                                 <state key="normal" title="Pauze">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="tcc-dx-YoY" kind="show" id="ucY-ol-nEB"/>
-                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2D-C1-ilz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2D-C1-ilz">
                                 <rect key="frame" x="20" y="38" width="560" height="49"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.24327503180000001" green="1" blue="0.041193238309999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -916,6 +928,17 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NU-N7-6zk">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="I"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="686" y="38" width="94" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="Back:" destination="Pm7-oW-iFj" eventType="touchUpInside" id="39n-f3-1I8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -955,18 +978,9 @@
                                 <exclude reference="JU6-p2-cSN"/>
                                 <exclude reference="Xby-fb-zo9"/>
                                 <exclude reference="tJb-A6-38o"/>
+                                <exclude reference="8NU-N7-6zk"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="2x6-zN-Vhk"/>
-                                <exclude reference="Ng8-9k-q4k"/>
-                                <exclude reference="Qoz-yN-757"/>
-                                <exclude reference="fkT-Rh-CBT"/>
-                                <exclude reference="k28-E4-ox7"/>
-                                <exclude reference="z9H-xm-7oL"/>
-                                <exclude reference="SsL-bR-Ayc"/>
-                                <exclude reference="itW-1D-ySP"/>
-                                <exclude reference="mtq-6F-Kle"/>
-                                <exclude reference="xOK-5f-juH"/>
                                 <exclude reference="EWw-Hv-WeN"/>
                                 <exclude reference="ubW-Iu-klz"/>
                                 <exclude reference="usc-Tu-PF0"/>
@@ -975,6 +989,16 @@
                                 <exclude reference="OmY-jp-PPM"/>
                                 <exclude reference="lfe-am-BOg"/>
                                 <exclude reference="zrL-tX-iSo"/>
+                                <exclude reference="SsL-bR-Ayc"/>
+                                <exclude reference="itW-1D-ySP"/>
+                                <exclude reference="mtq-6F-Kle"/>
+                                <exclude reference="xOK-5f-juH"/>
+                                <exclude reference="fkT-Rh-CBT"/>
+                                <exclude reference="k28-E4-ox7"/>
+                                <exclude reference="z9H-xm-7oL"/>
+                                <exclude reference="2x6-zN-Vhk"/>
+                                <exclude reference="Ng8-9k-q4k"/>
+                                <exclude reference="Qoz-yN-757"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -983,18 +1007,9 @@
                                 <include reference="JU6-p2-cSN"/>
                                 <include reference="Xby-fb-zo9"/>
                                 <include reference="tJb-A6-38o"/>
+                                <include reference="8NU-N7-6zk"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="2x6-zN-Vhk"/>
-                                <include reference="Ng8-9k-q4k"/>
-                                <include reference="Qoz-yN-757"/>
-                                <include reference="fkT-Rh-CBT"/>
-                                <include reference="k28-E4-ox7"/>
-                                <include reference="z9H-xm-7oL"/>
-                                <include reference="SsL-bR-Ayc"/>
-                                <include reference="itW-1D-ySP"/>
-                                <include reference="mtq-6F-Kle"/>
-                                <include reference="xOK-5f-juH"/>
                                 <include reference="EWw-Hv-WeN"/>
                                 <include reference="ubW-Iu-klz"/>
                                 <include reference="usc-Tu-PF0"/>
@@ -1003,9 +1018,24 @@
                                 <include reference="OmY-jp-PPM"/>
                                 <include reference="lfe-am-BOg"/>
                                 <include reference="zrL-tX-iSo"/>
+                                <include reference="SsL-bR-Ayc"/>
+                                <include reference="itW-1D-ySP"/>
+                                <include reference="mtq-6F-Kle"/>
+                                <include reference="xOK-5f-juH"/>
+                                <include reference="fkT-Rh-CBT"/>
+                                <include reference="k28-E4-ox7"/>
+                                <include reference="z9H-xm-7oL"/>
+                                <include reference="2x6-zN-Vhk"/>
+                                <include reference="Ng8-9k-q4k"/>
+                                <include reference="Qoz-yN-757"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="8NU-N7-6zk" id="e7Z-we-jqu"/>
+                        <segue destination="Zvl-yE-Agg" kind="show" identifier="nwNaarAc" id="yRa-PU-yT0"/>
+                        <segue destination="tcc-dx-YoY" kind="show" identifier="nwNaarWo" id="u4J-6k-8jd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEq-xi-bTT" sceneMemberID="firstResponder"/>
             </objects>
@@ -1030,9 +1060,6 @@
                                     <constraint firstAttribute="width" constant="160" id="9WX-Uf-166"/>
                                 </constraints>
                                 <state key="normal" title="Wisselen"/>
-                                <connections>
-                                    <segue destination="tcc-dx-YoY" kind="show" id="o5L-D2-WsI"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingeklokt op werkorder 1456 (35-SR-KT)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2y5-KA-7hb">
                                 <rect key="frame" x="10" y="20" width="367" height="38"/>
@@ -1044,6 +1071,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="10" y="20" width="367" height="38"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WO 1460, Opel Astra" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1I-LM-1uL">
                                 <rect key="frame" x="263" y="66" width="332" height="39"/>
@@ -1113,9 +1143,30 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.0" green="0.76971982760000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="399" y="20" width="166" height="38"/>
+                                </variation>
                                 <connections>
                                     <action selector="wisselKnopIngedrukt:" destination="Fvw-SB-A04" eventType="touchUpInside" id="VgK-WH-tNq"/>
                                     <segue destination="tcc-dx-YoY" kind="show" id="5Nn-PD-7Hd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfY-cP-mgB">
+                                <rect key="frame" x="385" y="20" width="210" height="38"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.76971982760000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Uitklokken">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.76971982760000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="585" y="20" width="210" height="38"/>
+                                </variation>
+                                <connections>
+                                    <action selector="wisselKnopIngedrukt:" destination="Fvw-SB-A04" eventType="touchUpInside" id="Xm0-Vg-NaM"/>
+                                    <segue destination="udg-xO-p58" kind="show" id="Lsx-30-9pY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1155,6 +1206,16 @@
                             <constraint firstItem="6iN-qj-lkK" firstAttribute="leading" secondItem="F1I-LM-1uL" secondAttribute="leading" id="xoM-bR-jnO"/>
                             <constraint firstItem="F1I-LM-1uL" firstAttribute="leading" secondItem="9La-yF-dhu" secondAttribute="trailing" constant="8" symbolic="YES" id="yS2-l2-bD5"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="TfY-cP-mgB"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="TfY-cP-mgB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="autoLabel" destination="F1I-LM-1uL" id="s5a-OY-LXS"/>
@@ -1238,9 +1299,6 @@
                                 <state key="normal" title="Uitklokken">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="udg-xO-p58" kind="show" id="x3D-Si-cXZ"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ingeklokt op werkorder 1460 (9-ZKR-3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqg-bT-g9k">
                                 <rect key="frame" x="10" y="20" width="399" height="68"/>
@@ -1326,9 +1384,10 @@
         <image name="noProfilePic" width="294" height="293"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="x3D-Si-cXZ"/>
-        <segue reference="UF6-rR-OtB"/>
-        <segue reference="5Nn-PD-7Hd"/>
-        <segue reference="Z0I-ey-Pfb"/>
+        <segue reference="gOO-Mk-RqF"/>
+        <segue reference="u4J-6k-8jd"/>
+        <segue reference="w6c-40-y2p"/>
+        <segue reference="yRa-PU-yT0"/>
+        <segue reference="Ukg-KR-alJ"/>
     </inferredMetricsTieBreakers>
 </document>

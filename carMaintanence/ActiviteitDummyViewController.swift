@@ -25,6 +25,14 @@ class ActiviteitDummyViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("someshit")
+        if(segue.identifier == "activiteitenNaarNonWorkorder"){
+        let nwvc = segue.destinationViewController as! nonWorkorderScreenController;
+        nwvc.vorigeScherm = "ac"
+            print("shit")
+    }
+    }
     
 
     /*

@@ -13,7 +13,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     
     
     var Personen = ["Jan" , "Piet" , "Henk", "Anne" , "Martin"]
-    var Pincodes = ["1234","2345","3456","4567","5678"]
+    var Pincodes = ["1111","2345","3456","4567","5678"]
     var appleID = ""
     override func viewDidLoad() {
         super.viewDidLoad()
