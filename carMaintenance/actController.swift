@@ -12,11 +12,13 @@ class TableViewCellForActivity: UITableViewCell {
     var column1: String = ""
     var column2: String = ""
     var column3: String = ""
-    
+    var width: CGFloat = 0.0
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.width = self.layer.bounds.width
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -26,26 +28,36 @@ class TableViewCellForActivity: UITableViewCell {
     }
     
     func setValueForColumn(string: String, col:Int) {
-        
+        // frame: CGRectMake(x, y, width, height)
+        let width = self.layer.bounds.width
+        print(width)
         if (col==1) {
-            let newLabel = UILabel(frame: CGRectMake(0.0, 14.0, 300.0, 30.0))
+            let newLabel = UILabel(frame: CGRectMake(0.0, 14.0, width/4, 30.0))
+            newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
         }
         if (col==2) {
-            let newLabel = UILabel(frame: CGRectMake(350.0, 14.0, 300.0, 30.0))
+            let newLabel = UILabel(frame: CGRectMake(width/4, 14.0, width/4 , 30.0))
+            newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
             
         }
         if (col==3) {
-            let newLabel = UILabel(frame: CGRectMake(700.0, 14.0, 300.0, 30.0))
+            let newLabel = UILabel(frame: CGRectMake(width/2, 14.0, width/2, 30.0))
+            newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
         }
         
-        
     }
+    
+    func getWidth() -> CGFloat
+    {
+        return self.width
+    }
+
     
 }
 
@@ -54,8 +66,15 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     @IBOutlet weak var tableViewContainer: UITableView!
     
-    var tableData = [[1.1,1.2,1.3],[2.1,2.2,2.3],[3.1,3.2,3.3]] // illustration only
+    @IBOutlet weak var headerForLabels: UICustomView!
+    var cellWidth: CGFloat = 0.0
     
+    
+    // This array is populated with data and every nested array is one row containing
+    // 3 different string or whatever
+    var tableData = [["Verrichting 1",0.5,"APK met viergastest"],["Onderd. 1",1,"Sticker 'APK zonder afspraak'"],[3.1,3.2,3.3]] // illustration only
+  
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,11 +82,14 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
+
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
     // MARK: - Table view data source
     
@@ -85,17 +107,47 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         // declare the cell as TableViewCell which is a separate class declared in a separate file
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
         
-        // var row = indexPath.row
-        cell.setValueForColumn("col1 j jsdad aksjd asd mkasjf imfds ndsonf iondf ", col:1)
-        cell.setValueForColumn("col2 sajdkl jsknf jsdnf udjn jndfjk nfdn sa da sd a", col:2)
-        cell.setValueForColumn("jsahdj", col:3)
+        let row = indexPath.row
         
-        // cell.column1.text = "\(tableData[row][0])"// fill in your value for column 1 (e.g. from an array)
-        // cell.column2.text = "\(tableData[row][1])" // fill in your value for column 2
-        // cell.column3.text = "\(tableData[row][2])" // fill in your value for column 2
+        
+        cell.setValueForColumn("\(tableData[row][0])", col:1)
+        cell.setValueForColumn("\(tableData[row][1])", col:2)
+        cell.setValueForColumn("\(tableData[row][2])", col:3)
+        self.cellWidth = cell.layer.bounds.width
+        setHeaderLabels()
+        
+        if(row % 2 == 0) {
+            cell.backgroundColor = UIColor.lightGrayColor()
+        }
+        
+        else {
+            cell.backgroundColor = UIColor.whiteColor()
+        }
         
         return cell
+        
     }
+    
+
+    func setHeaderLabels () {
+        let col1Label = UILabel(frame: CGRectMake(0, 14.0, cellWidth/4.0, 30.0))
+        let col2Label = UILabel(frame: CGRectMake(cellWidth/4.0, 14.0, cellWidth/4.0, 30.0))
+        let col3Label = UILabel(frame: CGRectMake(cellWidth/2.0, 14.0, cellWidth/2.0, 30.0))
+        col1Label.text = "Code"
+        col2Label.text = "Antal"
+        col3Label.text = "Omschrijving"
+        
+        self.headerForLabels.addSubview(col1Label)
+        self.headerForLabels.addSubview(col2Label)
+        self.headerForLabels.addSubview(col3Label)
+    }
+    
+    
+}
+
+class UICustomView: UIView {
+    
+
     
 }
 
