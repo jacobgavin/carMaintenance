@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123631BF11A490045D8D4 /* WorkorderViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */; settings = {ASSET_TAGS = (); }; };
 		D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */; };
-		D54B3DD51BCFA4E1009B9D9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD41BCFA4E1009B9D9C /* ViewController.swift */; };
-		D54B3DD81BCFA4E1009B9D9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54B3DD61BCFA4E1009B9D9C /* Main.storyboard */; };
+		D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */; };
 		D54B3DDA1BCFA4E1009B9D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */; };
 		D54B3DDD1BCFA4E1009B9D9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */; };
 		D54B3DE81BCFA4E1009B9D9C /* carMaintanenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DE71BCFA4E1009B9D9C /* carMaintanenceTests.swift */; };
 		D54B3DF31BCFA4E2009B9D9C /* carMaintanenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DF21BCFA4E2009B9D9C /* carMaintanenceUITests.swift */; };
+		D573361B1BE22CF500F51CBD /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */; settings = {ASSET_TAGS = (); }; };
+		D57336201BE22FD700F51CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D573361E1BE22FD700F51CBD /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */; settings = {ASSET_TAGS = (); }; };
+		D5ACB8A11BF12D810087C3E2 /* newActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */; settings = {ASSET_TAGS = (); }; };
+		D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D53123631BF11A490045D8D4 /* WorkorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkorderViewController.swift; sourceTree = "<group>"; };
+		D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nonWorkorderScreenController.swift; sourceTree = "<group>"; };
 		D54B3DCF1BCFA4E1009B9D9C /* carMaintanence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carMaintanence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D54B3DD41BCFA4E1009B9D9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D54B3DD71BCFA4E1009B9D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSchermViewController.swift; sourceTree = "<group>"; };
 		D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54B3DDC1BCFA4E1009B9D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D54B3DDE1BCFA4E1009B9D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +57,14 @@
 		D54B3DEE1BCFA4E2009B9D9C /* carMaintanenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carMaintanenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54B3DF21BCFA4E2009B9D9C /* carMaintanenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carMaintanenceUITests.swift; sourceTree = "<group>"; };
 		D54B3DF41BCFA4E2009B9D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
+		D573361F1BE22FD700F51CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelecteerPersoonViewController.swift; sourceTree = "<group>"; };
+		D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrderViewController.swift; sourceTree = "<group>"; };
+		D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkorderKnop.swift; sourceTree = "<group>"; };
+		D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newActivityController.swift; sourceTree = "<group>"; };
+		D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrdersDummyViewController.swift; sourceTree = "<group>"; };
+		D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiviteitDummyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +116,20 @@
 			isa = PBXGroup;
 			children = (
 				D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */,
-				D54B3DD41BCFA4E1009B9D9C /* ViewController.swift */,
-				D54B3DD61BCFA4E1009B9D9C /* Main.storyboard */,
+				D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */,
+				D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */,
+				D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */,
+				D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */,
+				D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */,
+				D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */,
+				D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */,
+				D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */,
+				D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */,
+				D573361E1BE22FD700F51CBD /* Main.storyboard */,
 				D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */,
 				D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */,
 				D54B3DDE1BCFA4E1009B9D9C /* Info.plist */,
+				D53123631BF11A490045D8D4 /* WorkorderViewController.swift */,
 			);
 			path = carMaintanence;
 			sourceTree = "<group>";
@@ -203,7 +230,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D54B3DCA1BCFA4E1009B9D9C /* Build configuration list for PBXProject "carMaintanence" */;
+			buildConfigurationList = D54B3DCA1BCFA4E1009B9D9C /* Build configuration list for PBXProject "carMaintenance" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -230,7 +257,7 @@
 			files = (
 				D54B3DDD1BCFA4E1009B9D9C /* LaunchScreen.storyboard in Resources */,
 				D54B3DDA1BCFA4E1009B9D9C /* Assets.xcassets in Resources */,
-				D54B3DD81BCFA4E1009B9D9C /* Main.storyboard in Resources */,
+				D57336201BE22FD700F51CBD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +282,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D54B3DD51BCFA4E1009B9D9C /* ViewController.swift in Sources */,
+				D5ACB8A11BF12D810087C3E2 /* newActivityController.swift in Sources */,
+				D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */,
+				D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */,
+				D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */,
+				D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */,
 				D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */,
+				D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */,
+				D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */,
+				D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */,
+				D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */,
+				D573361B1BE22CF500F51CBD /* LoginScreenModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,20 +328,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D54B3DD61BCFA4E1009B9D9C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D54B3DD71BCFA4E1009B9D9C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D54B3DDC1BCFA4E1009B9D9C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D573361E1BE22FD700F51CBD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D573361F1BE22FD700F51CBD /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -402,6 +438,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fdsg.carMaintanence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -413,6 +450,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fdsg.carMaintanence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -467,7 +505,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D54B3DCA1BCFA4E1009B9D9C /* Build configuration list for PBXProject "carMaintanence" */ = {
+		D54B3DCA1BCFA4E1009B9D9C /* Build configuration list for PBXProject "carMaintenance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54B3DF51BCFA4E2009B9D9C /* Debug */,
