@@ -16,6 +16,7 @@
 		D57531501BE225F0004B98CA /* carMaintenanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575314F1BE225F0004B98CA /* carMaintenanceTests.swift */; };
 		D575315B1BE225F0004B98CA /* carMaintenanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575315A1BE225F0004B98CA /* carMaintenanceUITests.swift */; };
 		D5DC9E1B1BFDF7970075A7B2 /* tableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DC9E1A1BFDF7970075A7B2 /* tableCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D5EF55571C10614200FC5900 /* camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF55561C10614200FC5900 /* camera.swift */; settings = {ASSET_TAGS = (); }; };
 		D5F311211BE232EA00C5638A /* newActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F311201BE232EA00C5638A /* newActivityController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		D575315A1BE225F0004B98CA /* carMaintenanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carMaintenanceUITests.swift; sourceTree = "<group>"; };
 		D575315C1BE225F0004B98CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5DC9E1A1BFDF7970075A7B2 /* tableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableCell.swift; sourceTree = "<group>"; };
+		D5EF55561C10614200FC5900 /* camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = camera.swift; sourceTree = "<group>"; };
 		D5F311201BE232EA00C5638A /* newActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newActivityController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				D57531431BE225F0004B98CA /* LaunchScreen.storyboard */,
 				D57531461BE225F0004B98CA /* Info.plist */,
 				D52688BE1BEB930F00E874AD /* activitylist.plist */,
+				D5EF55561C10614200FC5900 /* camera.swift */,
 			);
 			path = carMaintenance;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				D52688C31BEB98FA00E874AD /* actController.swift in Sources */,
 				D5F311211BE232EA00C5638A /* newActivityController.swift in Sources */,
+				D5EF55571C10614200FC5900 /* camera.swift in Sources */,
 				D5DC9E1B1BFDF7970075A7B2 /* tableCell.swift in Sources */,
 				D575313B1BE225F0004B98CA /* AppDelegate.swift in Sources */,
 			);
