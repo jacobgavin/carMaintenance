@@ -18,6 +18,7 @@
 		D5DC9E1B1BFDF7970075A7B2 /* tableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DC9E1A1BFDF7970075A7B2 /* tableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D5EF55571C10614200FC5900 /* camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF55561C10614200FC5900 /* camera.swift */; settings = {ASSET_TAGS = (); }; };
 		D5F311211BE232EA00C5638A /* newActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F311201BE232EA00C5638A /* newActivityController.swift */; settings = {ASSET_TAGS = (); }; };
+		D5FA49DA1C109C250026759F /* workOrderTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA49D91C109C250026759F /* workOrderTable.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D5DC9E1A1BFDF7970075A7B2 /* tableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableCell.swift; sourceTree = "<group>"; };
 		D5EF55561C10614200FC5900 /* camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = camera.swift; sourceTree = "<group>"; };
 		D5F311201BE232EA00C5638A /* newActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newActivityController.swift; sourceTree = "<group>"; };
+		D5FA49D91C109C250026759F /* workOrderTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = workOrderTable.swift; path = ../workOrderTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		D57531391BE225F0004B98CA /* carMaintenance */ = {
 			isa = PBXGroup;
 			children = (
+				D5FA49D91C109C250026759F /* workOrderTable.swift */,
 				D575313A1BE225F0004B98CA /* AppDelegate.swift */,
 				D5F311201BE232EA00C5638A /* newActivityController.swift */,
 				D52688C21BEB98FA00E874AD /* actController.swift */,
@@ -270,6 +273,7 @@
 			files = (
 				D52688C31BEB98FA00E874AD /* actController.swift in Sources */,
 				D5F311211BE232EA00C5638A /* newActivityController.swift in Sources */,
+				D5FA49DA1C109C250026759F /* workOrderTable.swift in Sources */,
 				D5EF55571C10614200FC5900 /* camera.swift in Sources */,
 				D5DC9E1B1BFDF7970075A7B2 /* tableCell.swift in Sources */,
 				D575313B1BE225F0004B98CA /* AppDelegate.swift in Sources */,
