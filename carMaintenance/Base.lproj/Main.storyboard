@@ -221,14 +221,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="camera-icon"/>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xZi-xa-HC1">
-                                <rect key="frame" x="9" y="432" width="496" height="154"/>
-                                <animations/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UEC-jQ-dOg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UEC-jQ-dOg">
                                 <rect key="frame" x="9" y="238" width="582" height="195"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -255,14 +248,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xri-xE-mQh" customClass="UICustomView">
-                                <rect key="frame" x="9" y="170" width="582" height="46"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xri-xE-mQh" customClass="UICustomView">
+                                <rect key="frame" x="9" y="175" width="582" height="34"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZi-xa-HC1">
+                                <rect key="frame" x="9" y="432" width="496" height="154"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="light"/>
+                            </textView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.22045381589999999" green="0.43689832719999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xZi-xa-HC1" firstAttribute="top" secondItem="UEC-jQ-dOg" secondAttribute="bottom" id="04q-c4-sfv"/>
                             <constraint firstItem="gzJ-fM-DFV" firstAttribute="top" secondItem="DKT-99-8ut" secondAttribute="bottom" constant="8" symbolic="YES" id="0Sc-vX-4CA"/>
@@ -273,6 +274,7 @@
                             <constraint firstItem="auw-y6-kbL" firstAttribute="top" secondItem="sqy-iC-fLn" secondAttribute="top" id="47d-ZS-dr6"/>
                             <constraint firstItem="Xri-xE-mQh" firstAttribute="leading" secondItem="Amn-WL-oNl" secondAttribute="leadingMargin" constant="-11" id="5Nv-sj-q6b"/>
                             <constraint firstItem="3bw-Um-Pyu" firstAttribute="leading" secondItem="T8u-pX-hb1" secondAttribute="leading" id="8lm-eC-6VF"/>
+                            <constraint firstItem="Xri-xE-mQh" firstAttribute="top" secondItem="T8u-pX-hb1" secondAttribute="bottom" constant="3" id="CCH-vo-cik"/>
                             <constraint firstItem="sqy-iC-fLn" firstAttribute="leading" secondItem="auw-y6-kbL" secondAttribute="trailing" constant="8" symbolic="YES" id="Fzp-3D-or7"/>
                             <constraint firstItem="UEC-jQ-dOg" firstAttribute="top" secondItem="Xri-xE-mQh" secondAttribute="bottom" constant="22" id="JM8-7a-B3m"/>
                             <constraint firstItem="3bw-Um-Pyu" firstAttribute="top" secondItem="auw-y6-kbL" secondAttribute="bottom" constant="17" id="L9l-90-Qx2"/>
@@ -293,14 +295,17 @@
                             <constraint firstItem="DKT-99-8ut" firstAttribute="trailing" secondItem="gzJ-fM-DFV" secondAttribute="trailing" id="qJZ-T7-gif"/>
                             <constraint firstItem="DKT-99-8ut" firstAttribute="leading" secondItem="xZi-xa-HC1" secondAttribute="trailing" constant="11" id="rAk-Ln-y5o"/>
                             <constraint firstItem="gzJ-fM-DFV" firstAttribute="leading" secondItem="xZi-xa-HC1" secondAttribute="trailing" constant="8" symbolic="YES" id="rHy-fP-5ue"/>
+                            <constraint firstItem="UEC-jQ-dOg" firstAttribute="leading" secondItem="Amn-WL-oNl" secondAttribute="leadingMargin" constant="-11" id="ral-jz-Pba"/>
                             <constraint firstItem="T8u-pX-hb1" firstAttribute="trailing" secondItem="UEC-jQ-dOg" secondAttribute="trailing" id="sws-ye-P1G"/>
-                            <constraint firstItem="UEC-jQ-dOg" firstAttribute="top" secondItem="T8u-pX-hb1" secondAttribute="bottom" constant="37" id="tuD-8S-6Q9"/>
                             <constraint firstItem="UEC-jQ-dOg" firstAttribute="centerX" secondItem="Amn-WL-oNl" secondAttribute="centerX" id="u3Q-F2-boM"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="carLicenceNum" destination="3bw-Um-Pyu" id="ws3-Sy-b3q"/>
                         <outlet property="headerForLabels" destination="Xri-xE-mQh" id="i4I-s6-iXk"/>
                         <outlet property="tableViewContainer" destination="UEC-jQ-dOg" id="FTO-tJ-KfQ"/>
+                        <outlet property="titleOfActivity" destination="T8u-pX-hb1" id="1lj-cx-fXi"/>
+                        <outlet property="workAndCarModel" destination="8Nw-bC-D5X" id="4oh-co-ckh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWj-mJ-n8U" userLabel="First Responder" sceneMemberID="firstResponder"/>

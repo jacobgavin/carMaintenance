@@ -63,6 +63,14 @@ class TableViewCellForActivity: UITableViewCell {
 
 
 class actController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    var regNum = "ABC 123"
+    var workOrder = "1460"
+    var carModel = "Volvo V70"
+    var titleActivity = "Activiteit: APK"
+    
+    @IBOutlet weak var carLicenceNum: UITextField!
+    @IBOutlet weak var workAndCarModel: UITextField!
+    @IBOutlet weak var titleOfActivity: UITextField!
     
     @IBOutlet weak var tableViewContainer: UITableView!
     
@@ -82,6 +90,10 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
+        
+        carLicenceNum.text = regNum
+        workAndCarModel.text = "WO " + workOrder + ", " + carModel
+        titleOfActivity.text = titleActivity
 
     }
     
@@ -133,6 +145,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let col1Label = UILabel(frame: CGRectMake(0, 14.0, cellWidth/4.0, 30.0))
         let col2Label = UILabel(frame: CGRectMake(cellWidth/4.0, 14.0, cellWidth/4.0, 30.0))
         let col3Label = UILabel(frame: CGRectMake(cellWidth/2.0, 14.0, cellWidth/2.0, 30.0))
+        
         col1Label.text = "Code"
         col2Label.text = "Antal"
         col3Label.text = "Omschrijving"
