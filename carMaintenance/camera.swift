@@ -12,11 +12,24 @@ import UIKit
 
 class CameraView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var imageView: UIImageView!
+    
+    @IBOutlet var licensField: UITextField!
+    @IBOutlet var activityField: UITextField!
+    @IBOutlet var workField: UITextField!
+    
+    var licens: String!
+    var activity: String!
+    var work: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup
+        licensField.text = licens
+        activityField.text = activity
+        workField.text = work
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

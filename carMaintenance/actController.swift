@@ -142,6 +142,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
 
     func setHeaderLabels () {
+        // Sets the values for the headlines of table
         let col1Label = UILabel(frame: CGRectMake(0, 14.0, cellWidth/4.0, 30.0))
         let col2Label = UILabel(frame: CGRectMake(cellWidth/4.0, 14.0, cellWidth/4.0, 30.0))
         let col3Label = UILabel(frame: CGRectMake(cellWidth/2.0, 14.0, cellWidth/2.0, 30.0))
@@ -155,6 +156,19 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.headerForLabels.addSubview(col3Label)
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        // Create a new variable to store the instance of CameraView
+        let destinationVC = segue.destinationViewController as! CameraView
+        
+        // Information that get send to CameraView
+        destinationVC.licens = carLicenceNum.text
+        destinationVC.activity = titleOfActivity.text
+        destinationVC.work = workAndCarModel.text
+        
+    }
+
     
 }
 
