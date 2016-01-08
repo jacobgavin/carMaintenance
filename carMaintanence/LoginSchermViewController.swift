@@ -12,25 +12,33 @@ class LoginSchermViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         print(defaults.objectForKey("deviceAppleID") as! String)
         werknemerNaam.text = werknemerLabelTekst
-        LogScreen.pincode = werknemerPincode
+        LogScreen.monteurCode = monteur.code
         // Setup the label for the employee and his pincode
     }
     
+    var pincode = ""
+    
     @IBOutlet weak var werknemerNaam: UILabel!
     @IBOutlet weak var pincodeLabel: UILabel!
+    
+    var monteur: Monteur = Monteur(id: 1, code: "", naam: "")
+    
     var labelText = 0;
-    var LogScreen = LoginScreenModel(pincode: "1234");
+    var LogScreen = LoginScreenModel(monteurCode: "")
     var werknemerLabelTekst = ""
-    var werknemerPincode = "1234"
+    var werknemerCode = ""
     @IBAction func buttonClick(sender: UIButton) {
         let digit = sender.currentTitle! //get the value of the pressed number
         LogScreen.addDigit("\(digit)"); //add it to the string of the pin
         updatePincode()
         if LogScreen.pinCompleet(){
-            if LogScreen.pincodeIsCorrect(){
+            if LogScreen.pincodeIsCorrect(monteur.code){
                 goToMonteurs()
             }
             else
@@ -42,9 +50,8 @@ class LoginSchermViewController: UIViewController {
     }
     
     func goToMonteurs(){
-        print("laden gegevens van \(werknemerLabelTekst)")
         performSegueWithIdentifier("loginNaarWerkorders", sender: nil)
-    }
+        }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "loginNaarWerkorders"){

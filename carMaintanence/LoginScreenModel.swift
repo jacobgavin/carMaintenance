@@ -9,12 +9,16 @@
 import Foundation
 class LoginScreenModel {
     
-    init(pincode: String){
-        self.pincode = pincode
+    init(monteurCode : String){
+        self.monteurCode = monteurCode
     }
-    var pincode = "";
+    
+    var monteurCode = ""
+    var code = ""
+    
     var pintry = ""
     var pinLabel = ""
+    
     func setLabel(){
         let points = pintry.characters.count
         pinLabel = ""
@@ -38,9 +42,11 @@ class LoginScreenModel {
         return pinLabel;
     }
     
-    func pincodeIsCorrect() ->	Bool //check of the pincode is consistent with the entered one
+    func pincodeIsCorrect(monteurCode: String) ->	Bool //check of the pincode is consistent with the entered one
     {
-        return pincode == pintry;
+        let mainJson: MainJson = MainJson()
+        return mainJson.valideerPincodeVoorMonteur(mainJson.getSessieId(), monteurCode: monteurCode, vestiging: "V001", pincode: pintry)
+        
     }
     
     func erasePincode(){

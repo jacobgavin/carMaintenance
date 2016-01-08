@@ -12,11 +12,21 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     
     
     
-    var Personen = ["Jan" , "Piet" , "Henk", "Anne" , "Martin"]
+    var monteurs: Array<Monteur> = []
+    
+    
+    
+    
     var Pincodes = ["1111","2345","3456","4567","5678"]
     var appleID = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        let mainJson : MainJson  = MainJson()
+        
+        
+        monteurs = mainJson.getMonteurs(mainJson.getSessieId())
+        
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         if let savedAppleId = defaults.objectForKey("deviceAppleID"){
             appleID = savedAppleId as! String
@@ -34,7 +44,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Personen.count
+        return monteurs.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -42,7 +52,8 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
         
         let Button = cell.viewWithTag(1) as! UILabel
-        Button.text = Personen[indexPath.row]
+        Button.text = monteurs[indexPath.row].naam
+    
 
         return cell
     }
@@ -59,8 +70,9 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
             let indexPath : NSIndexPath = indexPaths[0] as! NSIndexPath
             print("\(indexPath.row)")
             let lsvc = segue.destinationViewController as! LoginSchermViewController
-            lsvc.werknemerLabelTekst = Personen[indexPath.row]
-            lsvc.werknemerPincode = Pincodes[indexPath.row]
+            lsvc.monteur = monteurs[indexPath.row]
+            
+         
         }
     }
 // test

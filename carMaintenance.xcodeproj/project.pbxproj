@@ -7,22 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123631BF11A490045D8D4 /* WorkorderViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */; settings = {ASSET_TAGS = (); }; };
+		D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123631BF11A490045D8D4 /* WorkorderViewController.swift */; };
+		D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */; };
 		D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */; };
 		D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */; };
 		D54B3DDA1BCFA4E1009B9D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */; };
 		D54B3DDD1BCFA4E1009B9D9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */; };
 		D54B3DE81BCFA4E1009B9D9C /* carMaintanenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DE71BCFA4E1009B9D9C /* carMaintanenceTests.swift */; };
 		D54B3DF31BCFA4E2009B9D9C /* carMaintanenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DF21BCFA4E2009B9D9C /* carMaintanenceUITests.swift */; };
-		D573361B1BE22CF500F51CBD /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */; settings = {ASSET_TAGS = (); }; };
-		D57336201BE22FD700F51CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D573361E1BE22FD700F51CBD /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */; settings = {ASSET_TAGS = (); }; };
-		D5ACB8A11BF12D810087C3E2 /* newActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */; settings = {ASSET_TAGS = (); }; };
-		D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D573361B1BE22CF500F51CBD /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */; };
+		D57336201BE22FD700F51CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D573361E1BE22FD700F51CBD /* Main.storyboard */; };
+		D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */; };
+		D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */; };
+		D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */; };
+		D5ACB8A11BF12D810087C3E2 /* newActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */; };
+		D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */; };
+		D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */; };
+		D5D8BB011C3EA23A00951C11 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5D8BB001C3EA23A00951C11 /* Info.plist */; };
+		D5D8BBBD1C3FC8E800951C11 /* WerkOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */; };
+		D5F1BDA41C3EA13D00BF4472 /* Connectie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */; };
+		D5F1BDA61C3EA16600BF4472 /* MainJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA51C3EA16600BF4472 /* MainJson.swift */; };
+		D5F1BDA81C3EA1A100BF4472 /* Monteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */; };
+		D5F1BDAA1C3EA1BD00BF4472 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +56,6 @@
 		D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSchermViewController.swift; sourceTree = "<group>"; };
 		D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54B3DDC1BCFA4E1009B9D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D54B3DDE1BCFA4E1009B9D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D54B3DE31BCFA4E1009B9D9C /* carMaintanenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carMaintanenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54B3DE71BCFA4E1009B9D9C /* carMaintanenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carMaintanenceTests.swift; sourceTree = "<group>"; };
 		D54B3DE91BCFA4E1009B9D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +70,12 @@
 		D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newActivityController.swift; sourceTree = "<group>"; };
 		D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrdersDummyViewController.swift; sourceTree = "<group>"; };
 		D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiviteitDummyViewController.swift; sourceTree = "<group>"; };
+		D5D8BB001C3EA23A00951C11 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrderController.swift; sourceTree = "<group>"; };
+		D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectie.swift; sourceTree = "<group>"; };
+		D5F1BDA51C3EA16600BF4472 /* MainJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainJson.swift; sourceTree = "<group>"; };
+		D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monteur.swift; sourceTree = "<group>"; };
+		D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,17 +130,22 @@
 				D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */,
 				D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */,
 				D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */,
-				D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */,
+				D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */,
 				D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */,
+				D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */,
 				D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */,
 				D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */,
 				D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */,
 				D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */,
+				D5F1BDA51C3EA16600BF4472 /* MainJson.swift */,
+				D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */,
+				D5D8BB001C3EA23A00951C11 /* Info.plist */,
 				D573361E1BE22FD700F51CBD /* Main.storyboard */,
 				D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */,
+				D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */,
 				D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */,
-				D54B3DDE1BCFA4E1009B9D9C /* Info.plist */,
 				D53123631BF11A490045D8D4 /* WorkorderViewController.swift */,
+				D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */,
 			);
 			path = carMaintanence;
 			sourceTree = "<group>";
@@ -219,6 +235,7 @@
 				TargetAttributes = {
 					D54B3DCE1BCFA4E1009B9D9C = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 83XB9QP6P8;
 					};
 					D54B3DE21BCFA4E1009B9D9C = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -258,6 +275,7 @@
 				D54B3DDD1BCFA4E1009B9D9C /* LaunchScreen.storyboard in Resources */,
 				D54B3DDA1BCFA4E1009B9D9C /* Assets.xcassets in Resources */,
 				D57336201BE22FD700F51CBD /* Main.storyboard in Resources */,
+				D5D8BB011C3EA23A00951C11 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,15 +300,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F1BDA61C3EA16600BF4472 /* MainJson.swift in Sources */,
 				D5ACB8A11BF12D810087C3E2 /* newActivityController.swift in Sources */,
+				D5F1BDAA1C3EA1BD00BF4472 /* SwiftyJSON.swift in Sources */,
 				D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */,
 				D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */,
 				D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */,
+				D5F1BDA41C3EA13D00BF4472 /* Connectie.swift in Sources */,
+				D5F1BDA81C3EA1A100BF4472 /* Monteur.swift in Sources */,
 				D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */,
 				D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */,
 				D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */,
 				D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */,
 				D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */,
+				D5D8BBBD1C3FC8E800951C11 /* WerkOrderController.swift in Sources */,
 				D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */,
 				D573361B1BE22CF500F51CBD /* LoginScreenModel.swift in Sources */,
 			);
@@ -434,10 +457,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = carMaintanence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fdsg.carMaintanence;
+				PRODUCT_BUNDLE_IDENTIFIER = slo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -446,10 +472,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = carMaintanence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fdsg.carMaintanence;
+				PRODUCT_BUNDLE_IDENTIFIER = slo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
