@@ -15,11 +15,11 @@ class WerkOrdersDummyViewController: UIViewController {
     @IBOutlet weak var inloggenButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load")
+        
         improUrenButton.layer.backgroundColor = UIColor(white: 1, alpha: 0).CGColor
         werkOrderButton.layer.backgroundColor = UIColor(white: 1, alpha: 1).CGColor
         inloggenButton.layer.backgroundColor = UIColor(white: 1, alpha: 1).CGColor
-        print("derp")
+       
         // Do any additional setup after loading the view.
     }
 
