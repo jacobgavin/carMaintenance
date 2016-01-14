@@ -9,15 +9,8 @@
 
 import UIKit
 class TableViewCellForActivity: UITableViewCell {
-    var column1: String = ""
-    var column2: String = ""
-    var column3: String = ""
-    var col1Width: Int = 0
-    var col2Width: Int = 0
-    var col3Width: Int = 0
-    var col4Width: Int = 0
 
-    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,26 +25,30 @@ class TableViewCellForActivity: UITableViewCell {
     
     
     
-    func setValueForColumn(string: String, col:Int) {
+    func setValueForColumn(string: String, col:Int, width:CGFloat) {
         
         if (col==1) {
-            let newLabel = UILabel(frame: CGRectMake(12.0, 0.0, 58.0, 58.0))
+            let newLabel = UILabel(frame: CGRectMake(0.0, 14.0, width*0.1, 30.0))
+            newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
         }
         if (col==2) {
-            let newLabel = UILabel(frame: CGRectMake(60.0, 14.0, 92.0, 30.0))
+            let newLabel = UILabel(frame: CGRectMake(width*0.1, 14.0, width*0.15, 30.0))
+            newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
             
         }
         if (col==3) {
-            let newLabel = UILabel(frame: CGRectMake(170.0, 14.0, 300.0, 30.0))
+            let newLabel = UILabel(frame: CGRectMake(width*0.25, 14.0, width*0.3, 30.0))
+            newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
         }
         if (col==4) {
-            let newLabel = UILabel(frame: CGRectMake(300.0, 14.0, 300.0, 30.0))
+            let newLabel = UILabel(frame: CGRectMake(width*0.55, 14.0, width*0.45, 30.0))
+            newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
         }
@@ -71,7 +68,8 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var mainJson :MainJson = MainJson()
     var werkOrderDetails :Array<WerkorderDetail> = []
-    var tableData = [[1.1,1.2,1.3],[2.1,2.2,2.3],[3.1,3.2,3.3],[4.1,4.2,4.3]] // illustration only
+    var tableData: Array <Array <Any>> = []
+    var screenWidth: CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +77,9 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
-        
+        tableData = [] // illustration only
+        screenWidth = self.view.frame.size.width
+        getUserData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,25 +94,51 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return tableData.count
     }
+    
+    func getUserData () {
+        // get user id
+        werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
+        for d in werkOrderDetails {
+            tableData.append([d.nummer, d.kenteken, d.merk+" "+d.model, d.omschrijving])
+        }
+    
+    }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
-        werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
         
-        // var row = indexPath.row
-        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].nummer)", col:1)
-        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].kenteken)", col:2)
-        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].model)", col:3)
-        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].omschrijving)", col:4)
-        // cell.column1.text = "\(tableData[row][0])"// fill in your value for column 1 (e.g. from an array)
-        // cell.column2.text = "\(tableData[row][1])" // fill in your value for column 2
-        // cell.column3.text = "\(tableData[row][2])" // fill in your value for column 2
+        let row = indexPath.row
+        print(tableData)
+        cell.setValueForColumn("\(tableData[row][0])", col:1, width:screenWidth)
+        cell.setValueForColumn("\(tableData[row][1])", col:2, width:screenWidth)
+        cell.setValueForColumn("\(tableData[row][2])", col:3, width:screenWidth)
+        cell.setValueForColumn("\(tableData[row][3])", col:4, width:screenWidth)
+        
+        //setHeaderLabels()
         
         return cell
     }
+    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        // declare the cell as TableViewCell which is a separate class declared in a separate file
+//        
+//        let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
+//        
+//        // var row = indexPath.row
+//        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].nummer)", col:1)
+//        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].kenteken)", col:2)
+//        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].model)", col:3)
+//        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].omschrijving)", col:4)
+//        // cell.column1.text = "\(tableData[row][0])"// fill in your value for column 1 (e.g. from an array)
+//        // cell.column2.text = "\(tableData[row][1])" // fill in your value for column 2
+//        // cell.column3.text = "\(tableData[row][2])" // fill in your value for column 2
+//        
+//        return cell
+//    }
     
 }
 
