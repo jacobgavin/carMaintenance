@@ -9,14 +9,13 @@
 import Foundation
 
 /*!
-    @class Connectie
-
-    @brief This class sets up the basic API connection with the server.
-
-    The Connectie class establishes the JSON API connection with the server (only GET requests).
-
-    @parameter url link of where the request has to be send to.
-
+*    @class Connectie
+*
+*    @brief This class handles the basic API connection with the server.
+*
+*    @discussion The Connectie class establishes the JSON API connection with the server (only GET requests).
+*
+*
 */
 
 class Connectie
@@ -24,6 +23,12 @@ class Connectie
     
     var responseFinal = ""
     
+    /*!
+    *   @brief Posts the requests and eventually returns the response
+    *   @param url Link of where the request has to be send to.
+    *   @return (eventually) returns a NSString with the response.
+    *   @warning The response could also be "error"!
+    */
     func post(url : String, completion: ((result:NSString?) -> Void)!)
     {
         
