@@ -69,6 +69,8 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var kentekenLabel: UILabel!
     @IBOutlet weak var omschrijvingLabel: UILabel!
     
+    var mainJson :MainJson = MainJson()
+    var werkOrderDetails :Array<WerkorderDetail> = []
     var tableData = [[1.1,1.2,1.3],[2.1,2.2,2.3],[3.1,3.2,3.3],[4.1,4.2,4.3]] // illustration only
     
     override func viewDidLoad() {
@@ -77,7 +79,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
-        print("width is \(hashtagLabel.bounds.width)")
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,13 +99,14 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
+        werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
         
         // var row = indexPath.row
-        cell.setValueForColumn("col \(indexPath.row)", col:1)
-        cell.setValueForColumn("col2 sajdkl jsknf jsdnf udjn jndfjk nfdn sa da sd a", col:2)
-        cell.setValueForColumn("jsahdj", col:3)
-        
+        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].nummer)", col:1)
+        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].kenteken)", col:2)
+        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].model)", col:3)
+        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].omschrijving)", col:4)
         // cell.column1.text = "\(tableData[row][0])"// fill in your value for column 1 (e.g. from an array)
         // cell.column2.text = "\(tableData[row][1])" // fill in your value for column 2
         // cell.column3.text = "\(tableData[row][2])" // fill in your value for column 2

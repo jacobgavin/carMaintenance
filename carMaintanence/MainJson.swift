@@ -14,21 +14,28 @@ class MainJson
     var sessieId : String = ""
     let siteUrl = "http://92.66.29.229/api/"
     let vestiging = "V001"
-    let date1 = "2012-11-01T00:00:00"
-    let date2 = "2016-11-01T00:00:00"
+    let date1 = "2015-11-01T00:00:00"
+    let date2 = "2015-11-03T00:00:00"
     
     init()
     {
         connectie = Connectie()
-        sessieId = getSessieId()
+        
         //     var werkOrderStatus = getWerkorderStatus(sessieId)
-        _ = getMonteurs(sessieId)
-        _ = getWerkorder(sessieId)
+        
         // toJsonTest(werkOrderStatus)
         // print(werkOrderStatus)
         
         // toJsonTest(getMonteurs(sessieId))
     }
+    
+    func setSessieID()
+    {
+        sessieId = getSessieId()
+        getMonteurs(sessieId)
+        getWerkorder(sessieId)
+    }
+    
     
     func getSessieId() -> String
     {
@@ -138,6 +145,8 @@ class MainJson
         
         return werkOrderDetails
     }
+    
+    
     //    func getStandaardActiviteiten(sessieId: String) -> String
     //    {
     //    var standaardActiviteiten = ""

@@ -13,7 +13,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     
     
     var monteurs: Array<Monteur> = []
-    
+    let mainJson : MainJson  = MainJson()
     
     
     
@@ -21,9 +21,8 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     var appleID = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainJson : MainJson  = MainJson()
         
-        
+        mainJson.setSessieID()
         monteurs = mainJson.getMonteurs(mainJson.getSessieId())
         
         
@@ -71,6 +70,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
             print("\(indexPath.row)")
             let lsvc = segue.destinationViewController as! LoginSchermViewController
             lsvc.monteur = monteurs[indexPath.row]
+            lsvc.mainJson = mainJson
             
          
         }

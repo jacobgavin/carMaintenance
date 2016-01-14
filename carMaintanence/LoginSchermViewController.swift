@@ -23,7 +23,7 @@ class LoginSchermViewController: UIViewController {
     }
     
     var pincode = ""
-    
+    var mainJson:MainJson = MainJson()
     @IBOutlet weak var werknemerNaam: UILabel!
     @IBOutlet weak var pincodeLabel: UILabel!
     
@@ -55,8 +55,8 @@ class LoginSchermViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "loginNaarWerkorders"){
-//            let wovc = segue.destinationViewController as! WorkOrderViewController
-//            wovc.werknemer = werknemerLabelTekst
+            let woc = segue.destinationViewController as! WerkOrderController
+            woc.mainJson = mainJson
         }
     }
     
