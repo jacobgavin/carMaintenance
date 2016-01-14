@@ -8,9 +8,9 @@
 //
 
 import UIKit
+
+
 class TableViewCellForActivity: UITableViewCell {
-
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,10 +19,8 @@ class TableViewCellForActivity: UITableViewCell {
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
-    
     
     
     func setValueForColumn(string: String, col:Int, width:CGFloat) {
@@ -54,7 +52,6 @@ class TableViewCellForActivity: UITableViewCell {
         }
         
     }
-    
 }
 
 
@@ -70,7 +67,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     var werkOrderDetails :Array<WerkorderDetail> = []
     var tableData: Array <Array <Any>> = []
     var screenWidth: CGFloat = 0.0
-    
+    var selectedOrder = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewContainer.delegate = self
@@ -85,6 +82,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
     // MARK: - Table view data source
     
@@ -105,7 +103,11 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     
     }
-
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("werkordersNaarWerkorder", sender: nil)
+        selectedOrder = indexPath.row
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
@@ -118,28 +120,16 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.setValueForColumn("\(tableData[row][2])", col:3, width:screenWidth)
         cell.setValueForColumn("\(tableData[row][3])", col:4, width:screenWidth)
         
-        //setHeaderLabels()
-        
         return cell
     }
-    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        // declare the cell as TableViewCell which is a separate class declared in a separate file
-//        
-//        let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
-//        
-//        // var row = indexPath.row
-//        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].nummer)", col:1)
-//        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].kenteken)", col:2)
-//        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].model)", col:3)
-//        cell.setValueForColumn("\(werkOrderDetails[indexPath.row].omschrijving)", col:4)
-//        // cell.column1.text = "\(tableData[row][0])"// fill in your value for column 1 (e.g. from an array)
-//        // cell.column2.text = "\(tableData[row][1])" // fill in your value for column 2
-//        // cell.column3.text = "\(tableData[row][2])" // fill in your value for column 2
-//        
-//        return cell
-//    }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "werkordersNaarWerkorder")
+        {
+            let lsvc = segue.destinationViewController as! WerkOrderViewController
+            lsvc.werkorder  = tableData[selectedOrder]
+            lsvc.mainJson = mainJson
+        }
+    }
 }
 
 

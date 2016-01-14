@@ -10,6 +10,10 @@ import UIKit
 
 class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
+    
+    var werkorder: Array <Any> = []
+    var mainJson: MainJson = MainJson()
+    
     var knoppenArray = NSMutableArray()
  
     var aantalKnoppen = 3 //moet uit database komen, het aantal + de data uit een model-klasse halen

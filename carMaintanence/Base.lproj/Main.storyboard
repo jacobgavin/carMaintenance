@@ -627,108 +627,6 @@
             </objects>
             <point key="canvasLocation" x="288.75" y="288"/>
         </scene>
-        <!--Workorder Scene-->
-        <scene sceneID="8HH-zg-T41">
-            <objects>
-                <viewController title="Workorder Scene" id="No5-Ba-JT0" customClass="WorkOrderViewController" customModule="carMaintanence" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WhL-rz-HJU"/>
-                        <viewControllerLayoutGuide type="bottom" id="14A-VI-62k"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Qxz-g8-KSO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQE-dY-Osa">
-                                <rect key="frame" x="494" y="20" width="106" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.35060096149999997" blue="0.1601058232" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2vp-p7-AHA"/>
-                                    <constraint firstAttribute="width" constant="106" id="NQq-jg-xWF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Uitklokken">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="uitklokButton:" destination="No5-Ba-JT0" eventType="touchUpInside" id="lCJ-KE-QxJ"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3nu-Y9-lOc">
-                                <rect key="frame" x="0.0" y="106" width="600" height="483"/>
-                                <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4oe-dZ-rBg">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="483"/>
-                                        <collectionViewLayout key="collectionViewLayout" id="0XV-09-MmI" customClass="CustomCollectionViewLayout" customModule="carMaintanence" customModuleProvider="target"/>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="reg-gH-1Qg" customClass="WorkOrderCollectionViewCell" customModule="carMaintanence" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
-                                                <size key="customSize" width="100" height="30"/>
-                                            </collectionViewCell>
-                                        </cells>
-                                        <connections>
-                                            <outlet property="dataSource" destination="No5-Ba-JT0" id="12i-j0-7XU"/>
-                                            <outlet property="delegate" destination="No5-Ba-JT0" id="TQL-XC-hlH"/>
-                                        </connections>
-                                    </collectionView>
-                                </subviews>
-                                <variation key="widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="106" width="800" height="483"/>
-                                </variation>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8M-J7-8IT">
-                                <rect key="frame" x="0.0" y="20" width="430" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.35060096149999997" blue="0.1601058232" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cIv-1S-PQH">
-                                <rect key="frame" x="0.0" y="70" width="600" height="29"/>
-                                <segments>
-                                    <segment title="Mijn werkorders"/>
-                                    <segment title="Overige werkorders"/>
-                                </segments>
-                                <color key="tintColor" red="0.0" green="0.35060096149999997" blue="0.1601058232" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="segmentWerkOrderAction:" destination="No5-Ba-JT0" eventType="valueChanged" id="6Vg-bY-UZK"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="cIv-1S-PQH" secondAttribute="trailing" constant="-20" id="GuH-RQ-oYc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SQE-dY-Osa" secondAttribute="trailing" constant="-20" id="Iko-sd-Z9B"/>
-                            <constraint firstItem="r8M-J7-8IT" firstAttribute="top" secondItem="WhL-rz-HJU" secondAttribute="bottom" id="L84-81-gI0"/>
-                            <constraint firstItem="SQE-dY-Osa" firstAttribute="top" secondItem="WhL-rz-HJU" secondAttribute="bottom" id="Nld-zK-jRm"/>
-                            <constraint firstItem="cIv-1S-PQH" firstAttribute="top" secondItem="r8M-J7-8IT" secondAttribute="bottom" constant="20" id="O83-lo-YdO"/>
-                            <constraint firstItem="cIv-1S-PQH" firstAttribute="leading" secondItem="Qxz-g8-KSO" secondAttribute="leadingMargin" constant="-20" id="QPx-Yh-nzN"/>
-                            <constraint firstItem="cIv-1S-PQH" firstAttribute="top" secondItem="SQE-dY-Osa" secondAttribute="bottom" constant="20" id="X4T-gh-Zbh"/>
-                            <constraint firstItem="SQE-dY-Osa" firstAttribute="leading" secondItem="r8M-J7-8IT" secondAttribute="trailing" constant="64" id="YhT-9a-RHw"/>
-                            <constraint firstItem="14A-VI-62k" firstAttribute="top" secondItem="4oe-dZ-rBg" secondAttribute="bottom" constant="11" id="avy-Mw-kpb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4oe-dZ-rBg" secondAttribute="trailing" constant="-20" id="b4e-GT-5vS"/>
-                            <constraint firstItem="4oe-dZ-rBg" firstAttribute="leading" secondItem="Qxz-g8-KSO" secondAttribute="leadingMargin" constant="-20" id="cLL-Yq-lf7"/>
-                            <constraint firstItem="4oe-dZ-rBg" firstAttribute="top" secondItem="cIv-1S-PQH" secondAttribute="bottom" constant="8" id="lj2-2o-pyZ"/>
-                            <constraint firstItem="r8M-J7-8IT" firstAttribute="leading" secondItem="Qxz-g8-KSO" secondAttribute="leadingMargin" constant="-20" id="x07-0a-PIT"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="collectionWerkOrders" destination="4oe-dZ-rBg" id="eO8-rN-m3n"/>
-                        <outlet property="labelWerkOrder" destination="r8M-J7-8IT" id="ZFf-kd-oHk"/>
-                        <outlet property="segmentWerkOrders" destination="cIv-1S-PQH" id="mQy-av-3tM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sNb-of-ayR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1583.25" y="-364"/>
-        </scene>
         <!--Non Workorder Screen Controller-->
         <scene sceneID="W2b-th-IIy">
             <objects>
@@ -769,16 +667,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2D-C1-ilz">
-                                <rect key="frame" x="20" y="38" width="560" height="49"/>
-                                <color key="backgroundColor" red="0.24327503180000001" green="1" blue="0.041193238309999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="PoP-S7-vyT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NU-N7-6zk">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="I"/>
@@ -789,6 +677,19 @@
                                     <action selector="Back:" destination="Pm7-oW-iFj" eventType="touchUpInside" id="39n-f3-1I8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2D-C1-ilz">
+                                <rect key="frame" x="20" y="38" width="560" height="49"/>
+                                <color key="backgroundColor" red="0.24327503180000001" green="1" blue="0.041193238309999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="PoP-S7-vyT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="54" y="28" width="760" height="49"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -907,6 +808,9 @@
                                     <constraint firstAttribute="width" constant="160" id="9WX-Uf-166"/>
                                 </constraints>
                                 <state key="normal" title="Wisselen"/>
+                                <connections>
+                                    <segue destination="OHL-az-XcA" kind="show" id="mcm-4A-pHd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingeklokt op werkorder 1456 (35-SR-KT)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2y5-KA-7hb">
                                 <rect key="frame" x="10" y="20" width="367" height="38"/>
@@ -929,17 +833,6 @@
                                 <color key="backgroundColor" red="0.58823529409999997" green="0.72941176470000002" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.58823529409999997" green="0.72941176470000002" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6wb-1g-gcb">
-                                <rect key="frame" x="0.0" y="322" width="600" height="278"/>
-                                <color key="backgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="sectionIndexTrackingBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Fvw-SB-A04" id="8cr-46-DPh"/>
-                                    <outlet property="delegate" destination="Fvw-SB-A04" id="wEH-b5-HFx"/>
-                                </connections>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9-ZKR-3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9La-yF-dhu">
                                 <rect key="frame" x="5" y="66" width="250" height="39"/>
                                 <constraints>
@@ -984,6 +877,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="wisselKnopIngedrukt:" destination="Fvw-SB-A04" eventType="touchUpInside" id="VgK-WH-tNq"/>
+                                    <segue destination="OHL-az-XcA" kind="show" id="X5m-CO-B42"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfY-cP-mgB">
@@ -1003,6 +897,17 @@
                                     <segue destination="udg-xO-p58" kind="show" id="Lsx-30-9pY"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6wb-1g-gcb">
+                                <rect key="frame" x="0.0" y="322" width="600" height="278"/>
+                                <color key="backgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Fvw-SB-A04" id="8cr-46-DPh"/>
+                                    <outlet property="delegate" destination="Fvw-SB-A04" id="wEH-b5-HFx"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -1380,7 +1285,7 @@
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <segue destination="Fvw-SB-A04" kind="show" id="kcx-EW-EIu"/>
+                                            <segue destination="Fvw-SB-A04" kind="show" identifier="werkordersNaarWerkorder" id="kcx-EW-EIu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1579,6 +1484,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="GQ0-Dz-Iz2"/>
         <segue reference="kcx-EW-EIu"/>
-        <segue reference="bdg-nV-H56"/>
+        <segue reference="mcm-4A-pHd"/>
+        <segue reference="T9B-bE-gIz"/>
     </inferredMetricsTieBreakers>
 </document>
