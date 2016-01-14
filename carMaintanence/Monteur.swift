@@ -7,6 +7,15 @@
 //
 
 import Foundation
+/*!
+    @class Monteur
+    
+    @brief Monteur is the main object for the users.
+
+    Monteur contains all the neccessary information like name, passcode and id, in order to login and start working.
+
+
+*/
 class Monteur
 {
     var id : Int = 0

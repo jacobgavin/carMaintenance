@@ -8,6 +8,17 @@
 
 import Foundation
 
+/*!
+    @class Connectie
+
+    @brief This class sets up the basic API connection with the server.
+
+    The Connectie class establishes the JSON API connection with the server (only GET requests).
+
+    @parameter url link of where the request has to be send to.
+
+*/
+
 class Connectie
 {
     
@@ -29,8 +40,6 @@ class Connectie
                     completion(result: "error")
                     return
                 }
-                
-                //print("response = \(response)")
                 
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
                 
