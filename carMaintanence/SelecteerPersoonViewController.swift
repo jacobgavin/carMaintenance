@@ -34,7 +34,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
             appleID = (UIDevice.currentDevice().identifierForVendor?.UUIDString)!
             defaults.setObject(appleID, forKey: "deviceAppleID")
         }
-        print(appleID)
+        //print(appleID)
         // Do any additional setup after loading the view, typically from a nib.
     }
 

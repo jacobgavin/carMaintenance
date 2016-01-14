@@ -14,14 +14,16 @@ class MainJson
     var sessieId : String = ""
     let siteUrl = "http://92.66.29.229/api/"
     let vestiging = "V001"
+    let date1 = "2012-11-01T00:00:00"
+    let date2 = "2016-11-01T00:00:00"
     
     init()
     {
         connectie = Connectie()
         sessieId = getSessieId()
         //     var werkOrderStatus = getWerkorderStatus(sessieId)
-        var getmonteurs = getMonteurs(sessieId)
-        
+        _ = getMonteurs(sessieId)
+        _ = getWerkorder(sessieId)
         // toJsonTest(werkOrderStatus)
         // print(werkOrderStatus)
         
@@ -43,44 +45,7 @@ class MainJson
         return sessieId
     }
     
-    func getStandaardActiviteiten(sessieId: String) -> String
-    {
-        var standaardActiviteiten = ""
-        connectie.post(siteUrl + "WplWerkorder/GetStandaardActiviteiten?sessieId="+sessieId){ (result) ->
-            Void in
-            if let constActiviteiten = result as? String{
-                standaardActiviteiten = constActiviteiten
-            }
-        }
-        while(standaardActiviteiten == ""){}
-        return standaardActiviteiten
-    }
-    
-    func getWerkorderVestiging(sessieId: String) -> String
-    {
-        var werkorderVestiging = ""
-        connectie.post(siteUrl + "WplWerkorder/GetOpVestiging?sessieId=" + sessieId + "&vestiging=V001&statusFilter=ONLINE"){ (result) ->
-            Void in
-            if let constWerkorderVestiging = result as? String{
-                werkorderVestiging = constWerkorderVestiging
-            }
-        }
-        while(werkorderVestiging == ""){}
-        return werkorderVestiging
-    }
-    
-    func getWerkorderStatus(sessieId: String) -> String
-    {
-        var werkorderStatus = ""
-        connectie.post(siteUrl+"WplWerkorder/GetWerkorderStatussen?sessieId=" + sessieId) { (result) ->
-            Void in
-            if let constWerkorderStatus = result as? String{
-                werkorderStatus = constWerkorderStatus
-            }
-        }
-        while(werkorderStatus == ""){}
-        return werkorderStatus
-    }
+
     
     func getMonteurs(sessieId: String) -> Array<Monteur>
     {
@@ -95,8 +60,6 @@ class MainJson
                 }
         }
         while(monteurs == ""){}
-        
-        print("hoi"+monteurs)
         
         return jsonNaarMonteurs(monteurs)
     }
@@ -124,37 +87,95 @@ class MainJson
     
     func jsonNaarMonteurs(result : String) -> Array<Monteur>
     {
-        // var json = JSON(result )
         var monteurs : Array<Monteur> = Array<Monteur>()
-        
         if let json = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            for(index,object) in json2
+            {
+                var monteur = Monteur.build(object)
+                monteurs.append(monteur!)
+            }
+        }
+        return monteurs
+    }
+    
+    func getWerkorder(sessieId: String) -> Array <WerkorderDetail>
+    {
+        var werkorders = ""
+        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
+            Void in
+            if let constWerkorders = result as? String{
+                werkorders = constWerkorders
+            }
+        }
+        while(werkorders == ""){}
+        return jsonNaarWerkorderDetails(werkorders)
+    }
+    
+    func jsonNaarWerkorderDetails(werkOrderDetailsJson : String) -> Array <WerkorderDetail>
+    {
+        var werkOrderDetails : Array<WerkorderDetail> = Array<WerkorderDetail>()
+        
+        
+        if let json = werkOrderDetailsJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
         {
             let json2 = JSON(data: json) // NSData --> JSON object
             
             for(index,object) in json2
             {
-                //print(object)
-                var monteur = Monteur.build(object)
                 
-                monteurs.append(monteur!)
+                var werkOrderDetail = WerkorderDetail.build(object)
+                print("YOLOOO")
+                print(werkOrderDetail!.kenteken)
+                werkOrderDetails.append(werkOrderDetail!)
+                
             }
             
         }
         
-        //        for object in monteurs
-        //        {
-        //            print(object.naam)
-        //        }
-        
-        return monteurs
         
         
-        //      if let monteurs = (json["{"].array?.map { return Monteur.build($0) })
-        //    {print ("Monteurs: " + monteurs.description)}
-        
-        
+        return werkOrderDetails
     }
+    //    func getStandaardActiviteiten(sessieId: String) -> String
+    //    {
+    //    var standaardActiviteiten = ""
+    //        connectie.post(siteUrl + "WplWerkorder/GetStandaardActiviteiten?sessieId="+sessieId){ (result) ->
+    //            Void in
+    //            if let constActiviteiten = result as? String{
+    //                standaardActiviteiten = constActiviteiten
+    //            }
+    //        }
+    //        while(standaardActiviteiten == ""){}
+    //        return standaardActiviteiten
+    //    }
     
+    //    func getWerkorderVestiging(sessieId: String) -> String werkt niet
+    //    {
+    //        var werkorderVestiging = ""
+    //        connectie.post(siteUrl + "WplWerkorder/GetOpVestiging?sessieId=" + sessieId + "&vestiging=V001&statusFilter=ONLINE"){ (result) ->
+    //            Void in
+    //            if let constWerkorderVestiging = result as? String{
+    //                werkorderVestiging = constWerkorderVestiging
+    //            }
+    //        }
+    //        while(werkorderVestiging == ""){}
+    //        return werkorderVestiging
+    //    }
+    
+    //    func getWerkorderStatus(sessieId: String) -> String
+    //    {
+    //        var werkorderStatus = ""
+    //        connectie.post(siteUrl+"WplWerkorder/GetWerkorderStatussen?sessieId=" + sessieId) { (result) ->
+    //            Void in
+    //            if let constWerkorderStatus = result as? String{
+    //                werkorderStatus = constWerkorderStatus
+    //            }
+    //        }
+    //        while(werkorderStatus == ""){}
+    //        return werkorderStatus
+    //    }
     
     
 }
