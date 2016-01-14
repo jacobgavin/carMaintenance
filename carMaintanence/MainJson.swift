@@ -6,16 +6,28 @@
 //  Copyright © 2015 vmware. All rights reserved.
 //
 
+
+
 import Foundation
 
+/*!
+*    @class MainJson
+*    @brief This class handles all the API functions between the app and the server.
+*    @discussion This class contains all the functions that get information from the API.
+*    
+*   TODO: apparaatid moet worden doorgegeven vanuit SelecteerpersoonView
+*/
 class MainJson
 {
     var connectie : Connectie
     var sessieId : String = ""
+    var appleID : String = ""
     let siteUrl = "http://92.66.29.229/api/"
     let vestiging = "V001"
     let date1 = "2015-11-01T00:00:00"
     let date2 = "2015-11-03T00:00:00"
+    
+
     
     init()
     {
@@ -29,6 +41,9 @@ class MainJson
         // toJsonTest(getMonteurs(sessieId))
     }
     
+    /*!
+    * @brief Sets the session ID
+    */
     func setSessieID()
     {
         sessieId = getSessieId()
@@ -36,11 +51,18 @@ class MainJson
         getWerkorder(sessieId)
     }
     
-    
+    func setAppleID(appleid : String)
+    {
+        appleID = appleid 
+    }
+    /*!
+    * @brief Get the current session ID.
+    * @return returns the session ID as a String.
+    */
     func getSessieId() -> String
     {
         var sessieId = ""
-        connectie.post(siteUrl+"WinCar/GetSessieIdVoorApparaat?apparaatId=IOS_01_V001&vestigingId=V001") { (result) -> Void in
+        connectie.post(siteUrl+"WinCar/GetSessieIdVoorApparaat?apparaatId="+ appleID + "&vestigingId=" + vestiging) { (result) -> Void in
             if let constId = result as? String {
                 var tempId = constId
                 tempId.removeAtIndex(tempId.startIndex)
@@ -53,7 +75,10 @@ class MainJson
     }
     
 
-    
+    /*!
+    * @brief Get all the Monteurs on the current vestiging.
+    * 
+    */
     func getMonteurs(sessieId: String) -> Array<Monteur>
     {
         var monteurs = ""
@@ -71,7 +96,7 @@ class MainJson
         return jsonNaarMonteurs(monteurs)
     }
     
-    //geen json nodig voor response, sever geeft direct al een boolean
+    //geen json nodig voor response, server geeft direct al een boolean
     func valideerPincodeVoorMonteur(sessieId : String, monteurCode : String, vestiging : String, pincode : String) -> Bool
     {
         var gevalideerd = false
@@ -133,7 +158,6 @@ class MainJson
             {
                 
                 var werkOrderDetail = WerkorderDetail.build(object)
-                print("YOLOOO")
                 print(werkOrderDetail!.kenteken)
                 werkOrderDetails.append(werkOrderDetail!)
                 
