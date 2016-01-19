@@ -25,7 +25,7 @@ class MainJson
     let siteUrl = "http://92.66.29.229/api/"
     let vestiging = "V001"
     let date1 = "2015-11-01T00:00:00"
-    let date2 = "2015-11-03T00:00:00"
+    let date2 = "2015-11-04T00:00:00"
     
 
     
@@ -61,17 +61,21 @@ class MainJson
     */
     func getSessieId() -> String
     {
-        var sessieId = ""
-        connectie.post(siteUrl+"WinCar/GetSessieIdVoorApparaat?apparaatId="+ appleID + "&vestigingId=" + vestiging) { (result) -> Void in
-            if let constId = result as? String {
-                var tempId = constId
-                tempId.removeAtIndex(tempId.startIndex)
-                tempId.removeAtIndex(tempId.endIndex.predecessor())
+        if self.sessieId==""{
+            var sessieId = ""
+            connectie.post(siteUrl+"WinCar/GetSessieIdVoorApparaat?apparaatId=\(appleID)&vestigingId=" + vestiging) { (result) -> Void in
+                if let constId = result as? String {
+                    var tempId = constId
+                    tempId.removeAtIndex(tempId.startIndex)
+                        tempId.removeAtIndex(tempId.endIndex.predecessor())
                 sessieId = tempId
+                }
             }
+            while(sessieId == ""){}
+            self.sessieId = sessieId
+            return sessieId
         }
-        while(sessieId == ""){}
-        return sessieId
+        return self.sessieId
     }
     
 
@@ -92,7 +96,6 @@ class MainJson
                 }
         }
         while(monteurs == ""){}
-        
         return jsonNaarMonteurs(monteurs)
     }
     
@@ -132,10 +135,12 @@ class MainJson
         return monteurs
     }
     
-    func getWerkorder(sessieId: String) -> Array <WerkorderDetail>
+    func getWerkorder(sessieID: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
-        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
+        var foo = getSessieId()
+        var bar = self.sessieId
+        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(getSessieId())&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
             Void in
             if let constWerkorders = result as? String{
                 werkorders = constWerkorders
@@ -154,10 +159,10 @@ class MainJson
         {
             let json2 = JSON(data: json) // NSData --> JSON object
             
-            for(index,object) in json2
+            for(_,object) in json2
             {
                 
-                var werkOrderDetail = WerkorderDetail.build(object)
+                let werkOrderDetail = WerkorderDetail.build(object)
                 print(werkOrderDetail!.kenteken)
                 werkOrderDetails.append(werkOrderDetail!)
                 
@@ -171,6 +176,43 @@ class MainJson
     }
     
     
+    func getWerkOrderActiviteitenopKenteken(sessieID: String, var orderNummer: Int) -> WerkOrderActiviteit
+    {
+        var werkOrderActiviteiten = ""
+        connectie.post(siteUrl+"WplWerkorder/GetWerkorder?vestiging=\(self.vestiging)&ordernummer=\(orderNummer)&sessieId=\(sessieID)") { (result) ->
+            Void in
+            if let constWerkorderActiviteiten = result as? String{
+                werkOrderActiviteiten = constWerkorderActiviteiten
+            }
+        }
+        while(werkOrderActiviteiten == ""){}
+        print(werkOrderActiviteiten)
+        return jsonNaarWerkorderActiviteiten(werkOrderActiviteiten)
+    }
+    
+    func jsonNaarWerkorderActiviteiten(werkOrderDetailsJson : String) -> WerkOrderActiviteit
+    {
+        var werkOrderActiviteiten : WerkOrderActiviteit = WerkOrderActiviteit()
+        
+        
+        if let json = werkOrderDetailsJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            //for(index,object) in json2
+            //{
+                
+                if let werkOrderActiviteit = WerkOrderActiviteit.build(json2)
+                {
+                werkOrderActiviteiten = werkOrderActiviteit
+                }
+            //}
+            
+        }
+        
+        
+        
+        return werkOrderActiviteiten
+    }
     //    func getStandaardActiviteiten(sessieId: String) -> String
     //    {
     //    var standaardActiviteiten = ""

@@ -11,9 +11,9 @@ import UIKit
 class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
     
-    var werkorder: Array <Any> = []
+    var werkorder: Array <Any> = [] //doorgeven van welke werkorder geselecteerd is in werkOrderController
     var mainJson: MainJson = MainJson()
-    
+    var activiteiten: WerkOrderActiviteit = WerkOrderActiviteit()
     var knoppenArray = NSMutableArray()
  
     var aantalKnoppen = 3 //moet uit database komen, het aantal + de data uit een model-klasse halen
@@ -48,12 +48,15 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     func vulKnoppenArray()
     {
         var knop = WerkorderKnop()
-        for i in 1...aantalKnoppen
+        if aantalKnoppen>0
         {
-            knop = WerkorderKnop()
-            knop.setTitle( "\(i)", forState: UIControlState.Normal);
-            knoppenArray.addObject(knop);
-            //       print("hallo " + knop.description);
+            for i in 1...aantalKnoppen
+            {
+                knop = WerkorderKnop()
+                knop.setTitle( "\(i)", forState: UIControlState.Normal);
+                knoppenArray.addObject(knop);
+         //       print("hallo " + knop.description);
+            }
         }
         knop = WerkorderKnop()
         knop.setTitle( "Nieuwe activiteit", forState: UIControlState.Normal);
@@ -68,11 +71,14 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nummerBordLabel.text = werkorder[1] as! String
+        activiteiten = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: werkorder[0] as! Int)
+        print(activiteiten.activiteiten.count)
+        aantalKnoppen = activiteiten.activiteiten.count
         textView.layer.borderWidth = 3
         textView.layer.borderColor = UIColor(red: 128/255, green:100/255, blue:162/255, alpha:1.0).CGColor
         textView.layer.cornerRadius = 10
-        
+        textView.text = "\(activiteiten.opmerkingIntern)\n\(activiteiten.opmerkingExtern)"
         //tabelView.
         
         wisselKnop.layer.cornerRadius = 5
@@ -119,6 +125,18 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         {  return 1
         }
         return 0
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "orderNaarOrders1" || segue.identifier == "orderNaarOrders2")
+        {
+            let lsvc = segue.destinationViewController as! WerkOrderController
+            lsvc.mainJson = mainJson        }
+        if (segue.identifier == "naarNieuweActiviteit"){
+            let nac = segue.destinationViewController as! newActivityController
+            nac.mainJson = mainJson
+            nac.returnData = werkorder
+        }
     }
     
 

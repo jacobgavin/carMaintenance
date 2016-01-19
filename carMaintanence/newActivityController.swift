@@ -13,7 +13,9 @@ import UIKit
 class newActivityController: UIViewController {
     var regNum = "ABC 123"
     var workOrder = "1460"
-
+    var mainJson: MainJson = MainJson()
+    var returnData: Array<Any> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let myColor : UIColor = UIColor.whiteColor()
@@ -82,6 +84,14 @@ class newActivityController: UIViewController {
         let description = descTextField.text!
         print(title)
         print(description)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "nieuweActiviteitNaarWerkorder"){
+            let wovc = segue.destinationViewController as! WerkOrderViewController
+            wovc.mainJson = mainJson
+            wovc.werkorder = returnData
+        }
     }
     
     

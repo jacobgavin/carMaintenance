@@ -105,8 +105,8 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedOrder = indexPath.row
         performSegueWithIdentifier("werkordersNaarWerkorder", sender: nil)
-        selectedOrder = indexPath.row
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -127,6 +127,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         {
             let lsvc = segue.destinationViewController as! WerkOrderViewController
             lsvc.werkorder  = tableData[selectedOrder]
+            print( tableData[selectedOrder][1])
             lsvc.mainJson = mainJson
         }
     }
