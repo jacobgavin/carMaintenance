@@ -16,6 +16,7 @@ class TableViewCellForWorkOrder: UITableViewCell {
     var column4: String = ""
     var width: CGFloat = 0.0
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -69,31 +70,22 @@ class TableViewCellForWorkOrder: UITableViewCell {
     
 }
 
-class workOrderController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class workOrderController: UIViewController  {
     
     var workOrder = "1460"
-    
     @IBOutlet weak var workOrderField: UILabel!
-    @IBOutlet weak var tableViewContainer: UITableView!
-    @IBOutlet weak var headerForLabels: UICustomViewWorkOrder!
+    @IBOutlet weak var logOutButton: UIButton!
+
+
     
-    var cellWidth: CGFloat = 0.0
-    
-    
-    // This array is populated with data and every nested array is one row containing
-    // 3 different string or whatever
-    var tableData = [[1456 , "5-PST-9","Ford Mondeo", "Onderhoud"],[1460 , "9-ZKR-3","Opel Astra", "APK + bandenwissel"]] // illustration only
+    var employee: String = "test"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableViewContainer.delegate = self
-        tableViewContainer.dataSource = self
-        
-        tableViewContainer.registerClass(TableViewCellForWorkOrder.classForCoder(), forCellReuseIdentifier: "workOrderCell")
-        
         workOrderField.text = "Ingeklokt op werkorder " + workOrder
+        
+        // Set logoutbutton to display name of employee
         
         
     }
@@ -103,24 +95,78 @@ class workOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
+    var myWorkOrders: Bool = false
     
-    // MARK: - Table view data source
+    // Sets the myWorkOrders to true
+    @IBAction func myWorkOrdersButton(sender: UIButton) {
+        myWorkOrders = true
+       
+        
+    }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    @IBAction func otherWorkOrdersButton(sender: UIButton) {
+        myWorkOrders = false
+       
+    }
+    
+    
+}
+
+class customTableView: UITableViewController {
+    var cellWidth: CGFloat = 0.0
+    var cellIdentifier = "workOrderCell"
+    var employee: String = ""
+    
+    var tableData: Array <Array <Any>> = []
+    var myWorkOrders: Bool = false
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableData = [[1456 , "5-PST-9","Ford Mondeo", "Onderhoud"],[1460 , "9-ZKR-3","Opel Astra", "APK + bandenwissel"]]
+        let tableView = self.tableView
+        tableView.registerClass(TableViewCellForWorkOrder.classForCoder(), forCellReuseIdentifier:cellIdentifier)
+        
+        tableView.dataSource = self
+        
+        
+        self.refreshControl = self.refreshControl
+        
+    }
+    
+    
+    // MARK: - Table controller
+    override func numberOfSectionsInTableView(tableView: UITableView ) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 2
+        return tableData.count
+    }
+    
+    func chooseWorkOrder (employee: String ) -> Array <Array <Any>> {
+        
+        if (myWorkOrders) {
+            // From employee ID? get an array with all the workorders
+            tableData = [[1456 , "5-PST-9","Ford Mondeo", "Onderhoud"],[1460 , "9-ZKR-3","Opel Astra", "APK + bandenwissel"]] // illustration only
+        }
+        else {
+            // From all employees at employee ID workplace, return array with all workorders for employees at that workplace
+            tableData = [[1337 , "ABC123","Tesla", "Syntax Error"],[2121 , "9-ZKR-3","Honda Cevic", "Big exhaust is broken again"]] // illustration only
+        }
+        return tableData
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
         let cell = tableView.dequeueReusableCellWithIdentifier("workOrderCell", forIndexPath: indexPath) as! TableViewCellForWorkOrder
         
         let row = indexPath.row
+        
         
         
         cell.setValueForColumn("\(tableData[row][0])", col:1)
@@ -128,46 +174,36 @@ class workOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.setValueForColumn("\(tableData[row][2])", col:3)
         cell.setValueForColumn("\(tableData[row][3])", col:4)
         self.cellWidth = cell.layer.bounds.width
-        setHeaderLabels()
+        //setHeaderLabels()
         
-        if(row % 2 == 0) {
-            cell.backgroundColor = UIColor.lightGrayColor()
-        }
+        //if(row % 2 == 0) {
+        //    cell.backgroundColor = UIColor.lightGrayColor()
+        //}
             
-        else {
-            cell.backgroundColor = UIColor.whiteColor()
-        }
+        // else {
+       //      cell.backgroundColor = UIColor.whiteColor()
+       //  }
         
         return cell
         
     }
     
-    
-    func setHeaderLabels () {
-        // Sets the values for the headlines of table
-        let col1Label = UILabel(frame: CGRectMake(0, 14.0, cellWidth/5, 30.0))
-        let col2Label = UILabel(frame: CGRectMake(cellWidth/5, 14.0, cellWidth/5, 30.0))
-        let col3Label = UILabel(frame: CGRectMake((cellWidth/5)*2, 14.0, cellWidth/5, 30.0))
-        let col4Label = UILabel(frame: CGRectMake(cellWidth*0.6, 14.0, cellWidth*0.4, 30.0))
-        
-        col1Label.text = "#"
-        col2Label.text = "Kenteken"
-        col3Label.text = "Voertuig"
-        col4Label.text = "Omschrijving"
-        
-        self.headerForLabels.addSubview(col1Label)
-        self.headerForLabels.addSubview(col2Label)
-        self.headerForLabels.addSubview(col3Label)
-        self.headerForLabels.addSubview(col4Label)
-    }
-    
-    
-    
-    
-}
-
-class UICustomViewWorkOrder: UIView {
-    
-    
-    
+  
+ //   func setHeaderLabels () {
+ //       // Sets the values for the headlines of table
+   //     let col1Label = UILabel(frame: CGRectMake(0, 14.0, cellWidth/5, 30.0))
+//         let col2Label = UILabel(frame: CGRectMake(cellWidth/5, 14.0, cellWidth/5, 30.0))
+//         let col3Label = UILabel(frame: CGRectMake((cellWidth/5)*2, 14.0, cellWidth/5, 30.0))
+//         let col4Label = UILabel(frame: CGRectMake(cellWidth*0.6, 14.0, cellWidth*0.4, 30.0))
+//
+//         col1Label.text = "#"
+//         col2Label.text = "Kenteken"
+//         col3Label.text = "Voertuig"
+//         col4Label.text = "Omschrijving"
+//
+//         self.view.addSubview(col1Label)
+//         self.view.addSubview(col2Label)
+//         self.view.addSubview(col3Label)
+//         self.view.addSubview(col4Label)
+//     }
 }

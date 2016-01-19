@@ -29,23 +29,23 @@ class TableViewCellForActivity: UITableViewCell {
     
     func setValueForColumn(string: String, col:Int) {
         // frame: CGRectMake(x, y, width, height)
-        let width = self.layer.bounds.width
-        print(width)
+        let cellWidth = self.layer.bounds.width
+        
         if (col==1) {
-            let newLabel = UILabel(frame: CGRectMake(0.0, 14.0, width/4, 30.0))
+            let newLabel = UILabel(frame: CGRectMake(0, 0.0, cellWidth/4.0, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
         }
         if (col==2) {
-            let newLabel = UILabel(frame: CGRectMake(width/4, 14.0, width/4 , 30.0))
+            let newLabel = UILabel(frame: CGRectMake(cellWidth/4.0, 0.0, cellWidth/8.0, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
             
         }
         if (col==3) {
-            let newLabel = UILabel(frame: CGRectMake(width/2, 14.0, width/2, 30.0))
+            let newLabel = UILabel(frame: CGRectMake(cellWidth/4.0+cellWidth/8.0, 0.0, 3*cellWidth/8.0, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
             self.contentView.addSubview(newLabel)
@@ -72,6 +72,8 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var workAndCarModel: UITextField!
     @IBOutlet weak var titleOfActivity: UITextField!
     
+    @IBOutlet weak var logOutButton: UIButton!  // not implemented
+    @IBOutlet weak var backButton: UIButton!  // not implemented
     @IBOutlet weak var tableViewContainer: UITableView!
     
     @IBOutlet weak var headerForLabels: UICustomView!
@@ -143,9 +145,9 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     func setHeaderLabels () {
         // Sets the values for the headlines of table
-        let col1Label = UILabel(frame: CGRectMake(0, 14.0, cellWidth/4.0, 30.0))
-        let col2Label = UILabel(frame: CGRectMake(cellWidth/4.0, 14.0, cellWidth/4.0, 30.0))
-        let col3Label = UILabel(frame: CGRectMake(cellWidth/2.0, 14.0, cellWidth/2.0, 30.0))
+        let col1Label = UILabel(frame: CGRectMake(0, 0.0, cellWidth/4.0, 30.0))
+        let col2Label = UILabel(frame: CGRectMake(cellWidth/4.0, 0.0, cellWidth/8.0, 30.0))
+        let col3Label = UILabel(frame: CGRectMake(cellWidth/4.0+cellWidth/8.0, 0.0, 3*cellWidth/8.0, 30.0))
         
         col1Label.text = "Code"
         col2Label.text = "Antal"
