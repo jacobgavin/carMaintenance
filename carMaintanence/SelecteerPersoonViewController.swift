@@ -7,7 +7,13 @@
 //
 
 import UIKit
-
+/*!
+*    @class SelecteerPersoonViewController
+*    @brief ViewController of the user selection screen.
+*    
+*    @discussion This class is the ViewController of the user selection screen. It gets all the Monteurs from the server, and displays their names in different tiles.
+*
+*/
 class SelecteerPersoonViewController: UICollectionViewController	 {
     
     
@@ -24,7 +30,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         
         mainJson.setSessieID()
         monteurs = mainJson.getMonteurs(mainJson.getSessieId())
-        
+        print("hup")
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let savedAppleId = defaults.objectForKey("deviceAppleID"){
@@ -33,6 +39,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
             appleID = (UIDevice.currentDevice().identifierForVendor?.UUIDString)!
             defaults.setObject(appleID, forKey: "deviceAppleID")
         }
+        mainJson.setAppleID(appleID)
         //print(appleID)
         // Do any additional setup after loading the view, typically from a nib.
     }

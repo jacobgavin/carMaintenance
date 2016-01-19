@@ -6,16 +6,28 @@
 //  Copyright © 2015 vmware. All rights reserved.
 //
 
+
+
 import Foundation
 
+/*!
+*    @class MainJson
+*    @brief This class handles all the API functions between the app and the server.
+*    @discussion This class contains all the functions that get information from the API.
+*    
+*   TODO: apparaatid moet worden doorgegeven vanuit SelecteerpersoonView
+*/
 class MainJson
 {
     var connectie : Connectie
     var sessieId : String = ""
+    var appleID : String = ""
     let siteUrl = "http://92.66.29.229/api/"
     let vestiging = "V001"
     let date1 = "2015-11-01T00:00:00"
-    let date2 = "2015-11-03T00:00:00"
+    let date2 = "2015-11-04T00:00:00"
+    
+
     
     init()
     {
@@ -29,6 +41,9 @@ class MainJson
         // toJsonTest(getMonteurs(sessieId))
     }
     
+    /*!
+    * @brief Sets the session ID
+    */
     func setSessieID()
     {
         sessieId = getSessieId()
@@ -36,24 +51,38 @@ class MainJson
         getWerkorder(sessieId)
     }
     
-    
+    func setAppleID(appleid : String)
+    {
+        appleID = appleid 
+    }
+    /*!
+    * @brief Get the current session ID.
+    * @return returns the session ID as a String.
+    */
     func getSessieId() -> String
     {
-        var sessieId = ""
-        connectie.post(siteUrl+"WinCar/GetSessieIdVoorApparaat?apparaatId=IOS_01_V001&vestigingId=V001") { (result) -> Void in
-            if let constId = result as? String {
-                var tempId = constId
-                tempId.removeAtIndex(tempId.startIndex)
-                tempId.removeAtIndex(tempId.endIndex.predecessor())
+        if self.sessieId==""{
+            var sessieId = ""
+            connectie.post(siteUrl+"WinCar/GetSessieIdVoorApparaat?apparaatId=\(appleID)&vestigingId=" + vestiging) { (result) -> Void in
+                if let constId = result as? String {
+                    var tempId = constId
+                    tempId.removeAtIndex(tempId.startIndex)
+                        tempId.removeAtIndex(tempId.endIndex.predecessor())
                 sessieId = tempId
+                }
             }
+            while(sessieId == ""){}
+            self.sessieId = sessieId
+            return sessieId
         }
-        while(sessieId == ""){}
-        return sessieId
+        return self.sessieId
     }
     
 
-    
+    /*!
+    * @brief Get all the Monteurs on the current vestiging.
+    * 
+    */
     func getMonteurs(sessieId: String) -> Array<Monteur>
     {
         var monteurs = ""
@@ -67,11 +96,10 @@ class MainJson
                 }
         }
         while(monteurs == ""){}
-        
         return jsonNaarMonteurs(monteurs)
     }
     
-    //geen json nodig voor response, sever geeft direct al een boolean
+    //geen json nodig voor response, server geeft direct al een boolean
     func valideerPincodeVoorMonteur(sessieId : String, monteurCode : String, vestiging : String, pincode : String) -> Bool
     {
         var gevalideerd = false
@@ -107,10 +135,12 @@ class MainJson
         return monteurs
     }
     
-    func getWerkorder(sessieId: String) -> Array <WerkorderDetail>
+    func getWerkorder(sessieID: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
-        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
+        var foo = getSessieId()
+        var bar = self.sessieId
+        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(getSessieId())&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
             Void in
             if let constWerkorders = result as? String{
                 werkorders = constWerkorders
@@ -129,11 +159,10 @@ class MainJson
         {
             let json2 = JSON(data: json) // NSData --> JSON object
             
-            for(index,object) in json2
+            for(_,object) in json2
             {
                 
-                var werkOrderDetail = WerkorderDetail.build(object)
-                print("YOLOOO")
+                let werkOrderDetail = WerkorderDetail.build(object)
                 print(werkOrderDetail!.kenteken)
                 werkOrderDetails.append(werkOrderDetail!)
                 
@@ -147,6 +176,43 @@ class MainJson
     }
     
     
+    func getWerkOrderActiviteitenopKenteken(sessieID: String, var orderNummer: Int) -> WerkOrderActiviteit
+    {
+        var werkOrderActiviteiten = ""
+        connectie.post(siteUrl+"WplWerkorder/GetWerkorder?vestiging=\(self.vestiging)&ordernummer=\(orderNummer)&sessieId=\(sessieID)") { (result) ->
+            Void in
+            if let constWerkorderActiviteiten = result as? String{
+                werkOrderActiviteiten = constWerkorderActiviteiten
+            }
+        }
+        while(werkOrderActiviteiten == ""){}
+        print(werkOrderActiviteiten)
+        return jsonNaarWerkorderActiviteiten(werkOrderActiviteiten)
+    }
+    
+    func jsonNaarWerkorderActiviteiten(werkOrderDetailsJson : String) -> WerkOrderActiviteit
+    {
+        var werkOrderActiviteiten : WerkOrderActiviteit = WerkOrderActiviteit()
+        
+        
+        if let json = werkOrderDetailsJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            //for(index,object) in json2
+            //{
+                
+                if let werkOrderActiviteit = WerkOrderActiviteit.build(json2)
+                {
+                werkOrderActiviteiten = werkOrderActiviteit
+                }
+            //}
+            
+        }
+        
+        
+        
+        return werkOrderActiviteiten
+    }
     //    func getStandaardActiviteiten(sessieId: String) -> String
     //    {
     //    var standaardActiviteiten = ""
