@@ -10,18 +10,15 @@ import Foundation
 
 
 class WerkOrderActiviteit{
-    
-    var activiteiten : Array<Any> = []
-    var opmerkingIntern : String = ""
-    var opmerkingExtern : String = ""
+    var activiteiten : Array<Activiteit?> = Array<Activiteit>()
     var omschrijving : String = ""
+    var kenteken : String = ""
     
-    init(activiteiten : Array<Any>, omschrijving : String, opmerkingIntern:String, opmerkingExtern:String)
+    init(activiteiten : Array<Activiteit?>, omschrijving: String, kenteken:String)
     {
         self.activiteiten = activiteiten
-        self.opmerkingIntern = opmerkingIntern
-        self.opmerkingExtern = opmerkingExtern
         self.omschrijving = omschrijving
+        self.kenteken = kenteken
     }
     
     init()
@@ -29,19 +26,37 @@ class WerkOrderActiviteit{
     
     class func build(json:JSON) -> WerkOrderActiviteit?
     {
-        if let
-            activiteiten =  json["Activiteiten"].arrayObject,
-            opmerkingExtern = json["OpmerkingExtern"].string,
-            opmerkingIntern = json["OpmerkingIntern"].string,
-            omschrijving = json["Omschrijving"].string
-            
+        
+        var activiteiten : Array<Activiteit?> = Array<Activiteit>()
+        
+        //    print(json)
+        
+        //    print("omschrijving stuff",json["Omschrijving"].string)
+        
+        //  print("JSON ACTIVITEITEN ",json["Activiteiten"].array)
+        
+        if let a = json["Activiteiten"].array
         {
-            print(activiteiten)
+            
+            var iets = JSON(a)
+            //     print(iets)
+            for(_,object) in iets
+            {
+                // print("Object = ", object)
+                let activiteit : Activiteit? = Activiteit.build(object)
+                activiteiten.append(activiteit)
+            }
+        }
+        
+        
+        if let
+            
+            omschrijving = json["Omschrijving"].string,
+            kenteken = json["Kenteken"].string
+        {
+            //   print("kenteken in werkoder build:" , kenteken)
             return WerkOrderActiviteit(
-                activiteiten : activiteiten,
-                omschrijving : omschrijving,
-                opmerkingIntern: opmerkingIntern,
-                opmerkingExtern: opmerkingExtern
+                activiteiten: activiteiten, omschrijving: omschrijving, kenteken: kenteken
             )
         }
         else

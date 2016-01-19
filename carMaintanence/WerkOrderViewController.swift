@@ -10,24 +10,32 @@ import UIKit
 
 class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
-    
+    var huidigeWerkorder: Array<Any> = [false]
     var werkorder: Array <Any> = [] //doorgeven van welke werkorder geselecteerd is in werkOrderController
     var mainJson: MainJson = MainJson()
     var activiteiten: WerkOrderActiviteit = WerkOrderActiviteit()
     var knoppenArray = NSMutableArray()
- 
+
     var aantalKnoppen = 3 //moet uit database komen, het aantal + de data uit een model-klasse halen
     
     //Knop rechtsboven voor wisselen van werkorder
   
     @IBOutlet weak var wisselKnop: UIButton!
     
+    @IBOutlet weak var werkorderLabel: UILabel!
+    
     @IBAction func wisselKnopIngedrukt(sender: UIButton) {
-        print("wisselKnop ingedrukt")
+        werkorderLabel.backgroundColor = UIColor(red: 0, green: 0.76972, blue: 0, alpha: 1)
+        print(terugButton.backgroundColor)
+        werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
+        wisselKnop.enabled = false
+        wisselKnop.backgroundColor = darkerColorForColor(wisselKnop.backgroundColor!)
+        huidigeWerkorder = werkorder
     }
     //view voor nummerbordplaatje
     @IBOutlet weak var nummerbordPlaatje: UIImageView!
     
+    @IBOutlet weak var terugButton: UIButton!
 
     //label bovenop het plaatje, geeft tekst van het nummerbord weer
     @IBOutlet weak var nummerBordLabel: UILabel!
@@ -53,7 +61,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             for i in 1...aantalKnoppen
             {
                 knop = WerkorderKnop()
-                knop.setTitle( "\(i)", forState: UIControlState.Normal);
+                knop.setTitle( "\(activiteiten.activiteiten[i-1]!.omschrijving)", forState: UIControlState.Normal);
                 knoppenArray.addObject(knop);
          //       print("hallo " + knop.description);
             }
@@ -71,6 +79,11 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if huidigeWerkorder[0] as! Bool == false{
+            huidigeWerkorder = werkorder
+        }
+        
+        
         nummerBordLabel.text = werkorder[1] as! String
         activiteiten = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: werkorder[0] as! Int)
         print(activiteiten.activiteiten.count)
@@ -78,18 +91,20 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         textView.layer.borderWidth = 3
         textView.layer.borderColor = UIColor(red: 128/255, green:100/255, blue:162/255, alpha:1.0).CGColor
         textView.layer.cornerRadius = 10
-        textView.text = "\(activiteiten.opmerkingIntern)\n\(activiteiten.opmerkingExtern)"
+        //textView.text = "\(activiteiten.opmerkingIntern)\n\(activiteiten.opmerkingExtern)"
         //tabelView.
-        
-        wisselKnop.layer.cornerRadius = 5
-       // wisselKnop.layer.borderWidth = 1
-       // wisselKnop.layer.borderColor = UIColor.whiteColor().CGColor
+//        
+//        wisselKnop.layer.cornerRadius = 5
+//       // wisselKnop.layer.borderWidth = 1
+//       // wisselKnop.layer.borderColor = UIColor.whiteColor().CGColor
         
         
         autoLabel.layer.borderWidth = 4
         autoLabel.layer.borderColor = UIColor.whiteColor().CGColor
         autoLabel.layer.cornerRadius = 10
+        autoLabel.text = "WO \(huidigeWerkorder[0]), \(huidigeWerkorder[2])"
     
+        
         vulKnoppenArray()
         
         //registreert een herbruikbare cell voor de tabelView
@@ -135,7 +150,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         if (segue.identifier == "naarNieuweActiviteit"){
             let nac = segue.destinationViewController as! newActivityController
             nac.mainJson = mainJson
-            nac.returnData = werkorder
+            nac.werkorder = werkorder
         }
     }
     
@@ -201,5 +216,16 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             performSegueWithIdentifier("naarActiviteit", sender: nil)
         }
         
+    }
+    
+    func darkerColorForColor(color: UIColor) -> UIColor {
+        
+        var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
+        
+        if color.getRed(&r, green: &g, blue: &b, alpha: &a){
+            return UIColor(red: max(r - 0.2, 0.0), green: max(g - 0.2, 0.0), blue: max(b - 0.2, 0.0), alpha: a)
+        }
+        
+        return UIColor()
     }
 }

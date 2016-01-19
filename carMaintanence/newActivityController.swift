@@ -14,7 +14,8 @@ class newActivityController: UIViewController {
     var regNum = "ABC 123"
     var workOrder = "1460"
     var mainJson: MainJson = MainJson()
-    var returnData: Array<Any> = []
+    var werkorder: Array<Any> = []
+    let placeholder_text = "Omschrijving van Activiteit"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,17 +45,33 @@ class newActivityController: UIViewController {
         editButton.layer.cornerRadius = myRadius
         
         loggedInOnWorkOrder.layer.cornerRadius = myRadius
+        loggedInOnWorkOrder.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
         logOutButton.layer.cornerRadius = myRadius
         
         descTextField.layer.borderColor = purpleColor.CGColor
         descTextField.layer.borderWidth = myWidth
         descTextField.layer.cornerRadius = myRadius
+        descTextField.text = ""
         
+        regNum = werkorder[1] as! String
         // Do any additional setup after loading the view, typically from a nib.
         regNumberOfCar.text = regNum
-        workNumAndCarModel.text = "WO "+workOrder
+        regNumberOfCar.userInteractionEnabled = false
+        
+        workNumAndCarModel.text = "WO \(werkorder[0]), \(werkorder[2])"
+        workNumAndCarModel.userInteractionEnabled = false
+        
+    
+        
         loggedInOnWorkOrder.text = "Ingeklokt op werkorder " + workOrder + "("+regNum+")"
     }
+    
+    func textViewDidBeginEditing(textview: UITextView){
+        if (textview.text == "Omschrijving van de Activiteit"){
+            textview.text = nil        }
+    }
+
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -90,7 +107,7 @@ class newActivityController: UIViewController {
         if(segue.identifier == "nieuweActiviteitNaarWerkorder"){
             let wovc = segue.destinationViewController as! WerkOrderViewController
             wovc.mainJson = mainJson
-            wovc.werkorder = returnData
+            wovc.werkorder = werkorder
         }
     }
     

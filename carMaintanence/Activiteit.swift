@@ -10,7 +10,30 @@ import Foundation
 
 class Activiteit{
     
-    init()
-    {}
+    var omschrijving : String = ""
     
+    init(omschrijving: String)
+    {
+        self.omschrijving = omschrijving
+    }
+    
+    class func build(json:JSON) -> Activiteit?
+    {
+        
+        
+        for(_,object) in json
+        {
+            if let omschrijving = json["Omschrijving"].string
+            {
+                return Activiteit(
+                    omschrijving : omschrijving
+                )
+            }
+            else
+            {
+                print("fout in activiteit: \(json)")
+            }
+        }
+        return nil
+    }
 }

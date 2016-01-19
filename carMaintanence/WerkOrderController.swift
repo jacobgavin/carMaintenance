@@ -126,7 +126,8 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         if (segue.identifier == "werkordersNaarWerkorder")
         {
             let lsvc = segue.destinationViewController as! WerkOrderViewController
-            lsvc.werkorder  = tableData[selectedOrder]
+            lsvc.werkorder  = tableData[selectedOrder
+            ]
             print( tableData[selectedOrder][1])
             lsvc.mainJson = mainJson
         }

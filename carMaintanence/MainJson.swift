@@ -24,9 +24,9 @@ class MainJson
     var appleID : String = ""
     let siteUrl = "http://92.66.29.229/api/"
     let vestiging = "V001"
-    let date1 = "2015-11-01T00:00:00"
-    let date2 = "2015-11-04T00:00:00"
-    
+    let date1 = "2015-01-01T00:00:00"
+    let date2 = "2015-08-19T00:00:00"
+    var ingeklokt = false
 
     
     init()
