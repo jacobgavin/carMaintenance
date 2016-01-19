@@ -138,8 +138,6 @@ class MainJson
     func getWerkorder(sessieID: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
-        var foo = getSessieId()
-        var bar = self.sessieId
         connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(getSessieId())&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
             Void in
             if let constWerkorders = result as? String{

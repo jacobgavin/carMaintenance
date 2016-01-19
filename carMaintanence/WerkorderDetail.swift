@@ -39,7 +39,6 @@ class WerkorderDetail {
             kenteken = json["Kenteken"].string
 
         {
-            print(kenteken)
             return WerkorderDetail(
                 nummer : nummer,
                 merk: merk,
