@@ -61,6 +61,7 @@ class LoginScreenModel {
         return pinLabel;
     }
     
+
     /*!
     *   @brief Checks the local pincode that has been entered with the correct pincode that is on the server.
     *   @param monteurCode Entered pincode of the monteur .
@@ -93,6 +94,12 @@ class LoginScreenModel {
     /*!
     *   @brief Deletes the last entered digit from the current pinlist.
     */
+    func addDigit(pinDigit: String) {
+        pintry = pintry + pinDigit; //add digit to the try
+        print("pintry = \(pintry)")
+        setLabel() //
+    }
+    
     func deleteDigit(){
         if !pintry.isEmpty{ //delete the last digit
             let indexPinDel = pintry.endIndex.advancedBy(-1)

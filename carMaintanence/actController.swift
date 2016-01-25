@@ -63,22 +63,26 @@ class TableActivity: UITableViewCell {
 
 
 class actController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
-    var regNum = "ABC 123"
-    var workOrder = "1460"
-    var carModel = "Volvo V70"
-    var titleActivity = "Activiteit: APK"
-    
+    var workOrder: Int = 0
+    var carModel: String = ""
+    var titleActivity: String = ""
+    var license: String = ""
     @IBOutlet weak var carLicenceNum: UITextField!
     @IBOutlet weak var workAndCarModel: UITextField!
     @IBOutlet weak var titleOfActivity: UITextField!
-    
-    @IBOutlet weak var logOutButton: UIButton!  // not implemented
+    @IBOutlet weak var loggedInAtLabel: UILabel!
+    @IBOutlet weak var terugButton: UIButton!
     @IBOutlet weak var backButton: UIButton!  // not implemented
     @IBOutlet weak var tableViewContainer: UITableView!
-    
     @IBOutlet weak var headerForLabels: UICustomView!
     var cellWidth: CGFloat = 0.0
     
+    // json stuff
+    var huidigeWerkorder: Array<Any> = [false]
+    var werkorder: Array <Any> = [] //doorgeven van welke werkorder geselecteerd is in werkOrderController
+    var activities: WerkOrderActiviteit = WerkOrderActiviteit()
+    var mainJson: MainJson = MainJson()
+    var sessionID: String = ""
     
     // This array is populated with data and every nested array is one row containing
     // 3 different string or whatever
@@ -92,10 +96,26 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
+               
+        if huidigeWerkorder[0] as! Bool == false{
+            huidigeWerkorder = werkorder
+        }
         
-        carLicenceNum.text = regNum
-        workAndCarModel.text = "WO " + workOrder + ", " + carModel
+        workOrder = werkorder[0] as! Int
+        carModel = werkorder[2] as! String
+        titleActivity = werkorder[3] as! String
+        license = werkorder[1] as! String
+      
+     
+        // set from segue
+        carLicenceNum.text = license
+        workAndCarModel.text = "WO " + String(workOrder) + ", " + carModel
         titleOfActivity.text = titleActivity
+        
+        
+        sessionID = mainJson.sessieId
+        activities = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: workOrder)
+        setTableJsonData(activities)
 
     }
     
@@ -104,6 +124,29 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.didReceiveMemoryWarning()
     }
     
+    func setTableJsonData(activities: WerkOrderActiviteit) -> Array<Array<NSObject>> {
+        tableData = []
+        
+        for (var x = 0; x < activities.activiteiten.count; x++) {
+           
+            for(var y = 0; y < activities.activiteiten[x]?.verrichting.count; y++) {
+                let verr = activities.activiteiten[x]?.verrichting[y]
+                print(verr?.aantal)
+                print(verr?.BtwCode)
+                print(verr?.omschrijving)
+                tableData.append([(verr?.BtwCode)!, (verr?.aantal)!, (verr?.omschrijving)!])
+                
+            }
+        }
+        return tableData
+        
+    }
+    
+    
+    @IBOutlet weak var logOutButton: UIButton!
+    @IBAction func logOut(sender: UIButton) {
+        performSegueWithIdentifier("logOutFromActivity", sender: nil)
+    }
     
     // MARK: - Table view data source
     
@@ -113,7 +156,8 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return tableData.count
+
     }
     
     
@@ -161,22 +205,27 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
-        // Create a new variable to store the instance of CameraView
-        let destinationVC = segue.destinationViewController as! CameraView
+        if (segue.identifier == "goToCamera") {
+            // Create a new variable to store the instance of CameraView
+            let destinationVC = segue.destinationViewController as! CameraView
         
-        // Information that get send to CameraView
-        destinationVC.licens = carLicenceNum.text
-        destinationVC.activity = titleOfActivity.text
-        destinationVC.work = workAndCarModel.text
-        
+            // Information that get send to CameraView
+            destinationVC.licens = carLicenceNum.text
+            destinationVC.activity = titleOfActivity.text
+            destinationVC.work = workAndCarModel.text
+        }
+        if (segue.identifier == "goBackToWorkOrder") {
+            let nac = segue.destinationViewController as! WerkOrderViewController
+            nac.mainJson = mainJson
+            nac.werkorder = werkorder
+        }
     }
 
     
 }
 
 class UICustomView: UIView {
-    
-
+// Empty class for UICustomView if we want to add anything more to it...
     
 }
 

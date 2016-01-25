@@ -21,13 +21,13 @@ class MainJson
 {
     var connectie : Connectie
     var sessieId : String = ""
-    var appleID : String = ""
+    var appleID : String = "IOS_01_V001"
     let siteUrl = "http://92.66.29.229/api/"
     let vestiging = "V001"
     let date1 = "2015-01-01T00:00:00"
     let date2 = "2015-08-19T00:00:00"
     var ingeklokt = false
-
+    var actDetails: String = ""
     
     init()
     {
@@ -75,6 +75,7 @@ class MainJson
             self.sessieId = sessieId
             return sessieId
         }
+        print(self.sessieId)
         return self.sessieId
     }
     
@@ -126,9 +127,9 @@ class MainJson
         if let json = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
         {
             let json2 = JSON(data: json) // NSData --> JSON object
-            for(index,object) in json2
+            for(index, object) in json2
             {
-                var monteur = Monteur.build(object)
+                let monteur = Monteur.build(object)
                 monteurs.append(monteur!)
             }
         }
@@ -138,7 +139,7 @@ class MainJson
     func getWerkorder(sessieID: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
-        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(getSessieId())&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
+        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
             Void in
             if let constWerkorders = result as? String{
                 werkorders = constWerkorders
@@ -161,7 +162,6 @@ class MainJson
             {
                 
                 let werkOrderDetail = WerkorderDetail.build(object)
-                print(werkOrderDetail!.kenteken)
                 werkOrderDetails.append(werkOrderDetail!)
                 
             }
@@ -184,7 +184,7 @@ class MainJson
             }
         }
         while(werkOrderActiviteiten == ""){}
-        print(werkOrderActiviteiten)
+        //print(werkOrderActiviteiten)
         return jsonNaarWerkorderActiviteiten(werkOrderActiviteiten)
     }
     
@@ -206,10 +206,43 @@ class MainJson
             //}
             
         }
-        
-        
-        
         return werkOrderActiviteiten
+    }
+    
+    func getActivityDetails(sessieID: String, workOrderNumber: Int) -> ActivitiesDetail {
+        var activities = ""
+        connectie.post(siteUrl+"WplWerkorder/GetActiviteitDetails?sessieId=\(sessieID)&Werkordernummer=\(workOrderNumber)") { (result) ->
+            Void in
+            if let activityDetails = result as? String{
+                print(activityDetails)
+                activities = activityDetails
+            }
+        }
+        return jsonToActivityDetails(activities)
+    
+    }
+    
+    func jsonToActivityDetails(activityDetails : String) -> ActivitiesDetail
+    {
+        var activities : ActivitiesDetail = ActivitiesDetail()
+        
+        if let json = activityDetails.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            //for(index,object) in json2
+            //{
+            
+            if let activityJson = ActivitiesDetail.build(json2)
+            {
+                activities = activityJson
+            }
+            //}
+            
+        }
+        
+        
+        
+        return activities
     }
     //    func getStandaardActiviteiten(sessieId: String) -> String
     //    {

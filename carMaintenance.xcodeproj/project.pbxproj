@@ -15,6 +15,8 @@
 		D54B3DDD1BCFA4E1009B9D9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */; };
 		D54B3DE81BCFA4E1009B9D9C /* carMaintanenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DE71BCFA4E1009B9D9C /* carMaintanenceTests.swift */; };
 		D54B3DF31BCFA4E2009B9D9C /* carMaintanenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DF21BCFA4E2009B9D9C /* carMaintanenceUITests.swift */; };
+		D555BF4A1C5155D70085179F /* activitiesJSONDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D555BF491C5155D70085179F /* activitiesJSONDetails.swift */; };
+		D555BF4C1C524E510085179F /* Verrichting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D555BF4B1C524E510085179F /* Verrichting.swift */; };
 		D573361B1BE22CF500F51CBD /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */; };
 		D57336201BE22FD700F51CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D573361E1BE22FD700F51CBD /* Main.storyboard */; };
 		D574E7151C47B9ED00C64BDC /* WerkorderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574E7141C47B9ED00C64BDC /* WerkorderDetail.swift */; };
@@ -67,6 +69,8 @@
 		D54B3DEE1BCFA4E2009B9D9C /* carMaintanenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carMaintanenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54B3DF21BCFA4E2009B9D9C /* carMaintanenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carMaintanenceUITests.swift; sourceTree = "<group>"; };
 		D54B3DF41BCFA4E2009B9D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D555BF491C5155D70085179F /* activitiesJSONDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = activitiesJSONDetails.swift; sourceTree = "<group>"; };
+		D555BF4B1C524E510085179F /* Verrichting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Verrichting.swift; sourceTree = "<group>"; };
 		D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
 		D573361F1BE22FD700F51CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D574E7141C47B9ED00C64BDC /* WerkorderDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkorderDetail.swift; sourceTree = "<group>"; };
@@ -157,10 +161,12 @@
 				D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */,
 				D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */,
 				D593346C1C4D7DE500E4977E /* Activiteit.swift */,
+				D555BF4B1C524E510085179F /* Verrichting.swift */,
 				D53123631BF11A490045D8D4 /* WorkorderViewController.swift */,
 				D593346A1C4D7D7500E4977E /* WerkOrderActiviteit.swift */,
 				D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */,
 				D574E7141C47B9ED00C64BDC /* WerkorderDetail.swift */,
+				D555BF491C5155D70085179F /* activitiesJSONDetails.swift */,
 			);
 			path = carMaintanence;
 			sourceTree = "<group>";
@@ -318,12 +324,14 @@
 				D5F1BDA61C3EA16600BF4472 /* MainJson.swift in Sources */,
 				D5ACB8A11BF12D810087C3E2 /* newActivityController.swift in Sources */,
 				D574E7151C47B9ED00C64BDC /* WerkorderDetail.swift in Sources */,
+				D555BF4A1C5155D70085179F /* activitiesJSONDetails.swift in Sources */,
 				D5F1BDAA1C3EA1BD00BF4472 /* SwiftyJSON.swift in Sources */,
 				D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */,
 				D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */,
 				D574E7191C4EA19A00C64BDC /* camera.swift in Sources */,
 				D593346B1C4D7D7500E4977E /* WerkOrderActiviteit.swift in Sources */,
 				D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */,
+				D555BF4C1C524E510085179F /* Verrichting.swift in Sources */,
 				D5F1BDA41C3EA13D00BF4472 /* Connectie.swift in Sources */,
 				D5F1BDA81C3EA1A100BF4472 /* Monteur.swift in Sources */,
 				D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */,

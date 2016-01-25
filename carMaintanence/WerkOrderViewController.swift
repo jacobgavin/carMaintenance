@@ -86,7 +86,6 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         
         nummerBordLabel.text = werkorder[1] as! String
         activiteiten = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: werkorder[0] as! Int)
-        print(activiteiten.activiteiten.count)
         aantalKnoppen = activiteiten.activiteiten.count
         textView.layer.borderWidth = 3
         textView.layer.borderColor = UIColor(red: 128/255, green:100/255, blue:162/255, alpha:1.0).CGColor
@@ -149,6 +148,11 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             lsvc.mainJson = mainJson        }
         if (segue.identifier == "naarNieuweActiviteit"){
             let nac = segue.destinationViewController as! newActivityController
+            nac.mainJson = mainJson
+            nac.werkorder = werkorder
+        }
+        if (segue.identifier == "naarActiviteit"){
+            let nac = segue.destinationViewController as! actController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
         }
