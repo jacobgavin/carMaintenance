@@ -54,6 +54,7 @@ class newActivityController: UIViewController {
         descTextField.text = ""
         
         //regNum = werkorder[1] as! String
+
         // Do any additional setup after loading the view, typically from a nib.
         regNumberOfCar.text = regNum
         regNumberOfCar.userInteractionEnabled = false
@@ -102,6 +103,7 @@ class newActivityController: UIViewController {
         print(title)
         print(description)
         mainJson.opslaanActiviteit("VR-786-L", sessieId: mainJson.getSessieId(), omschrijving: "lslkfjlskdjflksjfd",id: 42, code: "codeiets")
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

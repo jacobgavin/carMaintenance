@@ -196,6 +196,7 @@ class MainJson
             {
                 
                 let werkOrderDetail = WerkorderDetail.build(object)
+
                 werkOrderDetails.append(werkOrderDetail!)
                 
             }

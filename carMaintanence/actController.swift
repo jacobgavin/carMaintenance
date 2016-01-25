@@ -70,7 +70,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var carLicenceNum: UITextField!
     @IBOutlet weak var workAndCarModel: UITextField!
     @IBOutlet weak var titleOfActivity: UITextField!
-    @IBOutlet weak var loggedInAtLabel: UILabel!
+    @IBOutlet weak var loggedInAtLabel: UILabel!    
     @IBOutlet weak var terugButton: UIButton!
     @IBOutlet weak var backButton: UIButton!  // not implemented
     @IBOutlet weak var tableViewContainer: UITableView!
@@ -84,6 +84,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var mainJson: MainJson = MainJson()
     var sessionID: String = ""
     
+
     // This array is populated with data and every nested array is one row containing
     // 3 different string or whatever
     var tableData = [["Verrichting 1",0.5,"APK met viergastest"],["Onderd. 1",1,"Sticker 'APK zonder afspraak'"],[3.1,3.2,3.3]] // illustration only
@@ -96,7 +97,6 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
-               
         if huidigeWerkorder[0] as! Bool == false{
             huidigeWerkorder = werkorder
         }
@@ -134,8 +134,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 print(verr?.aantal)
                 print(verr?.artikelID)
                 print(verr?.omschrijving)
-                tableData.append([(verr?.artikelID)!, (verr?.aantal)!, (verr?.omschrijving)!])
-                
+                tableData.append([(verr?.artikelID)!, (verr?.aantal)!, (verr?.omschrijving)!])                
             }
         }
         return tableData
@@ -155,19 +154,15 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return tableData.count
-
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableActivity
-        
         let row = indexPath.row
-        
-        
+
         cell.setValueForColumn("\(tableData[row][0])", col:1)
         cell.setValueForColumn("\(tableData[row][1])", col:2)
         cell.setValueForColumn("\(tableData[row][2])", col:3)
@@ -226,7 +221,6 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
 class UICustomView: UIView {
 // Empty class for UICustomView if we want to add anything more to it...
-    
 }
 
 
