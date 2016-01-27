@@ -8,6 +8,16 @@
 
 import Foundation
 
+
+/*!
+*    @class WerkorderDetail
+*    
+*    @brief Object for the Werkorder. Contains all necessary information
+*
+*    @discussion WerkorderDetail contains the variables: kenteken, merk, model, omschrijving, nummer.
+*
+*
+*/
 class WerkorderDetail {
     
     var kenteken : String = ""

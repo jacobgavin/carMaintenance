@@ -7,18 +7,26 @@
 //
 
 import Foundation
+/*!
+    *   @class LoginScreenModel
+    *   @brief Model (logic) for the login screen.
+*/
 class LoginScreenModel {
     
     init(monteurCode : String){
         self.monteurCode = monteurCode
     }
     
+    var vestiging = "V001"
     var monteurCode = ""
     var code = ""
     
     var pintry = ""
     var pinLabel = ""
     
+    /*!
+    *   @brief Sets a 'dot' to represent an entered pin-code.
+    */
     func setLabel(){
         let points = pintry.characters.count
         pinLabel = ""
@@ -33,34 +41,56 @@ class LoginScreenModel {
         }
     }
     
+    /*!
+    *   @brief Checks if 4 pin-characters are pushed.
+    *   @return True if 4 pin-characters are entered
+    */
     func pinCompleet() -> Bool
     {
         return (pintry.characters.count == 4)
     }
-    func getPinLabel() -> String //lets the model have the representation of the pincode label
+
+    /*!
+    *   @brief Lets the model have the representation of the pincode.
+    *   @return returns the label
+    */
+    func getPinLabel() -> String
     {
         return pinLabel;
     }
     
+    /*!
+    *   @brief Checks the local pincode that has been entered with the correct pincode that is on the server.
+    *   @param monteurCode Entered pincode of the monteur .
+    *   @return True when the monteurCode matches.
+    */
     func pincodeIsCorrect(monteurCode: String) ->	Bool //check of the pincode is consistent with the entered one
     {
         let mainJson: MainJson = MainJson()
-        return mainJson.valideerPincodeVoorMonteur(mainJson.getSessieId(), monteurCode: monteurCode, vestiging: "V001", pincode: pintry)
+        return mainJson.valideerPincodeVoorMonteur(mainJson.getSessieId(), monteurCode: monteurCode, vestiging: vestiging, pincode: pintry)
         
     }
-    
+    /*!
+    *   @brief Empties the pin label so the user can enter it again
+    */
     func erasePincode(){
         pintry = ""
         setLabel()
     }
     
-    
+    /*!
+    *   @brief Adds the entered digit to the current pinlist
+    *   @param pinDigit pincode value
+    */
     func addDigit(pinDigit: String) {
         pintry = pintry + pinDigit; //add digit to the try
         print("pintry = \(pintry)")
-        setLabel() //
+        setLabel()
     }
     
+    /*!
+    *   @brief Deletes the last entered digit from the current pinlist.
+    */
     func deleteDigit(){
         if !pintry.isEmpty{ //delete the last digit
             let indexPinDel = pintry.endIndex.advancedBy(-1)
