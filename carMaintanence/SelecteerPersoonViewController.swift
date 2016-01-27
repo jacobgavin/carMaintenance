@@ -46,7 +46,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,10 +63,6 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
 
         return cell
     }
-//    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-//            print("select")
-//            self.performSegueWithIdentifier("monteursNaarLogin", sender: self)
-//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("click!")
@@ -82,7 +78,6 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
          
         }
     }
-// test
 
 }
 
