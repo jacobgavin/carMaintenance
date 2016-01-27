@@ -14,7 +14,7 @@ import Foundation
 *    @brief This class handles the basic API connection with the server.
 *
 *    @discussion The Connectie class establishes the JSON API connection with the server (only GET requests).
-*
+*    @warning The response could be "error", we did not catched/processed the errors yet.
 *
 */
 

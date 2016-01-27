@@ -10,6 +10,8 @@ import Foundation
 /*!
     *   @class LoginScreenModel
     *   @brief Model (logic) for the login screen.
+    *   @warning TODO: Un-hardcode the vestiging so it can be modified in settings. Currently only works on V001
+
 */
 class LoginScreenModel {
     

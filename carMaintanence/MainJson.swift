@@ -14,8 +14,8 @@ import Foundation
 *    @class MainJson
 *    @brief This class handles all the API functions between the app and the server.
 *    @discussion This class contains all the functions that get information from the API.
-*    
-*   TODO: apparaatid moet worden doorgegeven vanuit SelecteerpersoonView
+*    @warning TODO: apparaatid moet worden doorgegeven vanuit SelecteerpersoonView. Also un-hardcode Vestiging
+*   
 */
 class MainJson
 {
