@@ -9,28 +9,56 @@
 import UIKit
 
 class nonWorkorderScreenController: UIViewController {
-
+    var mainJson: MainJson = MainJson()
+    
+    @IBOutlet weak var werkOrderLabel: UILabel!
+    var werkorder: Array <Any> = []
     var vorigeScherm = ""
-    @IBAction func Back(sender: UIButton) {
-        if(vorigeScherm=="ac"){
-            performSegueWithIdentifier("nwNaarAc", sender: nil)
-        }
-        else{
-            performSegueWithIdentifier("nwNaarWo", sender: nil)
-        }
-    }
+//    @IBAction func Back(sender: UIButton) {
+//        if(vorigeScherm=="ac"){
+//            performSegueWithIdentifier("nwNaarAc", sender: nil)
+//        }
+//        else{
+//            performSegueWithIdentifier("nwNaarWo", sender: nil)
+//        }
+//    }
     @IBOutlet weak var backButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(vorigeScherm)
-        print("hoi\n")
-        if(vorigeScherm=="ac"){
-            backButton.setTitle("Terug naar activiteiten", forState: .Normal)
+        if (werkorder.count == 0){
+          
+            werkOrderLabel.text = "Nog niet ingeklokt"
         }
         else{
-            backButton.setTitle("Terug naar werkorder", forState: .Normal)
+            werkOrderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
         }
-        // Do any additional setup after loading the view, typically from a nib.
+//        print(vorigeScherm)
+//        print("hoi\n")
+//        if(vorigeScherm=="ac"){
+//            backButton.setTitle("Terug naar activiteiten", forState: .Normal)
+//        }
+//        else{
+//            backButton.setTitle("Terug naar werkorder", forState: .Normal)
+//        }
+//        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "nonWorkToAct")
+        {
+            let ac = segue.destinationViewController as! actController
+            ac.mainJson = mainJson
+            ac.werkorder = werkorder
+            ac.huidigeWerkorder = werkorder
+                       
+        }
+        if (segue.identifier == "nonWorkNaarOrders")
+        {
+            let ac = segue.destinationViewController as! WerkOrderController
+            ac.mainJson = mainJson
+            ac.werkorder = werkorder
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

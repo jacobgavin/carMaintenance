@@ -10,7 +10,7 @@ import UIKit
 
 class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
-    var huidigeWerkorder: Array<Any> = [false]
+    var huidigeWerkorder: Array<Any> = []
     var werkorder: Array <Any> = [] //doorgeven van welke werkorder geselecteerd is in werkOrderController
     var mainJson: MainJson = MainJson()
     var activiteiten: WerkOrderActiviteit = WerkOrderActiviteit()
@@ -79,10 +79,21 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if huidigeWerkorder[0] as! Bool == false{
-            huidigeWerkorder = werkorder
+        if (huidigeWerkorder.count == 0){
+//            
+//            huidigeWerkorder = werkorder
+            werkorderLabel.text = "Nog niet ingeklokt"
         }
-        
+        else{
+            if (huidigeWerkorder[0] as! Int == werkorder[0]as! Int){
+                werkorderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
+                print(terugButton.backgroundColor)
+                werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
+                wisselKnop.enabled = false
+                wisselKnop.backgroundColor = darkerColorForColor(wisselKnop.backgroundColor!)
+            }
+            werkorderLabel.text = "Ingeklokt op werkorder \(huidigeWerkorder[0]) (\(huidigeWerkorder[1]))"
+        }
         
         nummerBordLabel.text = werkorder[1] as! String
         activiteiten = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: werkorder[0] as! Int)
@@ -101,7 +112,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         autoLabel.layer.borderWidth = 4
         autoLabel.layer.borderColor = UIColor.whiteColor().CGColor
         autoLabel.layer.cornerRadius = 10
-        autoLabel.text = "WO \(huidigeWerkorder[0]), \(huidigeWerkorder[2])"
+        autoLabel.text = "WO \(werkorder[0]), \(werkorder[2])"
     
         
         vulKnoppenArray()
@@ -145,11 +156,13 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         if (segue.identifier == "orderNaarOrders1" || segue.identifier == "orderNaarOrders2")
         {
             let lsvc = segue.destinationViewController as! WerkOrderController
-            lsvc.mainJson = mainJson        }
+            lsvc.mainJson = mainJson
+            lsvc.werkorder = huidigeWerkorder}
         if (segue.identifier == "naarNieuweActiviteit"){
             let nac = segue.destinationViewController as! newActivityController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
+            nac.huidigeWerkorder = huidigeWerkorder
         }
         if (segue.identifier == "naarActiviteit"){
             let nac = segue.destinationViewController as! actController

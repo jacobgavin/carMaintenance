@@ -15,6 +15,7 @@ class newActivityController: UIViewController {
     var workOrder = "1460"
     var mainJson: MainJson = MainJson()
     var werkorder: Array<Any> = []
+    var huidigeWerkorder: Array<Any> = []
     let placeholder_text = "Omschrijving van Activiteit"
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class newActivityController: UIViewController {
         let purpleColor : UIColor = UIColor.purpleColor()
         let myWidth : CGFloat = 2.0
         let myRadius : CGFloat = 10
+        
         
         titleOfNewActivity.layer.borderColor = myColor.CGColor
         titleOfNewActivity.layer.borderWidth = myWidth
@@ -44,8 +46,9 @@ class newActivityController: UIViewController {
         editButton.layer.borderWidth = myWidth
         editButton.layer.cornerRadius = myRadius
         
+        
         loggedInOnWorkOrder.layer.cornerRadius = myRadius
-        //loggedInOnWorkOrder.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
+        loggedInOnWorkOrder.text = "Aanpassen voor werkorder \(werkorder[0]) (\(werkorder[1]))"
         logOutButton.layer.cornerRadius = myRadius
         
         descTextField.layer.borderColor = purpleColor.CGColor
@@ -64,12 +67,13 @@ class newActivityController: UIViewController {
         
     
         
-        loggedInOnWorkOrder.text = "Ingeklokt op werkorder " + workOrder + "("+regNum+")"
+        //loggedInOnWorkOrder.text = "Ingeklokt op werkorder " + workOrder + "("+regNum+")"
     }
     
     func textViewDidBeginEditing(textview: UITextView){
         if (textview.text == "Omschrijving van de Activiteit"){
-            textview.text = nil        }
+            textview.text = nil        
+        }
     }
 
     
@@ -111,6 +115,7 @@ class newActivityController: UIViewController {
             let wovc = segue.destinationViewController as! WerkOrderViewController
             wovc.mainJson = mainJson
             wovc.werkorder = werkorder
+            wovc.huidigeWerkorder = huidigeWerkorder
         }
     }
     

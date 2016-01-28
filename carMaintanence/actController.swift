@@ -92,12 +92,13 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loggedInAtLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
         tableViewContainer.delegate = self
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
-        if huidigeWerkorder[0] as! Bool == false{
+        
+        if (huidigeWerkorder.count == 0){
             huidigeWerkorder = werkorder
         }
         
@@ -211,6 +212,12 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         if (segue.identifier == "goBackToWorkOrder") {
             let nac = segue.destinationViewController as! WerkOrderViewController
+            nac.mainJson = mainJson
+            nac.werkorder = werkorder
+            nac.huidigeWerkorder = werkorder
+        }
+        if (segue.identifier == "actToNonWork") {
+            let nac = segue.destinationViewController as! nonWorkorderScreenController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
         }
