@@ -713,7 +713,8 @@
                                         <exclude reference="zfJ-Oq-vlX"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="10" y="20" width="199" height="67"/>
                                     <mask key="constraints">
                                         <exclude reference="jIx-v9-HpH"/>
                                         <include reference="zfJ-Oq-vlX"/>
@@ -783,6 +784,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="263" y="142" width="332" height="182"/>
+                                </variation>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6wb-1g-gcb">
                                 <rect key="frame" x="0.0" y="322" width="600" height="278"/>
@@ -790,6 +794,9 @@
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="352" width="600" height="248"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Fvw-SB-A04" id="8cr-46-DPh"/>
                                     <outlet property="delegate" destination="Fvw-SB-A04" id="wEH-b5-HFx"/>
@@ -812,7 +819,8 @@
                                         <exclude reference="Xpc-yx-4j1"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="472" y="20" width="120" height="67"/>
                                     <mask key="constraints">
                                         <include reference="Xpc-yx-4j1"/>
                                     </mask>
@@ -838,7 +846,8 @@
                                         <exclude reference="laj-ow-ggN"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="343" y="20" width="121" height="67"/>
                                     <mask key="constraints">
                                         <include reference="laj-ow-ggN"/>
                                     </mask>
@@ -852,6 +861,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="268" y="95" width="332" height="39"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfa-I9-aZ1">
                                 <rect key="frame" x="385" y="20" width="210" height="38"/>
@@ -870,7 +882,8 @@
                                         <exclude reference="lNq-4R-XDb"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="214" y="20" width="121" height="67"/>
                                     <mask key="constraints">
                                         <include reference="lNq-4R-XDb"/>
                                     </mask>
@@ -1105,6 +1118,9 @@
                                 <state key="normal" title="Activiteit opslaan">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="519" width="418" height="73"/>
+                                </variation>
                                 <connections>
                                     <action selector="saveButton:" destination="7cg-au-cbA" eventType="touchUpInside" id="WQS-28-Aif"/>
                                     <segue destination="Fvw-SB-A04" kind="show" identifier="nieuweActiviteitNaarWerkorder" id="UF6-rR-OtB"/>
@@ -1124,6 +1140,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="10" y="135" width="582" height="30"/>
+                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reg #" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WiJ-yo-HT0">
                                 <rect key="frame" x="10" y="105" width="206" height="30"/>
@@ -1140,6 +1159,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="232" y="73" width="368" height="30"/>
+                                </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ingeklokt op werkorder 1460 (9-ZKR-3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqg-bT-g9k">
                                 <rect key="frame" x="10" y="20" width="399" height="68"/>
@@ -1153,6 +1175,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="164" y="173" width="272" height="36"/>
+                                </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Omschrijving van Activiteit" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-mH-BOb">
                                 <rect key="frame" x="10" y="217" width="582" height="275"/>
@@ -1171,6 +1196,9 @@
                                 <state key="normal" title="Uitklokken">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="388" y="20" width="212" height="36"/>
+                                </variation>
                                 <connections>
                                     <segue destination="udg-xO-p58" kind="show" id="xMO-0r-VU6"/>
                                 </connections>
@@ -1353,34 +1381,9 @@
                                         <include reference="hna-Dx-9iB"/>
                                     </mask>
                                 </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCT-ni-Htz">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.35835242146596846" green="0.35835242146596846" blue="0.35835242146596846" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="292" id="El6-1h-S5r">
-                                        <variation key="widthClass=regular" constant="297"/>
-                                    </constraint>
-                                    <constraint firstAttribute="height" constant="30" id="kjL-1F-dPi"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="yW1-XB-8Th"/>
-                                </constraints>
-                                <state key="normal" title="Overige Werkorders">
-                                    <color key="titleColor" red="0.98947368421052628" green="0.97894736842105268" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="El6-1h-S5r"/>
-                                        <exclude reference="kjL-1F-dPi"/>
-                                        <exclude reference="yW1-XB-8Th"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="El6-1h-S5r"/>
-                                        <include reference="kjL-1F-dPi"/>
-                                        <include reference="yW1-XB-8Th"/>
-                                    </mask>
-                                </variation>
+                                <connections>
+                                    <action selector="myWorkOrdersButton:" destination="OHL-az-XcA" eventType="touchUpInside" id="mq6-R7-wbn"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f6x-qR-0Xt">
                                 <rect key="frame" x="9" y="204" width="582" height="228"/>
@@ -1530,6 +1533,37 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCT-ni-Htz">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.35835242146596846" green="0.35835242146596846" blue="0.35835242146596846" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="292" id="El6-1h-S5r">
+                                        <variation key="widthClass=regular" constant="297"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="30" id="kjL-1F-dPi"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="yW1-XB-8Th"/>
+                                </constraints>
+                                <state key="normal" title="Overige Werkorders">
+                                    <color key="titleColor" red="0.98947368421052628" green="0.97894736842105268" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="El6-1h-S5r"/>
+                                        <exclude reference="kjL-1F-dPi"/>
+                                        <exclude reference="yW1-XB-8Th"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="El6-1h-S5r"/>
+                                        <include reference="kjL-1F-dPi"/>
+                                        <include reference="yW1-XB-8Th"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="otherWorkOrdersButton:" destination="OHL-az-XcA" eventType="touchUpInside" id="ciY-9C-tTg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1604,8 +1638,8 @@
                             <mask key="subviews">
                                 <exclude reference="8LU-Ce-nXq"/>
                                 <exclude reference="XYm-83-8CA"/>
-                                <exclude reference="JCT-ni-Htz"/>
                                 <exclude reference="89c-ON-xRL"/>
+                                <exclude reference="JCT-ni-Htz"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="GSV-Tx-Aex"/>
@@ -1660,8 +1694,8 @@
                             <mask key="subviews">
                                 <include reference="8LU-Ce-nXq"/>
                                 <include reference="XYm-83-8CA"/>
-                                <include reference="JCT-ni-Htz"/>
                                 <include reference="89c-ON-xRL"/>
+                                <include reference="JCT-ni-Htz"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="GSV-Tx-Aex"/>
@@ -1938,7 +1972,8 @@
                                                 <exclude reference="Sj1-ep-yEc"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=regular">
+                                        <variation key="widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="47" width="582" height="154"/>
                                             <mask key="constraints">
                                                 <include reference="Sj1-ep-yEc"/>
                                             </mask>
@@ -2184,16 +2219,16 @@
                                 <exclude reference="ge9-gb-Vqb"/>
                                 <exclude reference="mHS-uL-CI4"/>
                                 <exclude reference="RLH-cF-ibE"/>
-                                <exclude reference="GFu-kI-o2a"/>
                                 <exclude reference="1W6-Tr-Gc1"/>
                                 <exclude reference="Nwu-Cz-2mU"/>
                                 <exclude reference="ccP-7W-oiF"/>
                                 <exclude reference="h6R-He-47j"/>
-                                <exclude reference="TkL-1m-C2P"/>
                                 <exclude reference="DJy-V0-c1V"/>
                                 <exclude reference="FPx-GK-z1f"/>
                                 <exclude reference="RG0-MB-A7R"/>
                                 <exclude reference="a7d-zQ-wgS"/>
+                                <exclude reference="GFu-kI-o2a"/>
+                                <exclude reference="TkL-1m-C2P"/>
                                 <exclude reference="n3Z-8d-4PM"/>
                                 <exclude reference="yHu-vl-sVi"/>
                                 <exclude reference="LOA-JE-qLc"/>
@@ -2235,7 +2270,6 @@
                                 <exclude reference="Kcq-LS-oxo"/>
                                 <include reference="RLH-cF-ibE"/>
                                 <exclude reference="WEo-gN-M5G"/>
-                                <include reference="GFu-kI-o2a"/>
                                 <include reference="1W6-Tr-Gc1"/>
                                 <exclude reference="Eof-zP-ieA"/>
                                 <include reference="Nwu-Cz-2mU"/>
@@ -2244,8 +2278,6 @@
                                 <exclude reference="eaj-RF-3pB"/>
                                 <exclude reference="fIH-8d-OKG"/>
                                 <include reference="h6R-He-47j"/>
-                                <exclude reference="LII-cN-400"/>
-                                <include reference="TkL-1m-C2P"/>
                                 <include reference="DJy-V0-c1V"/>
                                 <include reference="FPx-GK-z1f"/>
                                 <include reference="RG0-MB-A7R"/>
@@ -2253,6 +2285,9 @@
                                 <exclude reference="dbd-xI-suh"/>
                                 <exclude reference="wgf-XO-KfB"/>
                                 <exclude reference="wqq-Es-CEN"/>
+                                <include reference="GFu-kI-o2a"/>
+                                <exclude reference="LII-cN-400"/>
+                                <include reference="TkL-1m-C2P"/>
                                 <exclude reference="PRO-d5-KiA"/>
                                 <exclude reference="jwm-CG-mjS"/>
                                 <include reference="n3Z-8d-4PM"/>
@@ -2292,9 +2327,9 @@
         <image name="nummerbordLeeg" width="224" height="43"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UF6-rR-OtB"/>
         <segue reference="GZ3-c8-7Z0"/>
+        <segue reference="kcx-EW-EIu"/>
         <segue reference="qlC-aB-Jhj"/>
-        <segue reference="xMO-0r-VU6"/>
+        <segue reference="T9B-bE-gIz"/>
     </inferredMetricsTieBreakers>
 </document>

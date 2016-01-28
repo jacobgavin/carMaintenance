@@ -76,7 +76,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
         tableData = [] // illustration only
         screenWidth = self.view.frame.size.width
-        getUserData()
+        getUserData(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,13 +95,30 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         return tableData.count
     }
     
-    func getUserData () {
-        // get user id
-        werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
-        for d in werkOrderDetails {
-            tableData.append([d.nummer, d.kenteken, d.merk+" "+d.model, d.omschrijving])
-        }
+    @IBAction func myWorkOrdersButton(sender: UIButton) {
+        getUserData(true)
+    }
     
+    
+    @IBAction func otherWorkOrdersButton(sender: UIButton) {
+        getUserData(false)
+    }
+    
+    func getUserData (myWorkOrder: Bool) {
+        // get user id
+        if (myWorkOrder) {
+            werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
+            for d in werkOrderDetails {
+                tableData.append([d.nummer, d.kenteken, d.merk+" "+d.model, d.omschrijving])
+            }
+        }
+        else {
+            werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
+            for d in werkOrderDetails {
+                tableData.append(["other", "other", "other", "other"])
+            }
+        }
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
