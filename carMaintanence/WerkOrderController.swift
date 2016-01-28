@@ -62,14 +62,23 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var voertuigLabel: UILabel!
     @IBOutlet weak var kentekenLabel: UILabel!
     @IBOutlet weak var omschrijvingLabel: UILabel!
+    @IBOutlet weak var werkorderLabel: UILabel!
     
     var mainJson :MainJson = MainJson()
     var werkOrderDetails :Array<WerkorderDetail> = []
     var tableData: Array <Array <Any>> = []
     var screenWidth: CGFloat = 0.0
     var selectedOrder = 0
+    var werkorder: Array<Any> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (werkorder.count == 0){
+            werkorderLabel.text = "Nog niet ingeklokt"
+        }
+        else{
+            werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
+        }
         tableViewContainer.delegate = self
         tableViewContainer.dataSource = self
         
@@ -126,10 +135,16 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         if (segue.identifier == "werkordersNaarWerkorder")
         {
             let lsvc = segue.destinationViewController as! WerkOrderViewController
+            lsvc.huidigeWerkorder = werkorder
             lsvc.werkorder  = tableData[selectedOrder
             ]
             print( tableData[selectedOrder][1])
             lsvc.mainJson = mainJson
+        }
+        if (segue.identifier == "ordersNaarNonWork") {
+            let nac = segue.destinationViewController as! nonWorkorderScreenController
+            nac.mainJson = mainJson
+            nac.werkorder = werkorder
         }
     }
 }
