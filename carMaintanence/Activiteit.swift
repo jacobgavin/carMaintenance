@@ -11,19 +11,19 @@ import Foundation
 class Activiteit{
     
     var omschrijving : String = ""
-    var verrichting: Array<Verrichting?> = Array<Verrichting>()
+    var artikels: Array<Artikel?> = Array<Artikel>()
     
     
-    init(omschrijving: String, verrichting: Array<Verrichting?>)
+    init(omschrijving: String, artikels: Array<Artikel?>)
     {
         self.omschrijving = omschrijving
-        self.verrichting = verrichting
+        self.artikels = artikels
     }
     
     class func build(json:JSON) -> Activiteit?
     {
-        var verrichting : Array<Verrichting?> = Array<Verrichting>()
-        if let a = json["Verrichtingen"].array
+        var artikels : Array<Artikel?> = Array<Artikel>()
+        if let a = json["Artikelen"].array
         {
             
             var iets = JSON(a)
@@ -31,8 +31,8 @@ class Activiteit{
             for(_,object) in iets
             {
                 // print("Object = ", object)
-                let verricht : Verrichting? = Verrichting.build(object)
-                verrichting.append(verricht)
+                let artikel : Artikel? = Artikel.build(object)
+                artikels.append(artikel)
             }
         }
         for(_,object) in json
@@ -41,7 +41,7 @@ class Activiteit{
             {
                 return Activiteit(
                     omschrijving : omschrijving,
-                    verrichting : verrichting)
+                    artikels : artikels)
                 
             }
             else

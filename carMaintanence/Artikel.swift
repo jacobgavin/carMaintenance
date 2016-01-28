@@ -9,33 +9,33 @@
 import Foundation
 
 
-class Verrichting{
+class Artikel{
     
     var omschrijving : String = ""
-    var BtwCode: Float = 0.0
+    var artikelID: String = ""
     var aantal: Float = 0.0
     
     
-    init(omschrijving: String, code: Float, aantal: Float)
+    init(omschrijving: String, artikelID: String, aantal: Float)
     {
         self.omschrijving = omschrijving
-        self.BtwCode = code
+        self.artikelID = artikelID
         self.aantal = aantal
         
     }
     
-    class func build(json:JSON) -> Verrichting?
+    class func build(json:JSON) -> Artikel?
     {
     
         for(_,object) in json
         {   
             if let omschrijving = json["Omschrijving"].string,
-            let code = json["BtwPercentage"].float,
+            let artikelID = json["ArtikelId"].string,
             let aantal = json["Aantal"].float
             {
-                return Verrichting(
+                return Artikel(
                     omschrijving : omschrijving,
-                    code : code,
+                    artikelID : artikelID,
                     aantal: aantal
                 )
             }

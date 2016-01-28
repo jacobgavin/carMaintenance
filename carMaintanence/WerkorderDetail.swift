@@ -30,7 +30,7 @@ class WerkorderDetail {
     
     class func build(json:JSON) -> WerkorderDetail?
     {
-        print("hopi")
+        //print("hopi")
         if let
             nummer =  json["Nummer"].int,
             omschrijving = json["Omschrijving"].string,
