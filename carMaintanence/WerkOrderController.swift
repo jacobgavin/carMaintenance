@@ -24,17 +24,36 @@ class TableViewCellForActivity: UITableViewCell {
     
     
     func setValueForColumn(string: String, col:Int, width:CGFloat) {
+//       
+//        let subViews: Array = self.contentView.subviews.
+//        for (var subview: NSView!) in subViews
+//        {
+//            subview.removeFromSuperview()
+//        }
         
+        print(string)
         if (col==1) {
             let newLabel = UILabel(frame: CGRectMake(0.0, 14.0, width*0.1, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
+            if( self.contentView.subviews.count == 1)
+            {
+            self.contentView.subviews[0].hidden = true
+            }
             self.contentView.addSubview(newLabel)
+            
+            
         }
         if (col==2) {
             let newLabel = UILabel(frame: CGRectMake(width*0.1, 14.0, width*0.15, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
+            
+            if( self.contentView.subviews.count == 2)
+                {
+                    self.contentView.subviews[1].hidden = true
+                  //  self.contentView.subviews[1].removeFromSuperview()
+            }
             self.contentView.addSubview(newLabel)
             
         }
@@ -42,12 +61,25 @@ class TableViewCellForActivity: UITableViewCell {
             let newLabel = UILabel(frame: CGRectMake(width*0.25, 14.0, width*0.3, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
+            if( self.contentView.subviews.count == 3)
+            {
+                self.contentView.subviews[2].hidden = true
+              //  self.contentView.subviews[2].removeFromSuperview()
+            }
+          
             self.contentView.addSubview(newLabel)
         }
         if (col==4) {
             let newLabel = UILabel(frame: CGRectMake(width*0.55, 14.0, width*0.45, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
+            if( self.contentView.subviews.count == 4)
+            {
+                self.contentView.subviews[3].hidden = true
+                self.contentView.subviews[3].removeFromSuperview()
+            }
+           
+           
             self.contentView.addSubview(newLabel)
         }
         
@@ -77,6 +109,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         tableData = [] // illustration only
         screenWidth = self.view.frame.size.width
         getUserData(true)
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,6 +139,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getUserData (myWorkOrder: Bool) {
         // get user id
+        tableData = []
         if (myWorkOrder) {
             werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
             for d in werkOrderDetails {
@@ -117,7 +151,9 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             for d in werkOrderDetails {
                 tableData.append(["other", "other", "other", "other"])
             }
+            
         }
+        self.tableViewContainer.reloadData()
         
     }
     
@@ -136,6 +172,8 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.setValueForColumn("\(tableData[row][1])", col:2, width:screenWidth)
         cell.setValueForColumn("\(tableData[row][2])", col:3, width:screenWidth)
         cell.setValueForColumn("\(tableData[row][3])", col:4, width:screenWidth)
+        
+        
         
         return cell
     }

@@ -56,7 +56,41 @@ class Connectie
         
         
     }
-    
-    
-    
+
+    func put(url:String, dataBody : String, completion: ((result:NSString?) -> Void)!)
+    {
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "PUT"
+        
+        let data = dataBody.dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = data
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                completion(result: "error")
+                return
+                //handle error
+            }
+            
+                
+                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("Parsed JSON: '\(jsonStr)'")
+            completion(result: jsonStr)
+            
+        }
+        
+
+        print("kjsdhf")
+        dataTask.resume()
+    }
 }
+
+
+
+
+
+
+

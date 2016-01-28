@@ -122,6 +122,40 @@ class MainJson
         return gevalideerd
     }
     
+    func opslaanActiviteit(kenteken: String, sessieId:String, omschrijving : String, id : Int, code : String )
+    {
+//        let headers = [
+//            "code": code,
+//            "id": id,
+//            "omschrijving": omschrijving,
+//        ]
+        
+        
+        var postData = NSMutableData(data: code.dataUsingEncoding(NSUTF8StringEncoding)!)
+        postData.appendData("&Id=\(id)".dataUsingEncoding(NSUTF8StringEncoding)!)
+        postData.appendData("&Omschrijving=\(omschrijving)".dataUsingEncoding(NSUTF8StringEncoding)!)
+        postData.appendData("&Code=\(code)".dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        var dataBody = NSString(data: postData, encoding: NSUTF8StringEncoding) as! String
+        var temp = ""
+        
+        
+        //func put(url: String, dataBody: String, completion: ((result: NSString?) -> Void)!)
+        
+        connectie.put(siteUrl + "WplWerkorder/MaakActiviteitUitServiceActie?kenteken="+kenteken+"&sessieId="+sessieId, dataBody: dataBody)
+            {
+                (result) -> Void in
+                if let const = result
+                {
+        //            gevalideerd = const.
+                    temp = result as! String // if statement checkt de optional al dus dit kan veilig
+                }
+        }
+        while(temp == ""){}
+        print("LALALA"+temp)
+        
+    }
+    
     func jsonNaarMonteurs(result : String) -> Array<Monteur>
     {
         var monteurs : Array<Monteur> = Array<Monteur>()
@@ -180,8 +214,8 @@ class MainJson
     {
         var werkOrderActiviteiten = ""
        
-        connectie.post(siteUrl+"WplWerkorder/GetWerkorder?vestiging=\(self.vestiging)&ordernummer=\(orderNummer)&sessieId=\(sessieID)") { (result) ->
-            Void in
+        connectie.post(siteUrl+"WplWerkorder/GetWerkorder?vestiging=\(self.vestiging)&ordernummer=\(orderNummer)&sessieId=\(sessieID)") {
+            (result) ->  Void in
             if let constWerkorderActiviteiten = result as? String{
                 werkOrderActiviteiten = constWerkorderActiviteiten
             }

@@ -30,6 +30,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         
         mainJson.setSessieID()
         monteurs = mainJson.getMonteurs(mainJson.getSessieId())
+       
         print("hup")
         
         let defaults = NSUserDefaults.standardUserDefaults()
