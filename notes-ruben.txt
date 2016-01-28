@@ -1,0 +1,25 @@
+Workorders:
+- Black against blue font?? Fix readability
+
+Improductice work hours:
+
+Functie om in en uit te klokken? [function to clock in and out?]
+
+Only show cars that have work-activities.  
+
+Workorders: only search for today (as in: date = today)
+
+'wisselen' button (change caption to: inklokken) . Send to server that you want to inklok to that order, and disable the button click (because you are clocked in). Then also make the background of the top thing green, so it knows it is klokked in. 
+
+When click on new activity, change button caption to 'opslaan'. 
+
+Title of workorder: make it bigger & make it look like it is a title
+
+Monteur can only change the interne opmerkingen [internal notes], not the details of the work activities.
+
+Activiteitscreen:
+Edit button -> Save button, because this is only to save the orders.
+
+By the end of this week, robin should have noticed them for closure etc. 
+
+Apply todo list in report, maybe also note the bugs.
