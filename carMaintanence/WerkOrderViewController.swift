@@ -25,7 +25,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     @IBOutlet weak var werkorderLabel: UILabel!
     
     @IBAction func wisselKnopIngedrukt(sender: UIButton) {
-        werkorderLabel.backgroundColor = UIColor(red: 0, green: 0.76972, blue: 0, alpha: 1)
+        werkorderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
         print(terugButton.backgroundColor)
         werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
         wisselKnop.enabled = false

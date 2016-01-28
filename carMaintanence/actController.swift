@@ -129,12 +129,12 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         for (var x = 0; x < activities.activiteiten.count; x++) {
            
-            for(var y = 0; y < activities.activiteiten[x]?.verrichting.count; y++) {
-                let verr = activities.activiteiten[x]?.verrichting[y]
+            for(var y = 0; y < activities.activiteiten[x]?.artikels.count; y++) {
+                let verr = activities.activiteiten[x]?.artikels[y]
                 print(verr?.aantal)
-                print(verr?.BtwCode)
+                print(verr?.artikelID)
                 print(verr?.omschrijving)
-                tableData.append([(verr?.BtwCode)!, (verr?.aantal)!, (verr?.omschrijving)!])
+                tableData.append([(verr?.artikelID)!, (verr?.aantal)!, (verr?.omschrijving)!])
                 
             }
         }
@@ -194,7 +194,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let col3Label = UILabel(frame: CGRectMake(cellWidth/4.0+cellWidth/8.0, 0.0, 3*cellWidth/8.0, 30.0))
         
         col1Label.text = "Code"
-        col2Label.text = "Antal"
+        col2Label.text = "Aantal"
         col3Label.text = "Omschrijving"
         
         self.headerForLabels.addSubview(col1Label)
