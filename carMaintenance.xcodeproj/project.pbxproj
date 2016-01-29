@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D50904211C5BC5AE0055A090 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D50904201C5BC5AE0055A090 /* settings.png */; };
+		D509FE901C5B72180055A090 /* instellingenSchermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509FE8F1C5B72180055A090 /* instellingenSchermViewController.swift */; };
+		D509FE921C5B74AB0055A090 /* BeschikbareVestiging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509FE911C5B74AB0055A090 /* BeschikbareVestiging.swift */; };
 		D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123631BF11A490045D8D4 /* WorkorderViewController.swift */; };
 		D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */; };
 		D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D50904201C5BC5AE0055A090 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		D509FE8F1C5B72180055A090 /* instellingenSchermViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = instellingenSchermViewController.swift; sourceTree = "<group>"; };
+		D509FE911C5B74AB0055A090 /* BeschikbareVestiging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeschikbareVestiging.swift; sourceTree = "<group>"; };
 		D53123631BF11A490045D8D4 /* WorkorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkorderViewController.swift; sourceTree = "<group>"; };
 		D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nonWorkorderScreenController.swift; sourceTree = "<group>"; };
 		D54B3DCF1BCFA4E1009B9D9C /* carMaintanence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carMaintanence.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +126,7 @@
 		D54B3DC61BCFA4E1009B9D9C = {
 			isa = PBXGroup;
 			children = (
+				D50904201C5BC5AE0055A090 /* settings.png */,
 				D54B3DD11BCFA4E1009B9D9C /* carMaintanence */,
 				D54B3DE61BCFA4E1009B9D9C /* carMaintanenceTests */,
 				D54B3DF11BCFA4E2009B9D9C /* carMaintanenceUITests */,
@@ -140,33 +147,35 @@
 		D54B3DD11BCFA4E1009B9D9C /* carMaintanence */ = {
 			isa = PBXGroup;
 			children = (
-				D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */,
-				D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */,
 				D574E7161C4EA19A00C64BDC /* actController.swift */,
+				D593346C1C4D7DE500E4977E /* Activiteit.swift */,
+				D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */,
+				D555BF491C5155D70085179F /* activitiesJSONDetails.swift */,
+				D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */,
+				D555BF4B1C524E510085179F /* Artikel.swift */,
+				D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */,
+				D509FE911C5B74AB0055A090 /* BeschikbareVestiging.swift */,
 				D574E7171C4EA19A00C64BDC /* camera.swift */,
+				D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */,
+				D5D8BB001C3EA23A00951C11 /* Info.plist */,
+				D509FE8F1C5B72180055A090 /* instellingenSchermViewController.swift */,
+				D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */,
 				D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */,
 				D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */,
-				D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */,
-				D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */,
-				D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */,
-				D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */,
-				D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */,
-				D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */,
-				D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */,
+				D573361E1BE22FD700F51CBD /* Main.storyboard */,
 				D5F1BDA51C3EA16600BF4472 /* MainJson.swift */,
 				D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */,
-				D5D8BB001C3EA23A00951C11 /* Info.plist */,
-				D573361E1BE22FD700F51CBD /* Main.storyboard */,
-				D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */,
+				D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */,
+				D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */,
+				D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */,
 				D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */,
-				D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */,
-				D593346C1C4D7DE500E4977E /* Activiteit.swift */,
-				D555BF4B1C524E510085179F /* Artikel.swift */,
-				D53123631BF11A490045D8D4 /* WorkorderViewController.swift */,
 				D593346A1C4D7D7500E4977E /* WerkOrderActiviteit.swift */,
-				D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */,
+				D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */,
 				D574E7141C47B9ED00C64BDC /* WerkorderDetail.swift */,
-				D555BF491C5155D70085179F /* activitiesJSONDetails.swift */,
+				D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */,
+				D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */,
+				D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */,
+				D53123631BF11A490045D8D4 /* WorkorderViewController.swift */,
 			);
 			path = carMaintanence;
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 			files = (
 				D54B3DDD1BCFA4E1009B9D9C /* LaunchScreen.storyboard in Resources */,
 				D54B3DDA1BCFA4E1009B9D9C /* Assets.xcassets in Resources */,
+				D50904211C5BC5AE0055A090 /* settings.png in Resources */,
 				D57336201BE22FD700F51CBD /* Main.storyboard in Resources */,
 				D5D8BB011C3EA23A00951C11 /* Info.plist in Resources */,
 			);
@@ -327,9 +337,11 @@
 				D555BF4A1C5155D70085179F /* activitiesJSONDetails.swift in Sources */,
 				D5F1BDAA1C3EA1BD00BF4472 /* SwiftyJSON.swift in Sources */,
 				D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */,
+				D509FE901C5B72180055A090 /* instellingenSchermViewController.swift in Sources */,
 				D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */,
 				D574E7191C4EA19A00C64BDC /* camera.swift in Sources */,
 				D593346B1C4D7D7500E4977E /* WerkOrderActiviteit.swift in Sources */,
+				D509FE921C5B74AB0055A090 /* BeschikbareVestiging.swift in Sources */,
 				D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */,
 				D555BF4C1C524E510085179F /* Artikel.swift in Sources */,
 				D5F1BDA41C3EA13D00BF4472 /* Connectie.swift in Sources */,

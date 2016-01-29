@@ -458,6 +458,14 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aw0-gq-JKV">
+                                            <rect key="frame" x="91" y="39" width="55" height="44"/>
+                                            <state key="normal" title="Button" backgroundImage="settings.png"/>
+                                            <connections>
+                                                <action selector="naarInstellingenActie:" destination="udg-xO-p58" eventType="touchDragInside" id="TXd-ey-3aK"/>
+                                                <segue destination="bec-fN-IdQ" kind="show" id="rgM-k0-HVa"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -519,7 +527,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oce-r8-5a9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="304"/>
+            <point key="canvasLocation" x="166" y="266"/>
         </scene>
         <!--Non Workorder Screen Controller-->
         <scene sceneID="W2b-th-IIy">
@@ -1097,6 +1105,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEh-Tt-KfV" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2494" y="152"/>
+        </scene>
+        <!--Instellingen Scherm View Controller-->
+        <scene sceneID="W9R-LY-hOQ">
+            <objects>
+                <viewController id="bec-fN-IdQ" customClass="InstellingenSchermViewController" customModule="carMaintanence" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jix-4a-cM6"/>
+                        <viewControllerLayoutGuide type="bottom" id="uIz-Tl-ZxU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cOo-BR-Gkj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WID-pY-QhR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bec-fN-IdQ" id="ObO-qI-YT7"/>
+                                    <outlet property="delegate" destination="bec-fN-IdQ" id="MFb-wu-vAu"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WID-pY-QhR" firstAttribute="leading" secondItem="cOo-BR-Gkj" secondAttribute="leading" id="3qt-4j-mpr"/>
+                            <constraint firstAttribute="trailing" secondItem="WID-pY-QhR" secondAttribute="trailing" id="5pw-1d-X86"/>
+                            <constraint firstItem="WID-pY-QhR" firstAttribute="bottom" secondItem="uIz-Tl-ZxU" secondAttribute="top" id="6WL-hm-Uru"/>
+                            <constraint firstItem="WID-pY-QhR" firstAttribute="top" secondItem="cOo-BR-Gkj" secondAttribute="top" id="U7V-1e-wkK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="WID-pY-QhR" id="GfC-Gx-O5c"/>
+                        <segue destination="udg-xO-p58" kind="show" identifier="instellingenSchermNaarMonteurs" id="j1O-EG-38t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uKa-hm-s6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="166" y="1078"/>
         </scene>
         <!--New Activity Controller-->
         <scene sceneID="oZK-O1-Ih3">
@@ -2324,11 +2372,12 @@
         <image name="edit-icon" width="512" height="512"/>
         <image name="noProfilePic" width="294" height="293"/>
         <image name="nummerbordLeeg" width="224" height="43"/>
+        <image name="settings.png" width="40" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lsx-30-9pY"/>
+        <segue reference="j1O-EG-38t"/>
+        <segue reference="D9C-pf-yNA"/>
         <segue reference="kcx-EW-EIu"/>
         <segue reference="qlC-aB-Jhj"/>
-        <segue reference="GZ3-c8-7Z0"/>
     </inferredMetricsTieBreakers>
 </document>

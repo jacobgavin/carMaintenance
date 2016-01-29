@@ -18,6 +18,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     
     
     
+   
     var monteurs: Array<Monteur> = []
     let mainJson : MainJson  = MainJson()
     
@@ -81,6 +82,11 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
             lsvc.mainJson = mainJson
             
          
+        }
+        if(segue.identifier == "monteursNaarInstellingenScherm")
+        {
+            let _ = segue.destinationViewController as! InstellingenSchermViewController
+            
         }
     }
 // test

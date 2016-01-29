@@ -85,7 +85,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         
         
         nummerBordLabel.text = werkorder[1] as! String
-        activiteiten = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: werkorder[0] as! Int)
+     //   activiteiten = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: werkorder[0] as! Int)
         
         aantalKnoppen = activiteiten.activiteiten.count
         textView.layer.borderWidth = 3

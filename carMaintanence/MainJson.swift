@@ -23,7 +23,7 @@ class MainJson
     var sessieId : String = ""
     var appleID : String = "IOS_01_V001"
     let siteUrl = "http://92.66.29.229/api/"
-    let vestiging = "V001"
+    var vestiging = "V001"
     let date1 = "2015-01-01T00:00:00"
     let date2 = "2015-08-19T00:00:00"
     var ingeklokt = false
@@ -80,6 +80,20 @@ class MainJson
         return self.sessieId
     }
     
+    func jsonNaarMonteurs(result : String) -> Array<Monteur>
+    {
+        var monteurs : Array<Monteur> = Array<Monteur>()
+        if let json = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            for(_, object) in json2
+            {
+                let monteur = Monteur.build(object)
+                monteurs.append(monteur!)
+            }
+        }
+        return monteurs
+    }
 
     /*!
     * @brief Get all the Monteurs on the current vestiging.
@@ -116,7 +130,7 @@ class MainJson
                     gevalideerd = const.boolValue
                     temp = result as! String // if statement checkt de optional al dus dit kan veilig
                 }
-        }
+            }
         while(temp == ""){}
         
         return gevalideerd
@@ -156,29 +170,53 @@ class MainJson
         
     }
     
-    func jsonNaarMonteurs(result : String) -> Array<Monteur>
+    func getBeschikbareVestigingen(sessieId : String) -> Array<BeschikbareVestiging>
     {
-        var monteurs : Array<Monteur> = Array<Monteur>()
-        if let json = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
-        {
-            let json2 = JSON(data: json) // NSData --> JSON object
-            for(index, object) in json2
+        var vestigingen = ""
+        connectie.post(siteUrl+"WinCar/GetBeschikbareVestigingen?sessieId=\(sessieId)")
             {
-                let monteur = Monteur.build(object)
-                monteurs.append(monteur!)
+            (result) -> Void in
+            if let response = result as? String
+            {
+                vestigingen = response
             }
         }
-        return monteurs
+        while(vestigingen == ""){}
+        return jsonNaarBeschikbareVestigingen(vestigingen)
+        
     }
+
+
+    func jsonNaarBeschikbareVestigingen(vestigingenJson : String) -> Array<BeschikbareVestiging>
+    {
+        var vestigingenLijst : Array<BeschikbareVestiging> = Array<BeschikbareVestiging>()
+        
+        if let json = vestigingenJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            for(_, object) in json2
+            {
+                let vestiging = BeschikbareVestiging.build(object)
+                vestigingenLijst.append(vestiging!)
+                print(vestiging!.id,vestiging!.naam)
+            }
+        }
+        return vestigingenLijst
+    
+    }
+    
+  
     
     func getWerkorder(sessieID: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
-        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
-            Void in
-            if let constWerkorders = result as? String{
-                werkorders = constWerkorders
-            }
+        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)")
+            {
+                (result) -> Void in
+                if let constWerkorders = result as? String
+                {
+                    werkorders = constWerkorders
+                }
         }
         while(werkorders == ""){}
         return jsonNaarWerkorderDetails(werkorders)
@@ -246,11 +284,15 @@ class MainJson
         return werkOrderActiviteiten
     }
     
-    func getActivityDetails(sessieID: String, workOrderNumber: Int) -> ActivitiesDetail {
+    func getActivityDetails(sessieID: String, workOrderNumber: Int) -> ActivitiesDetail
+    {
         var activities = ""
-        connectie.post(siteUrl+"WplWerkorder/GetActiviteitDetails?sessieId=\(sessieID)&Werkordernummer=\(workOrderNumber)") { (result) ->
+        connectie.post(siteUrl+"WplWerkorder/GetActiviteitDetails?sessieId=\(sessieID)&Werkordernummer=\(workOrderNumber)")
+            {
+                (result) ->
             Void in
-            if let activityDetails = result as? String{
+            if let activityDetails = result as? String
+            {
                 print(activityDetails)
                 activities = activityDetails
             }
@@ -320,5 +362,4 @@ class MainJson
     //        return werkorderStatus
     //    }
     
-    
-}
+    }
