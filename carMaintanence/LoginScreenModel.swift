@@ -94,12 +94,6 @@ class LoginScreenModel {
     /*!
     *   @brief Deletes the last entered digit from the current pinlist.
     */
-    func addDigit(pinDigit: String) {
-        pintry = pintry + pinDigit; //add digit to the try
-        print("pintry = \(pintry)")
-        setLabel() //
-    }
-    
     func deleteDigit(){
         if !pintry.isEmpty{ //delete the last digit
             let indexPinDel = pintry.endIndex.advancedBy(-1)
