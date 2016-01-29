@@ -49,7 +49,6 @@ class nonWorkorderScreenController: UIViewController {
             let ac = segue.destinationViewController as! actController
             ac.mainJson = mainJson
             ac.werkorder = werkorder
-            ac.huidigeWerkorder = werkorder
                        
         }
         if (segue.identifier == "nonWorkNaarOrders")
@@ -61,6 +60,10 @@ class nonWorkorderScreenController: UIViewController {
         }
     }
 
+    // brief: geheugenmanagement. laat de IPad zelf het management doen
+    // reason to be called: geheugen raakt vol
+    // Params: none
+    // output: none
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

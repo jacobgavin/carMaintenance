@@ -81,7 +81,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var cellWidth: CGFloat = 0.0
     
     // json stuff
-    var huidigeWerkorder: Array<Any> = [false]
+    var huidigeWerkorder: Array<Any> = []
     var werkorder: Array <Any> = [] //doorgeven van welke werkorder geselecteerd is in werkOrderController
     var activities: WerkOrderActiviteit = WerkOrderActiviteit()
     var mainJson: MainJson = MainJson()
@@ -103,7 +103,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         
         if (huidigeWerkorder.count == 0){
-            huidigeWerkorder = werkorder
+            //huidigeWerkorder = werkorder
         }
         
         workOrder = werkorder[0] as! Int
@@ -124,7 +124,10 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     }
     
-    
+    // brief: geheugenmanagement. laat de IPad zelf het management doen
+    // reason to be called: geheugen raakt vol
+    // Params: none
+    // output: none
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -222,7 +225,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let nac = segue.destinationViewController as! WerkOrderViewController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
-            nac.huidigeWerkorder = werkorder
+            nac.huidigeWerkorder = huidigeWerkorder
         }
         if (segue.identifier == "actToNonWork") {
             let nac = segue.destinationViewController as! nonWorkorderScreenController

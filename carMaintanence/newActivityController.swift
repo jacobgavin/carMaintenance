@@ -18,17 +18,14 @@ class newActivityController: UIViewController {
     var huidigeWerkorder: Array<Any> = []
     let placeholder_text = "Omschrijving van Activiteit"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func setLayout(){
         let myColor : UIColor = UIColor.whiteColor()
         let purpleColor : UIColor = UIColor.purpleColor()
-        let myWidth : CGFloat = 2.0
+        let myWidth : CGFloat = 4
         let myRadius : CGFloat = 10
         
         
         titleOfNewActivity.layer.borderColor = myColor.CGColor
-        titleOfNewActivity.layer.borderWidth = myWidth
-        titleOfNewActivity.layer.cornerRadius = myRadius
         
         workNumAndCarModel.layer.borderColor = myColor.CGColor
         workNumAndCarModel.layer.borderWidth = myWidth
@@ -49,21 +46,33 @@ class newActivityController: UIViewController {
         
         loggedInOnWorkOrder.layer.cornerRadius = myRadius
         loggedInOnWorkOrder.text = "Aanpassen voor werkorder \(werkorder[0]) (\(werkorder[1]))"
+        loggedInOnWorkOrder.layer.borderColor = myColor.CGColor
+        loggedInOnWorkOrder.layer.borderWidth = myWidth
+        loggedInOnWorkOrder.layer.masksToBounds = true
+        
         logOutButton.layer.cornerRadius = myRadius
+        logOutButton.layer.borderWidth = myWidth
+        logOutButton.layer.cornerRadius = myRadius
+        logOutButton.layer.borderColor = myColor.CGColor
         
         descTextField.layer.borderColor = purpleColor.CGColor
         descTextField.layer.borderWidth = myWidth
         descTextField.layer.cornerRadius = myRadius
         descTextField.text = ""
-        
-        regNum = werkorder[1] as! String
-        // Do any additional setup after loading the view, typically from a nib.
-        regNumberOfCar.text = regNum
+
+        regNumberOfCar.text = (werkorder[1] as! String)
         regNumberOfCar.userInteractionEnabled = false
         
         workNumAndCarModel.text = "WO \(werkorder[0]), \(werkorder[2])"
         workNumAndCarModel.userInteractionEnabled = false
+
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        setLayout()
+                
     
         
         //loggedInOnWorkOrder.text = "Ingeklokt op werkorder " + workOrder + "("+regNum+")"
