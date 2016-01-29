@@ -25,7 +25,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     @IBOutlet weak var werkorderLabel: UILabel!
     
     @IBAction func wisselKnopIngedrukt(sender: UIButton) {
-        werkorderLabel.backgroundColor = UIColor(red: 0, green: 0.76972, blue: 0, alpha: 1)
+        werkorderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
         print(terugButton.backgroundColor)
         werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
         wisselKnop.enabled = false
@@ -86,7 +86,6 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         
         nummerBordLabel.text = werkorder[1] as! String
         activiteiten = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: werkorder[0] as! Int)
-        print(activiteiten.activiteiten.count)
         aantalKnoppen = activiteiten.activiteiten.count
         textView.layer.borderWidth = 3
         textView.layer.borderColor = UIColor(red: 128/255, green:100/255, blue:162/255, alpha:1.0).CGColor
@@ -149,6 +148,11 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             lsvc.mainJson = mainJson        }
         if (segue.identifier == "naarNieuweActiviteit"){
             let nac = segue.destinationViewController as! newActivityController
+            nac.mainJson = mainJson
+            nac.werkorder = werkorder
+        }
+        if (segue.identifier == "naarActiviteit"){
+            let nac = segue.destinationViewController as! actController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
         }

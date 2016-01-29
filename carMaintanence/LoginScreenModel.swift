@@ -61,6 +61,7 @@ class LoginScreenModel {
         return pinLabel;
     }
     
+
     /*!
     *   @brief Checks the local pincode that has been entered with the correct pincode that is on the server.
     *   @param monteurCode Entered pincode of the monteur .
