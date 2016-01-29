@@ -120,10 +120,6 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     }
     
-    // brief: geheugenmanagement. laat de IPad zelf het management doen
-    // reason to be called: geheugen raakt vol
-    // Params: none
-    // output: none
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
