@@ -110,6 +110,10 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     
     }
     
+    // brief: geheugenmanagement. laat de IPad zelf het management doen
+    // reason to be called: geheugen raakt vol
+    // Params: none
+    // output: none
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
