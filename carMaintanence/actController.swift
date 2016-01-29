@@ -9,16 +9,19 @@
 
 import UIKit
 class TableActivity: UITableViewCell {
-    var column1: String = ""
-    var column2: String = ""
-    var column3: String = ""
+    var exist: Bool = false
+    var newLabel1: UILabel!
+    var newLabel2: UILabel!
+    var newLabel3: UILabel!
     var width: CGFloat = 0.0
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.width = self.layer.bounds.width
-        
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -32,23 +35,26 @@ class TableActivity: UITableViewCell {
         let cellWidth = self.layer.bounds.width
         
         if (col==1) {
-            let newLabel = UILabel(frame: CGRectMake(0, 0.0, cellWidth/4.0, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            self.contentView.addSubview(newLabel)
+            newLabel1 = UILabel(frame: CGRectMake(0, 0.0, cellWidth/4.0, 30.0))
+            newLabel1.numberOfLines = 0
+            newLabel1.text = string
+            exist = true
+            self.contentView.addSubview(newLabel1)
         }
         if (col==2) {
-            let newLabel = UILabel(frame: CGRectMake(cellWidth/4.0, 0.0, cellWidth/8.0, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            self.contentView.addSubview(newLabel)
+            newLabel2 = UILabel(frame: CGRectMake(cellWidth/4.0, 0.0, cellWidth/8.0, 30.0))
+            newLabel2.numberOfLines = 0
+            newLabel2.text = string
+            exist = true
+            self.contentView.addSubview(newLabel2)
             
         }
         if (col==3) {
-            let newLabel = UILabel(frame: CGRectMake(cellWidth/4.0+cellWidth/8.0, 0.0, 3*cellWidth/8.0, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            self.contentView.addSubview(newLabel)
+            newLabel3 = UILabel(frame: CGRectMake(cellWidth/4.0+cellWidth/8.0, 0.0, 3*cellWidth/8.0, 30.0))
+            newLabel3.numberOfLines = 0
+            newLabel3.text = string
+            exist = true
+            self.contentView.addSubview(newLabel3)
         }
         
     }
@@ -172,11 +178,14 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let row = indexPath.row
         
         
+        setHeaderLabels()
+        
+        	
         cell.setValueForColumn("\(tableData[row][0])", col:1)
         cell.setValueForColumn("\(tableData[row][1])", col:2)
         cell.setValueForColumn("\(tableData[row][2])", col:3)
         self.cellWidth = cell.layer.bounds.width
-        setHeaderLabels()
+        
         
         if(row % 2 == 0) {
             cell.backgroundColor = UIColor.lightGrayColor()

@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginSchermViewController: UIViewController {
-
+    var monteurID: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +19,7 @@ class LoginSchermViewController: UIViewController {
         print(defaults.objectForKey("deviceAppleID") as! String)
         werknemerNaam.text = werknemerLabelTekst
         LogScreen.monteurCode = monteur.code
+        monteurID = monteur.id
         // Setup the label for the employee and his pincode
     }
     
@@ -57,6 +58,7 @@ class LoginSchermViewController: UIViewController {
         if (segue.identifier == "loginNaarWerkorders"){
             let woc = segue.destinationViewController as! WerkOrderController
             woc.mainJson = mainJson
+            woc.monteurCode = monteur.code
         }
     }
     

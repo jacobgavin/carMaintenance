@@ -19,6 +19,7 @@ class LoginScreenModel {
     var pintry = ""
     var pinLabel = ""
     
+    
     func setLabel(){
         let points = pintry.characters.count
         pinLabel = ""

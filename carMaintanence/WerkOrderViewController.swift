@@ -10,11 +10,13 @@ import UIKit
 
 class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
-    var huidigeWerkorder: Array<Any> = [false]
+    var huidigeWerkorder: Array<Any> = []
     var werkorder: Array <Any> = [] //doorgeven van welke werkorder geselecteerd is in werkOrderController
     var mainJson: MainJson = MainJson()
     var activiteiten: WerkOrderActiviteit = WerkOrderActiviteit()
     var knoppenArray = NSMutableArray()
+    
+    var monteurCode: String = ""
 
     var aantalKnoppen = 3 //moet uit database komen, het aantal + de data uit een model-klasse halen
     
@@ -70,16 +72,16 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         knop.setTitle( "Nieuwe activiteit", forState: UIControlState.Normal);
         knoppenArray.addObject(knop);
         
-        for knop in knoppenArray
-        {
-            print(knop)
-        }
+        // for knop in knoppenArray
+        // {
+        //     print(knop)
+        // }
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if huidigeWerkorder[0] as! Bool == false{
+        if huidigeWerkorder.count == 0 {
             huidigeWerkorder = werkorder
         }
         
@@ -146,16 +148,22 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         if (segue.identifier == "orderNaarOrders1" || segue.identifier == "orderNaarOrders2")
         {
             let lsvc = segue.destinationViewController as! WerkOrderController
-            lsvc.mainJson = mainJson        }
+            lsvc.mainJson = mainJson
+            lsvc.currentWorkOrder = huidigeWerkorder
+            lsvc.monteurCode = monteurCode
+            
+        }
         if (segue.identifier == "naarNieuweActiviteit"){
             let nac = segue.destinationViewController as! newActivityController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
+            // lsvc.monteurID = monteurID // implement in newActivityController
         }
         if (segue.identifier == "naarActiviteit"){
             let nac = segue.destinationViewController as! actController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
+            // lsvc.monteurID = monteurID // implement in actController
         }
     }
     

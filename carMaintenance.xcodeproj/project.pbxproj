@@ -28,7 +28,6 @@
 		D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */; };
 		D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */; };
 		D5ACB8A11BF12D810087C3E2 /* newActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */; };
-		D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */; };
 		D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */; };
 		D5D8BB011C3EA23A00951C11 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5D8BB001C3EA23A00951C11 /* Info.plist */; };
 		D5D8BBBD1C3FC8E800951C11 /* WerkOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */; };
@@ -82,7 +81,6 @@
 		D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrderViewController.swift; sourceTree = "<group>"; };
 		D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkorderKnop.swift; sourceTree = "<group>"; };
 		D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newActivityController.swift; sourceTree = "<group>"; };
-		D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrdersDummyViewController.swift; sourceTree = "<group>"; };
 		D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiviteitDummyViewController.swift; sourceTree = "<group>"; };
 		D5D8BB001C3EA23A00951C11 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrderController.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				D555BF4B1C524E510085179F /* Artikel.swift */,
 				D53123631BF11A490045D8D4 /* WorkorderViewController.swift */,
 				D593346A1C4D7D7500E4977E /* WerkOrderActiviteit.swift */,
-				D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */,
 				D574E7141C47B9ED00C64BDC /* WerkorderDetail.swift */,
 				D555BF491C5155D70085179F /* activitiesJSONDetails.swift */,
 			);
@@ -337,7 +334,6 @@
 				D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */,
 				D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */,
 				D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */,
-				D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */,
 				D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */,
 				D5D8BBBD1C3FC8E800951C11 /* WerkOrderController.swift in Sources */,
 				D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */,

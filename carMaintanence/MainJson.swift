@@ -24,10 +24,11 @@ class MainJson
     var appleID : String = "IOS_01_V001"
     let siteUrl = "http://92.66.29.229/api/"
     let vestiging = "V001"
-    let date1 = "2015-01-01T00:00:00"
-    let date2 = "2015-08-19T00:00:00"
+    let date1 = "2014-01-01T00:00:00"
+    let date2 = "2016-01-28T00:00:00"
     var ingeklokt = false
     var actDetails: String = ""
+    
     
     init()
     {
@@ -49,7 +50,6 @@ class MainJson
         sessieId = getSessieId()
         
         getMonteurs(sessieId)
-        getWerkorder(sessieId)
     }
     
     func setAppleID(appleid : String)
@@ -137,7 +137,7 @@ class MainJson
         return monteurs
     }
     
-    func getWerkorder(sessieID: String) -> Array <WerkorderDetail>
+    func getWerkorder(sessieID: String, monteurCode: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
         connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
@@ -147,10 +147,11 @@ class MainJson
             }
         }
         while(werkorders == ""){}
-        return jsonNaarWerkorderDetails(werkorders)
+        return jsonNaarWerkorderDetails(werkorders, monteurCode: monteurCode)
     }
     
-    func jsonNaarWerkorderDetails(werkOrderDetailsJson : String) -> Array <WerkorderDetail>
+    
+    func jsonNaarWerkorderDetails(werkOrderDetailsJson : String, monteurCode: String) -> Array <WerkorderDetail>
     {
         var werkOrderDetails : Array<WerkorderDetail> = Array<WerkorderDetail>()
         
@@ -164,19 +165,68 @@ class MainJson
                 
                 let werkOrderDetail = WerkorderDetail.build(object)
                 //print(werkOrderDetail!.kenteken)
-                werkOrderDetails.append(werkOrderDetail!)
+                print("jsonNaarWerkorderDetails")
+                print(monteurCode)
+                print(werkOrderDetail?.monteurID)
+                if (werkOrderDetail?.monteurID == monteurCode) {
+                    print(werkOrderDetail?.monteurID)
+                    print("id was same")
+                    print(monteurCode)
+                    werkOrderDetails.append(werkOrderDetail!)
+                }
                 
             }
             
         }
         
+        return werkOrderDetails
+    }
+    
+    
+    func getOtherWerkorders(sessieID: String, monteurCode: String) -> Array <WerkorderDetail>
+    {
+        var werkorders = ""
+        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
+            Void in
+            if let constWerkorders = result as? String{
+                werkorders = constWerkorders
+            }
+            
+        }
+        while(werkorders == ""){}
+        return jsonOtherWerkorderDetails(werkorders, monteurCode: monteurCode)
+    }
+    
+    
+    
+    func jsonOtherWerkorderDetails(werkOrderDetailsJson : String, monteurCode: String) -> Array <WerkorderDetail>
+    {
+        var werkOrderDetails : Array<WerkorderDetail> = Array<WerkorderDetail>()
         
+        
+        if let json = werkOrderDetailsJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            
+            for(_,object) in json2
+            {
+                
+                let werkOrderDetail = WerkorderDetail.build(object)
+                //print(werkOrderDetail!.kenteken)
+                //print(werkOrderDetail?.monteurID)
+                if (werkOrderDetail?.monteurID != monteurCode) {
+                    werkOrderDetails.append(werkOrderDetail!)
+                }
+                
+            }
+            
+        }
         
         return werkOrderDetails
     }
     
     
-    func getWerkOrderActiviteitenopKenteken(sessieID: String, var orderNummer: Int) -> WerkOrderActiviteit
+    func getWerkOrderActiviteitenopKenteken(sessieID: String, orderNummer: Int) -> WerkOrderActiviteit
     {
         var werkOrderActiviteiten = ""
        
