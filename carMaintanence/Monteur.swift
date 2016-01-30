@@ -21,6 +21,7 @@ class Monteur
     var id : Int = 0
     var code : String = ""
     var naam : String = ""
+    var active : Bool = false
     
     init(id:Int, code: String, naam:String)
     {
@@ -53,4 +54,7 @@ class Monteur
         
     }
     
+    func set_active(ID: Int) {
+        self.active = true
+    }
 }

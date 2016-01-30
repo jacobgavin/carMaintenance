@@ -13,34 +13,20 @@ class nonWorkorderScreenController: UIViewController {
     
     @IBOutlet weak var werkOrderLabel: UILabel!
     var werkorder: Array <Any> = []
+    var huidigeWerkorder: Array<Any> = []
     var vorigeScherm = ""
-//    @IBAction func Back(sender: UIButton) {
-//        if(vorigeScherm=="ac"){
-//            performSegueWithIdentifier("nwNaarAc", sender: nil)
-//        }
-//        else{
-//            performSegueWithIdentifier("nwNaarWo", sender: nil)
-//        }
-//    }
+
     @IBOutlet weak var backButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (werkorder.count == 0){
+        if (huidigeWerkorder.count == 0){
           
             werkOrderLabel.text = "Nog niet ingeklokt"
         }
         else{
-            werkOrderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
+            werkOrderLabel.text = "Ingeklokt op werkorder \(huidigeWerkorder[0]) (\(huidigeWerkorder[1]))"
+            werkOrderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
         }
-//        print(vorigeScherm)
-//        print("hoi\n")
-//        if(vorigeScherm=="ac"){
-//            backButton.setTitle("Terug naar activiteiten", forState: .Normal)
-//        }
-//        else{
-//            backButton.setTitle("Terug naar werkorder", forState: .Normal)
-//        }
-//        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -49,14 +35,13 @@ class nonWorkorderScreenController: UIViewController {
             let ac = segue.destinationViewController as! actController
             ac.mainJson = mainJson
             ac.werkorder = werkorder
-                       
+            ac.huidigeWerkorder = huidigeWerkorder
         }
         if (segue.identifier == "nonWorkNaarOrders")
         {
             let ac = segue.destinationViewController as! WerkOrderController
             ac.mainJson = mainJson
             ac.werkorder = werkorder
-            
         }
     }
 

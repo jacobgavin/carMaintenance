@@ -70,7 +70,6 @@ class newActivityController: UIViewController {
         
         //workNumAndCarModel.text = "WO \(werkorder[0]), \(werkorder[2])"
         workNumAndCarModel.userInteractionEnabled = false
-
     }
     
     override func viewDidLoad() {
@@ -117,7 +116,6 @@ class newActivityController: UIViewController {
         print(title)
         print(description)
         mainJson.opslaanActiviteit("VR-786-L", sessieId: mainJson.getSessieId(), omschrijving: "lslkfjlskdjflksjfd",id: 42, code: "codeiets")
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

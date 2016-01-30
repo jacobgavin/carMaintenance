@@ -15,11 +15,13 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     var mainJson: MainJson = MainJson()
     var activiteiten: WerkOrderActiviteit = WerkOrderActiviteit()
     var knoppenArray = NSMutableArray()
+    var monteurCode: String = ""
 
     var aantalKnoppen = 3 //moet uit database komen, het aantal + de data uit een model-klasse halen
     
     //Knop rechtsboven voor wisselen van werkorder
   
+
     @IBOutlet weak var inklokKnop: UIButton!
     
     @IBOutlet weak var uitklokKnop: UIButton!
@@ -75,10 +77,6 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         knop.setTitle( "Nieuwe activiteit", forState: UIControlState.Normal);
         knoppenArray.addObject(knop);
         
-        for knop in knoppenArray
-        {
-            print(knop)
-        }
         
     }
     //Maakt de knoppen rond, en geeft er een witte border aan. Verandert ook kleuren naar of er ingeklokt is. De tekst wordt daar ook op aangepast
@@ -124,7 +122,10 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        if huidigeWerkorder.count == 0 {
+//            huidigeWerkorder = werkorder
+//        }
+
         setLayout()
         nummerBordLabel.text = (werkorder[1] as! String)
         
@@ -168,23 +169,31 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         return 0
     }
     
+
     // Voorbereiding op doorgaan naar het volgende scherm. Onder ander de variabelen meegeven.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "orderNaarOrders1" || segue.identifier == "orderNaarOrders2")
         {
             let lsvc = segue.destinationViewController as! WerkOrderController
             lsvc.mainJson = mainJson
-            lsvc.werkorder = huidigeWerkorder}
+            lsvc.werkorder = huidigeWerkorder
+            lsvc.werkorder = huidigeWerkorder
+            lsvc.monteurCode = monteurCode
+            
+        }
         if (segue.identifier == "naarNieuweActiviteit"){
             let nac = segue.destinationViewController as! newActivityController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
             nac.huidigeWerkorder = huidigeWerkorder
+            // lsvc.monteurID = monteurID // implement in newActivityController
         }
         if (segue.identifier == "naarActiviteit"){
             let nac = segue.destinationViewController as! actController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
+            nac.huidigeWerkorder = huidigeWerkorder
+            // lsvc.monteurID = monteurID // implement in actController
         }
     }
     
@@ -202,7 +211,8 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             cell.tag = indexPath.row
             cell.layer.borderWidth = 4
             cell.layer.cornerRadius = 10
-            cell.layer.borderColor = UIColor.whiteColor().CGColor
+            cell.layer.borderColor = UIColor.whiteColor().CGColor  
+            //cell.layoutMargins = UIEdgeInsetsMake(2000, 2000,  2000,  2000)
         
             if indexPath.row % 2 == 0{
                 cell.backgroundColor = UIColor(red: 155/255,green:187/255,blue:89/255, alpha:1.0)
@@ -211,6 +221,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             {
                 cell.backgroundColor = UIColor(red: 247/255,green:150/255,blue:70/255, alpha:1.0)
             }
+        
             cell.textLabel?.textAlignment = NSTextAlignment.Center
         }
         else // dan is het in het werkorder scherm de linker tabel
@@ -222,11 +233,16 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             cell.backgroundColor = UIColor(red: 79/255,green:129/255,blue:189/255, alpha:1.0)
             
+       //     let meldingView : UIImageView = UIImageView()
+      //      meldingView.image = UIImage(named: "melding.png")
+       //     cell.contentView.addSubview(meldingView)
+            
             cell.imageView!.image = UIImage(named: "melding.png" )
         }
         return cell
     }
     
+
     //Als er op een knop in de tabel gedrukt wordt, gaat hij naar het volgende scherm.
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("\(indexPath.row) " + "was geselecteerd")

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 /*!
     *   @class LoginScreenModel
     *   @brief Model (logic) for the login screen.
@@ -19,6 +20,7 @@ class LoginScreenModel {
         self.monteurCode = monteurCode
     }
     
+
     var vestiging = "V001"
     var monteurCode = ""
     var code = ""
@@ -44,6 +46,7 @@ class LoginScreenModel {
         }
     }
     
+
     /*!
     *   @brief Checks if 4 pin-characters are pushed.
     *   @return True if 4 pin-characters are entered
@@ -61,7 +64,6 @@ class LoginScreenModel {
     {
         return pinLabel;
     }
-    
 
     /*!
     *   @brief Checks the local pincode that has been entered with the correct pincode that is on the server.

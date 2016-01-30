@@ -25,14 +25,16 @@ class WerkorderDetail {
     var model : String = ""
     var omschrijving : String = ""
     var nummer : Int = 0
+    var monteurCode: String = ""
     
-    init(nummer:Int, merk: String, model:String, omschrijving : String, kenteken : String)
+    init(nummer:Int, merk: String, model:String, omschrijving : String, kenteken : String, monteurCode : String)
     {
         self.nummer = nummer
         self.merk = merk
         self.model = model
         self.omschrijving = omschrijving
         self.kenteken = kenteken
+        self.monteurCode = monteurCode
     }
     
     init()
@@ -45,15 +47,16 @@ class WerkorderDetail {
             omschrijving = json["Omschrijving"].string,
             merk = json["Merk"].string,
             model = json["Model"].string,
-            kenteken = json["Kenteken"].string
+            kenteken = json["Kenteken"].string,
+            monteur = json["Monteur"].dictionary
 
-        {
-            return WerkorderDetail(
+        {   return WerkorderDetail(
                 nummer : nummer,
                 merk: merk,
                 model : model,
                 omschrijving : omschrijving,
-                kenteken : kenteken
+                kenteken : kenteken,
+                monteurCode : (monteur["Code"]?.string)!
                 
             )
         }

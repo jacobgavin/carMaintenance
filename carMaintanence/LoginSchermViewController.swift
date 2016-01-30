@@ -16,7 +16,7 @@ class LoginSchermViewController: UIViewController {
        
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        werknemerNaam.text = werknemerLabelTekst
+        werknemerNaam.text = monteur.naam
         LogScreen.monteurCode = monteur.code
         // Setup the label for the employee and his pincode
     }
@@ -56,6 +56,7 @@ class LoginSchermViewController: UIViewController {
         if (segue.identifier == "loginNaarWerkorders"){
             let woc = segue.destinationViewController as! WerkOrderController
             woc.mainJson = mainJson
+            woc.monteurCode = monteur.code
         }
     }
     
