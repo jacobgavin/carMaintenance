@@ -11,7 +11,6 @@ import UIKit
 class nonWorkorderScreenController: UIViewController {
     var mainJson: MainJson = MainJson()
     
-<<<<<<< HEAD
     @IBOutlet weak var werkOrderLabel: UILabel!
     var werkorder: Array <Any> = []
     var huidigeWerkorder: Array<Any> = []
