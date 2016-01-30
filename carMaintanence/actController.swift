@@ -9,6 +9,7 @@
 
 import UIKit
 class TableActivity: UITableViewCell {
+    var exist: Bool = false
     var column1: String = ""
     var column2: String = ""
     var column3: String = ""
@@ -76,18 +77,20 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var carModel: String = ""
     var titleActivity: String = ""
     var license: String = ""
-    @IBOutlet weak var carLicenceNum: UITextField!
-    @IBOutlet weak var workAndCarModel: UITextField!
+    @IBOutlet weak var carLicenceNum: UITextField! 
+    @IBOutlet weak var workAndCarModel: UITextField!  
     @IBOutlet weak var titleOfActivity: UITextField!
     @IBOutlet weak var loggedInAtLabel: UILabel!    
-    @IBOutlet weak var terugButton: UIButton!
-
+    @IBOutlet weak var terugButton: UIButton!    
+    @IBOutlet weak var loggedInAtLabel: UILabel!  
+    @IBOutlet weak var imprurenButton: UIButton!  
+    @IBOutlet weak var internBerichtView: UITextView! 
+    @IBOutlet weak var backButton: UIButton!  // not implemented
     @IBOutlet weak var tableViewContainer: UITableView!
-
-    
     @IBOutlet weak var headerForLabels: UICustomView!
     var cellWidth: CGFloat = 0.0
     
+
     // json stuff
     var huidigeWerkorder: Array<Any> = []
     var werkorder: Array <Any> = [] //doorgeven van welke werkorder geselecteerd is in werkOrderController
@@ -98,7 +101,42 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // 3 different string or whatever
     var tableData = [["Verrichting 1",0.5,"APK met viergastest"],["Onderd. 1",1,"Sticker 'APK zonder afspraak'"],[3.1,3.2,3.3]] // illustration only
   
-
+    func setLayout(){
+        let myColor : UIColor = UIColor.whiteColor()
+        let purpleColor : UIColor = UIColor.purpleColor()
+        let myWidth : CGFloat = 4
+        let myRadius : CGFloat = 10
+        
+        workAndCarModel.layer.cornerRadius = myRadius
+        workAndCarModel.layer.borderWidth = myWidth
+        workAndCarModel.layer.borderColor = myColor.CGColor
+        
+        terugButton.layer.cornerRadius = myRadius
+        terugButton.layer.borderWidth = myWidth
+        terugButton.layer.borderColor = myColor.CGColor
+        
+        titleOfActivity.layer.cornerRadius = myRadius
+        
+        loggedInAtLabel.layer.cornerRadius = myRadius
+        loggedInAtLabel.layer.borderWidth = myWidth
+        loggedInAtLabel.layer.borderColor = myColor.CGColor
+        
+        headerForLabels.layer.cornerRadius = myRadius
+        
+        internBerichtView.layer.cornerRadius = myRadius
+        internBerichtView.layer.borderWidth = myWidth
+        internBerichtView.layer.borderColor = purpleColor.CGColor
+        
+        imprurenButton.layer.cornerRadius = myRadius
+        imprurenButton.layer.borderWidth = myWidth
+        imprurenButton.layer.borderColor = myColor.CGColor
+        
+        logOutButton.layer.cornerRadius = myRadius
+        logOutButton.layer.borderWidth = myWidth
+        logOutButton.layer.borderColor = myColor.CGColor
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInAtLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
@@ -135,9 +173,15 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         sessionID = mainJson.sessieId
         activities = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: workOrder)
         setTableJsonData(activities)
+       
+        setLayout()
 
     }
 
+    // brief: geheugenmanagement. laat de IPad zelf het management doen
+    // reason to be called: geheugen raakt vol
+    // Params: none
+    // output: none
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -185,17 +229,13 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.setValueForColumn("\(tableData[row][1])", col:2)
         cell.setValueForColumn("\(tableData[row][2])", col:3)
         self.cellWidth = cell.layer.bounds.width
+        setHeaderLabels()
         }
-        
         if(row % 2 == 0) {
             cell.backgroundColor = UIColor.lightGrayColor()
-        }
-        
-        else {
+        } else {
             cell.backgroundColor = UIColor.whiteColor()
         }
-        
-        setHeaderLabels()
 
         return cell
         

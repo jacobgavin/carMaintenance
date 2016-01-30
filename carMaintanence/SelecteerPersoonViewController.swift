@@ -29,10 +29,9 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     // output: none
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         mainJson.setSessieID()
         monteurs = mainJson.getMonteurs(mainJson.getSessieId())
-
         let defaults = NSUserDefaults.standardUserDefaults()
         if let savedAppleId = defaults.objectForKey("deviceAppleID"){
             appleID = savedAppleId as! String

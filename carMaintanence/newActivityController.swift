@@ -65,6 +65,7 @@ class newActivityController: UIViewController {
         
         //regNumberOfCar.text = regNum
 
+
         regNumberOfCar.text = (werkorder[1] as! String)
         regNumberOfCar.userInteractionEnabled = false
         
@@ -74,7 +75,6 @@ class newActivityController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setLayout()  
         //loggedInOnWorkOrder.text = "Ingeklokt op werkorder " + workOrder + "("+regNum+")"
     }

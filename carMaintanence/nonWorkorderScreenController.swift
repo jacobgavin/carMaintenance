@@ -11,22 +11,70 @@ import UIKit
 class nonWorkorderScreenController: UIViewController {
     var mainJson: MainJson = MainJson()
     
+<<<<<<< HEAD
     @IBOutlet weak var werkOrderLabel: UILabel!
     var werkorder: Array <Any> = []
     var huidigeWerkorder: Array<Any> = []
     var vorigeScherm = ""
 
     @IBOutlet weak var backButton: UIButton!
+
+    @IBOutlet weak var Pauzebutton: UIButton!
+    
+    @IBOutlet weak var geenWerkButton: UIButton!
+    
+    @IBOutlet weak var halenButton: UIButton!
+    
+    @IBOutlet weak var vegenbutton: UIButton!
+    
+//    @IBAction func Back(sender: UIButton) {
+//        if(vorigeScherm=="ac"){
+//            performSegueWithIdentifier("nwNaarAc", sender: nil)
+//        }
+//        else{
+//            performSegueWithIdentifier("nwNaarWo", sender: nil)
+//        }
+//    }
+
+    func setLayout(){
+        let myWidth : CGFloat = 4
+        let myRadius : CGFloat = 10
+        let myColor : UIColor = UIColor.whiteColor()
+        
+        backButton.layer.cornerRadius = myRadius
+        backButton.layer.borderWidth = myWidth
+        backButton.layer.borderColor = myColor.CGColor
+        
+        Pauzebutton.layer.cornerRadius = myRadius
+        Pauzebutton.layer.borderWidth = myWidth
+        Pauzebutton.layer.borderColor = myColor.CGColor
+        
+        vegenbutton.layer.cornerRadius = myRadius
+        vegenbutton.layer.borderWidth = myWidth
+        vegenbutton.layer.borderColor = myColor.CGColor
+        
+        geenWerkButton.layer.cornerRadius = myRadius
+        geenWerkButton.layer.borderWidth = myWidth
+        geenWerkButton.layer.borderColor = myColor.CGColor
+        
+        werkOrderLabel.layer.cornerRadius = myRadius
+        werkOrderLabel.layer.borderWidth = myWidth
+        werkOrderLabel.layer.borderColor = myColor.CGColor
+        
+        halenButton.layer.cornerRadius = myRadius
+        halenButton.layer.borderWidth = myWidth
+        halenButton.layer.borderColor = myColor.CGColor
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if (huidigeWerkorder.count == 0){
-          
             werkOrderLabel.text = "Nog niet ingeklokt"
-        }
-        else{
+        } else{
             werkOrderLabel.text = "Ingeklokt op werkorder \(huidigeWerkorder[0]) (\(huidigeWerkorder[1]))"
             werkOrderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
         }
+        setLayout()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
