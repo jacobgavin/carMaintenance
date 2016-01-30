@@ -189,7 +189,6 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
         
         let row = indexPath.row
-        print(screenWidth)
         if (cell.exist) {
             cell.newLabel1.text = "\(tableData[row][0])"
             cell.newLabel2.text = "\(tableData[row][1])"
@@ -201,6 +200,14 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.setValueForColumn("\(tableData[row][1])", col:2, width:screenWidth)
             cell.setValueForColumn("\(tableData[row][2])", col:3, width:screenWidth)
             cell.setValueForColumn("\(tableData[row][3])", col:4, width:screenWidth)
+        }
+        
+        if(row % 2 == 0) {
+            cell.backgroundColor = UIColor.lightGrayColor()
+        }
+            
+        else {
+            cell.backgroundColor = UIColor.whiteColor()
         }
         
         return cell
