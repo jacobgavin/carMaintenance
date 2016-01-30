@@ -24,9 +24,9 @@ class MainJson
     var sessieId : String = ""
     var appleID : String = "IOS_01_V001"
     let siteUrl = "http://92.66.29.229/api/"
-    let vestiging = "V001"
-    let date1 = "2015-01-01T00:00:00"
-    let date2 = "2015-08-19T00:00:00"
+    var vestiging = "V001"
+    let date1 = "2014-01-01T00:00:00"
+    let date2 = "2016-08-19T00:00:00"
     var ingeklokt = false
     var actDetails: String = ""
     
@@ -50,6 +50,10 @@ class MainJson
         sessieId = getSessieId()
         getMonteurs(sessieId)
         //getWerkorder(sessieId)
+    }
+    
+    func setVestiging(v:String){
+        vestiging = v
     }
     
     func setAppleID(appleid : String)
@@ -171,6 +175,41 @@ class MainJson
             }
         }
         return monteurs
+    }
+    
+    func getBeschikbareVestigingen(sessieId : String) -> Array<BeschikbareVestiging>
+    {
+        var vestigingen = ""
+        connectie.post(siteUrl+"WinCar/GetBeschikbareVestigingen?sessieId=\(sessieId)")
+            {
+                (result) -> Void in
+                if let response = result as? String
+                {
+                    vestigingen = response
+                }
+        }
+        while(vestigingen == ""){}
+        return jsonNaarBeschikbareVestigingen(vestigingen)
+        
+    }
+    
+    
+    func jsonNaarBeschikbareVestigingen(vestigingenJson : String) -> Array<BeschikbareVestiging>
+    {
+        var vestigingenLijst : Array<BeschikbareVestiging> = Array<BeschikbareVestiging>()
+        
+        if let json = vestigingenJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            for(_, object) in json2
+            {
+                let vestiging = BeschikbareVestiging.build(object)
+                vestigingenLijst.append(vestiging!)
+                print(vestiging!.id,vestiging!.naam)
+            }
+        }
+        return vestigingenLijst
+        
     }
     
     func getWerkorder(sessieID: String, monteurCode: String) -> Array <WerkorderDetail>

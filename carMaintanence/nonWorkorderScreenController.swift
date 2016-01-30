@@ -71,7 +71,10 @@ class nonWorkorderScreenController: UIViewController {
             werkOrderLabel.text = "Nog niet ingeklokt"
         } else{
             werkOrderLabel.text = "Ingeklokt op werkorder \(huidigeWerkorder[0]) (\(huidigeWerkorder[1]))"
-            werkOrderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
+            if (huidigeWerkorder[0] as! Int == werkorder[0]as! Int)
+            {
+                werkOrderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
+            }
         }
         setLayout()
     }

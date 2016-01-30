@@ -19,7 +19,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     
     
     var monteurs: Array<Monteur> = []
-    let mainJson : MainJson  = MainJson()
+    var mainJson : MainJson  = MainJson()
     var Pincodes = ["1111","2345","3456","4567","5678"]
     var appleID = ""
     

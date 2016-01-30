@@ -13,7 +13,6 @@ class TableActivity: UITableViewCell {
     var column1: String = ""
     var column2: String = ""
     var column3: String = ""
-    var exist: Bool = false
     var newLabel1: UILabel!
     var newLabel2: UILabel!
     var newLabel3: UILabel!
@@ -82,7 +81,6 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var titleOfActivity: UITextField!
     @IBOutlet weak var loggedInAtLabel: UILabel!    
     @IBOutlet weak var terugButton: UIButton!    
-    @IBOutlet weak var loggedInAtLabel: UILabel!  
     @IBOutlet weak var imprurenButton: UIButton!  
     @IBOutlet weak var internBerichtView: UITextView! 
     @IBOutlet weak var backButton: UIButton!  // not implemented

@@ -36,6 +36,8 @@
 		D5F1BDA61C3EA16600BF4472 /* MainJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA51C3EA16600BF4472 /* MainJson.swift */; };
 		D5F1BDA81C3EA1A100BF4472 /* Monteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */; };
 		D5F1BDAA1C3EA1BD00BF4472 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */; };
+		D5F634DE1C5D69CC00E2AA46 /* instellingenSchermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F634DD1C5D69CB00E2AA46 /* instellingenSchermViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D5F634E01C5D6A3600E2AA46 /* BeschikbareVestiging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F634DF1C5D6A3600E2AA46 /* BeschikbareVestiging.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		D5F1BDA51C3EA16600BF4472 /* MainJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainJson.swift; sourceTree = "<group>"; };
 		D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monteur.swift; sourceTree = "<group>"; };
 		D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D5F634DD1C5D69CB00E2AA46 /* instellingenSchermViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = instellingenSchermViewController.swift; sourceTree = "<group>"; };
+		D5F634DF1C5D6A3600E2AA46 /* BeschikbareVestiging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeschikbareVestiging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 				D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */,
 				D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */,
 				D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */,
+				D5F634DD1C5D69CB00E2AA46 /* instellingenSchermViewController.swift */,
+				D5F634DF1C5D6A3600E2AA46 /* BeschikbareVestiging.swift */,
 				D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */,
 				D5F1BDA51C3EA16600BF4472 /* MainJson.swift */,
 				D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */,
@@ -327,9 +333,11 @@
 				D555BF4A1C5155D70085179F /* activitiesJSONDetails.swift in Sources */,
 				D5F1BDAA1C3EA1BD00BF4472 /* SwiftyJSON.swift in Sources */,
 				D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */,
+				D5F634DE1C5D69CC00E2AA46 /* instellingenSchermViewController.swift in Sources */,
 				D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */,
 				D574E7191C4EA19A00C64BDC /* camera.swift in Sources */,
 				D593346B1C4D7D7500E4977E /* WerkOrderActiviteit.swift in Sources */,
+				D5F634E01C5D6A3600E2AA46 /* BeschikbareVestiging.swift in Sources */,
 				D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */,
 				D555BF4C1C524E510085179F /* Artikel.swift in Sources */,
 				D5F1BDA41C3EA13D00BF4472 /* Connectie.swift in Sources */,
