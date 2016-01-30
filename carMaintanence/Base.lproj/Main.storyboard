@@ -2002,10 +2002,7 @@ uren klokken</string>
 uren klokken</string>
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="a39-sP-462" kind="show" identifier="ordersNaarNonWork" id="COu-0m-ikt"/>
-                                </connections>
-                            </button>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Ingeklokt op werkorder 1460 (9-ZKR-3)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2j-11-ovR">
                                 <rect key="frame" x="9" y="14" width="399" height="68"/>
                                 <animations/>
@@ -2569,39 +2566,6 @@ uren klokken</string>
                                         <include reference="uZQ-IS-cnR"/>
                                     </mask>
                                 </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jbq-Lf-aUk">
-                                <rect key="frame" x="272" y="14" width="140" height="68"/>
-                                <color key="backgroundColor" red="0.12941176469999999" green="0.66274509800000003" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="Fg0-Pr-qk5"/>
-                                    <constraint firstAttribute="width" constant="140" id="H6C-fM-PsC"/>
-                                    <constraint firstAttribute="width" constant="104" id="uUy-WW-mK5">
-                                        <variation key="widthClass=regular" constant="81"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Uitklokken">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Fg0-Pr-qk5"/>
-                                        <exclude reference="uUy-WW-mK5"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="466" y="14" width="125" height="68"/>
-                                    <mask key="constraints">
-                                        <exclude reference="Fg0-Pr-qk5"/>
-                                        <exclude reference="H6C-fM-PsC"/>
-                                        <include reference="uUy-WW-mK5"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="logOut:" destination="Az3-17-0Y4" eventType="touchUpInside" id="Z7T-nR-M4A"/>
-                                    <segue destination="udg-xO-p58" kind="show" identifier="logOutFromActivity" id="NTZ-Hq-dVj"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="nXU-n9-JLa">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
