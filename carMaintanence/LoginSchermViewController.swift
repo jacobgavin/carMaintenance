@@ -56,6 +56,7 @@ class LoginSchermViewController: UIViewController {
         if (segue.identifier == "loginNaarWerkorders"){
             let woc = segue.destinationViewController as! WerkOrderController
             woc.mainJson = mainJson
+            woc.monteurCode = monteur.code
         }
     }
     

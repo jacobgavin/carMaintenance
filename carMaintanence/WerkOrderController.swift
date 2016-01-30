@@ -5,16 +5,23 @@
 //
 //  Created by vmware on 05/11/15.
 //  Copyright © 2015 vmware. All rights reserved.
-//
 
 import UIKit
 
 
 class TableViewCellForActivity: UITableViewCell {
-    
+    var exist: Bool = false
+    var newLabel1: UILabel!
+    var newLabel2: UILabel!
+    var newLabel3: UILabel!
+    var newLabel4: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -24,55 +31,47 @@ class TableViewCellForActivity: UITableViewCell {
     
     
     func setValueForColumn(string: String, col:Int, width:CGFloat) {
+        
         if (col==1) {
-            let newLabel = UILabel(frame: CGRectMake(0.0, 14.0, width*0.1, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            if( self.contentView.subviews.count == 1)
-            {
-            self.contentView.subviews[0].hidden = true
-            }
-            self.contentView.addSubview(newLabel)
+            newLabel1 = UILabel(frame: CGRectMake(0.0, 14.0, width*0.1, 30.0))
+            newLabel1.numberOfLines = 0
+            newLabel1.text = string
+            exist = true
+            self.addSubview(newLabel1)
         }
         if (col==2) {
-            let newLabel = UILabel(frame: CGRectMake(width*0.1, 14.0, width*0.15, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            
-            if( self.contentView.subviews.count == 2)
-                {
-                    self.contentView.subviews[1].hidden = true
-                  //  self.contentView.subviews[1].removeFromSuperview()
-            }
-            self.contentView.addSubview(newLabel)
+            newLabel2 = UILabel(frame: CGRectMake(width*0.1, 14.0, width*0.15, 30.0))
+            newLabel2.numberOfLines = 0
+            newLabel2.text = string
+            exist = true
+            self.addSubview(newLabel2)
             
         }
         if (col==3) {
-            let newLabel = UILabel(frame: CGRectMake(width*0.25, 14.0, width*0.3, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            if( self.contentView.subviews.count == 3)
-            {
-                self.contentView.subviews[2].hidden = true
-              //  self.contentView.subviews[2].removeFromSuperview()
-            }
-          
-            self.contentView.addSubview(newLabel)
+            newLabel3 = UILabel(frame: CGRectMake(width*0.25, 14.0, width*0.3, 30.0))
+            newLabel3.numberOfLines = 0
+            newLabel3.text = string
+            exist = true
+            self.addSubview(newLabel3)
         }
         if (col==4) {
-            let newLabel = UILabel(frame: CGRectMake(width*0.55, 14.0, width*0.45, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-
-            if( self.contentView.subviews.count == 4)
-            {
-                self.contentView.subviews[3].hidden = true
-                self.contentView.subviews[3].removeFromSuperview()
-            }
-            self.contentView.addSubview(newLabel)
+            newLabel4 = UILabel(frame: CGRectMake(width*0.55, 14.0, width*0.45, 30.0))
+            newLabel4.numberOfLines = 0
+            newLabel4.text = string
+            exist = true
+            self.addSubview(newLabel4)
         }
-        
+    
     }
+    
+    func updateValueForColumn(string: Array<String>) {
+        
+        self.newLabel1.text = string[0]
+        self.newLabel2.text = string[1]
+        self.newLabel3.text = string[2]
+        self.newLabel4.text = string[3]
+    }
+    
 }
 
 
@@ -83,33 +82,43 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var voertuigLabel: UILabel!
     @IBOutlet weak var kentekenLabel: UILabel!
     @IBOutlet weak var omschrijvingLabel: UILabel!
-    @IBOutlet weak var werkorderLabel: UILabel!
+    @IBOutlet weak var ingekloktOpLabel: UILabel!
     
     var mainJson :MainJson = MainJson()
     var werkOrderDetails :Array<WerkorderDetail> = []
     var tableData: Array <Array <Any>> = []
     var screenWidth: CGFloat = 0.0
     var selectedOrder = 0
-    var werkorder: Array<Any> = []
+    var monteurCode: String = ""
+    
+    var currentWorkOrder: Array<Any> = [] // [15346, "VR-782-L", "FORD Transit", "Gereedmaken t.b.v. Verkoop other"]
+    
+    var cells: Array <Any> = []
+    
+    @IBOutlet weak var otherWorkOrderButton: UIButton!
+    @IBOutlet weak var myWorkOrderButton: UIButton!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        if (werkorder.count == 0){
-            werkorderLabel.text = "Nog niet ingeklokt"
-        }
-        else{
-            werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
-        }
         tableViewContainer.delegate = self
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
-        tableData = [] // illustration only
         screenWidth = self.view.frame.size.width
+        // print(currentWorkOrder)
+        
+        if (currentWorkOrder.count > 1) {
+            ingekloktOpLabel.text = "Ingeklokt op werkorder \(currentWorkOrder[0]) (\(currentWorkOrder[1]))"
+        }else
+        {
+            ingekloktOpLabel.text = "Niet ingeklokt op een werkorder"
+        }
         getUserData(true)
-    
+  
     }
     
+
     // brief: geheugenmanagement. laat de IPad zelf het management doen
     // reason to be called: geheugen raakt vol
     // Params: none
@@ -131,32 +140,44 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func myWorkOrdersButton(sender: UIButton) {
+        myWorkOrderButton.backgroundColor = UIColor.blackColor()
+        otherWorkOrderButton.backgroundColor = UIColor(red: 48.0/255.0, green: 42.0/255.0, blue: 42.0/255.0, alpha: 1.0)
         getUserData(true)
     }
     
     
     @IBAction func otherWorkOrdersButton(sender: UIButton) {
+        otherWorkOrderButton.backgroundColor = UIColor.blackColor()
+        myWorkOrderButton.backgroundColor = UIColor(red: 48.0/255.0, green: 42.0/255.0, blue: 42.0/255.0, alpha: 1.0)
         getUserData(false)
     }
     
     func getUserData (myWorkOrder: Bool) {
-        // get user id
+        // empty the tableData
         tableData = []
-        if (myWorkOrder) {
-            werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
+        
+        //for view in tableViewContainer.subviews {
+        //    view.removeFromSuperview()
+        //}
+        
+        // get user id
+        if (myWorkOrder == true) {
+            werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId(), monteurCode: monteurCode)
             for d in werkOrderDetails {
                 tableData.append([d.nummer, d.kenteken, d.merk+" "+d.model, d.omschrijving])
             }
         }
-        else {
-            werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId())
+        if (myWorkOrder == false) {
+            werkOrderDetails = mainJson.getOtherWerkorders(mainJson.getSessieId(), monteurCode: monteurCode)
             for d in werkOrderDetails {
-                tableData.append(["other", "other", "other", "other"])
+                tableData.append([d.nummer, d.kenteken, d.merk+" "+d.model, d.omschrijving + " other"])
             }
-            
         }
+        
+        
         self.tableViewContainer.reloadData()
     }
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedOrder = indexPath.row
@@ -168,22 +189,41 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
         
         let row = indexPath.row
-        print(tableData)
-        cell.setValueForColumn("\(tableData[row][0])", col:1, width:screenWidth)
-        cell.setValueForColumn("\(tableData[row][1])", col:2, width:screenWidth)
-        cell.setValueForColumn("\(tableData[row][2])", col:3, width:screenWidth)
-        cell.setValueForColumn("\(tableData[row][3])", col:4, width:screenWidth)
+        if (cell.exist) {
+            cell.newLabel1.text = "\(tableData[row][0])"
+            cell.newLabel2.text = "\(tableData[row][1])"
+            cell.newLabel3.text = "\(tableData[row][2])"
+            cell.newLabel4.text = "\(tableData[row][3])"
+        }
+        else {
+            cell.setValueForColumn("\(tableData[row][0])", col:1, width:screenWidth)
+            cell.setValueForColumn("\(tableData[row][1])", col:2, width:screenWidth)
+            cell.setValueForColumn("\(tableData[row][2])", col:3, width:screenWidth)
+            cell.setValueForColumn("\(tableData[row][3])", col:4, width:screenWidth)
+        }
+        
+        if(row % 2 == 0) {
+            cell.backgroundColor = UIColor.lightGrayColor()
+        }
+            
+        else {
+            cell.backgroundColor = UIColor.whiteColor()
+        }
+        
         return cell
     }
+    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "werkordersNaarWerkorder")
         {
             let lsvc = segue.destinationViewController as! WerkOrderViewController
-            lsvc.huidigeWerkorder = werkorder
-            lsvc.werkorder  = tableData[selectedOrder
-            ]
-            print( tableData[selectedOrder][1])
+
+            lsvc.werkorder  = tableData[selectedOrder]
+            lsvc.monteurCode = monteurCode
             lsvc.mainJson = mainJson
+            lsvc.huidigeWerkorder = currentWorkOrder
+            print( tableData[selectedOrder][1])
         }
         if (segue.identifier == "ordersNaarNonWork") {
             let nac = segue.destinationViewController as! nonWorkorderScreenController

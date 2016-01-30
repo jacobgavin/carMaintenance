@@ -55,7 +55,8 @@ class MainJson
     func setAppleID(appleid : String)
     {
         if (appleIdCanBeRegistered == true){
-            appleID = appleid}
+            appleID = appleid
+        }
     }
     /*!
     * @brief Get the current session ID.
@@ -172,7 +173,7 @@ class MainJson
         return monteurs
     }
     
-    func getWerkorder(sessieID: String) -> Array <WerkorderDetail>
+    func getWerkorder(sessieID: String, monteurCode: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
         connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
@@ -182,10 +183,10 @@ class MainJson
             }
         }
         while(werkorders == ""){}
-        return jsonNaarWerkorderDetails(werkorders)
+        return jsonNaarWerkorderDetails(werkorders, monteurCode: monteurCode)
     }
     
-    func jsonNaarWerkorderDetails(werkOrderDetailsJson : String) -> Array <WerkorderDetail>
+    func jsonNaarWerkorderDetails(werkOrderDetailsJson : String, monteurCode: String) -> Array <WerkorderDetail>
     {
         var werkOrderDetails : Array<WerkorderDetail> = Array<WerkorderDetail>()
         
@@ -198,24 +199,69 @@ class MainJson
             {
                 
                 let werkOrderDetail = WerkorderDetail.build(object)
-
-                werkOrderDetails.append(werkOrderDetail!)
+                //print(werkOrderDetail!.kenteken)
+               
+                if (werkOrderDetail?.monteurCode == monteurCode) {
+                    werkOrderDetails.append(werkOrderDetail!)
+                }
                 
             }
             
         }
         
+        return werkOrderDetails
+    }
+    
+    
+    func getOtherWerkorders(sessieID: String, monteurCode: String) -> Array <WerkorderDetail>
+    {
+        var werkorders = ""
+        connectie.post(siteUrl+"WplWerkorder/GetOpVestiging?sessieId=\(sessieId)&vestiging=\(vestiging)&statusFilter=\(2)&datum=\(date1)&eindDatum=\(date2)") { (result) ->
+            Void in
+            if let constWerkorders = result as? String{
+                werkorders = constWerkorders
+            }
+            
+        }
+        while(werkorders == ""){}
+        return jsonOtherWerkorderDetails(werkorders, monteurCode: monteurCode)
+    }
+    
+    
+    
+    func jsonOtherWerkorderDetails(werkOrderDetailsJson : String, monteurCode: String) -> Array <WerkorderDetail>
+    {
+        var werkOrderDetails : Array<WerkorderDetail> = Array<WerkorderDetail>()
         
+        
+        if let json = werkOrderDetailsJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
+        {
+            let json2 = JSON(data: json) // NSData --> JSON object
+            
+            for(_,object) in json2
+            {
+                
+                let werkOrderDetail = WerkorderDetail.build(object)
+                //print(werkOrderDetail!.kenteken)
+                //print(werkOrderDetail?.monteurID)
+                if (werkOrderDetail?.monteurCode != monteurCode) {
+                    werkOrderDetails.append(werkOrderDetail!)
+                }
+                
+            }
+            
+        }
         
         return werkOrderDetails
     }
     
     
-    func getWerkOrderActiviteitenopKenteken(sessieID: String, var orderNummer: Int) -> WerkOrderActiviteit
+    func getWerkOrderActiviteitenopKenteken(sessieID: String, orderNummer: Int) -> WerkOrderActiviteit
     {
         var werkOrderActiviteiten = ""
-        connectie.post(siteUrl+"WplWerkorder/GetWerkorder?vestiging=\(self.vestiging)&ordernummer=\(orderNummer)&sessieId=\(sessieID)") {
-            (result) ->  Void in
+       
+        connectie.post(siteUrl+"WplWerkorder/GetWerkorder?vestiging=\(self.vestiging)&ordernummer=\(orderNummer)&sessieId=\(sessieID)") { (result) ->
+            Void in
             if let constWerkorderActiviteiten = result as? String{
                 werkOrderActiviteiten = constWerkorderActiviteiten
             }

@@ -12,13 +12,19 @@ class TableActivity: UITableViewCell {
     var column1: String = ""
     var column2: String = ""
     var column3: String = ""
+    var exist: Bool = false
+    var newLabel1: UILabel!
+    var newLabel2: UILabel!
+    var newLabel3: UILabel!
     var width: CGFloat = 0.0
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.width = self.layer.bounds.width
-        
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -32,23 +38,26 @@ class TableActivity: UITableViewCell {
         let cellWidth = self.layer.bounds.width
         
         if (col==1) {
-            let newLabel = UILabel(frame: CGRectMake(0, 0.0, cellWidth/4.0, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            self.contentView.addSubview(newLabel)
+            newLabel1 = UILabel(frame: CGRectMake(0, 0.0, cellWidth/4.0, 30.0))
+            newLabel1.numberOfLines = 0
+            newLabel1.text = string
+            exist = true
+            self.contentView.addSubview(newLabel1)
         }
         if (col==2) {
-            let newLabel = UILabel(frame: CGRectMake(cellWidth/4.0, 0.0, cellWidth/8.0, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            self.contentView.addSubview(newLabel)
+            newLabel2 = UILabel(frame: CGRectMake(cellWidth/4.0, 0.0, cellWidth/8.0, 30.0))
+            newLabel2.numberOfLines = 0
+            newLabel2.text = string
+            exist = true
+            self.contentView.addSubview(newLabel2)
             
         }
         if (col==3) {
-            let newLabel = UILabel(frame: CGRectMake(cellWidth/4.0+cellWidth/8.0, 0.0, 3*cellWidth/8.0, 30.0))
-            newLabel.numberOfLines = 0
-            newLabel.text = string
-            self.contentView.addSubview(newLabel)
+            newLabel3 = UILabel(frame: CGRectMake(cellWidth/4.0+cellWidth/8.0, 0.0, 3*cellWidth/8.0, 30.0))
+            newLabel3.numberOfLines = 0
+            newLabel3.text = string
+            exist = true
+            self.contentView.addSubview(newLabel3)
         }
         
     }
@@ -74,6 +83,10 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var terugButton: UIButton!
     @IBOutlet weak var backButton: UIButton!  // not implemented
     @IBOutlet weak var tableViewContainer: UITableView!
+    @IBOutlet weak var loggedInAtLabel: UILabel!   
+    @IBOutlet weak var terugButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!  // not implemented
+    @IBOutlet weak var tableViewContainer: UITableView! 
     @IBOutlet weak var headerForLabels: UICustomView!
     var cellWidth: CGFloat = 0.0
     
@@ -83,8 +96,6 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var activities: WerkOrderActiviteit = WerkOrderActiviteit()
     var mainJson: MainJson = MainJson()
     var sessionID: String = ""
-    
-
     // This array is populated with data and every nested array is one row containing
     // 3 different string or whatever
     var tableData = [["Verrichting 1",0.5,"APK met viergastest"],["Onderd. 1",1,"Sticker 'APK zonder afspraak'"],[3.1,3.2,3.3]] // illustration only
@@ -119,7 +130,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         setTableJsonData(activities)
 
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -134,7 +145,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 print(verr?.aantal)
                 print(verr?.artikelID)
                 print(verr?.omschrijving)
-                tableData.append([(verr?.artikelID)!, (verr?.aantal)!, (verr?.omschrijving)!])                
+                tableData.append([(verr?.artikelID)!, (verr?.aantal)!, (verr?.omschrijving)!])
             }
         }
         return tableData
@@ -161,13 +172,11 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableActivity
-        let row = indexPath.row
-
+        let row = indexPath.row      
         cell.setValueForColumn("\(tableData[row][0])", col:1)
         cell.setValueForColumn("\(tableData[row][1])", col:2)
         cell.setValueForColumn("\(tableData[row][2])", col:3)
         self.cellWidth = cell.layer.bounds.width
-        setHeaderLabels()
         
         if(row % 2 == 0) {
             cell.backgroundColor = UIColor.lightGrayColor()
@@ -177,6 +186,8 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.backgroundColor = UIColor.whiteColor()
         }
         
+        setHeaderLabels()
+
         return cell
         
     }

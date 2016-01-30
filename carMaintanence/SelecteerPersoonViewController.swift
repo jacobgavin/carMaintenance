@@ -32,7 +32,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         
         mainJson.setSessieID()
         monteurs = mainJson.getMonteurs(mainJson.getSessieId())
-        
+
         let defaults = NSUserDefaults.standardUserDefaults()
         if let savedAppleId = defaults.objectForKey("deviceAppleID"){
             appleID = savedAppleId as! String

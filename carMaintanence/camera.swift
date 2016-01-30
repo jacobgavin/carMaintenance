@@ -29,7 +29,6 @@ class CameraView: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         workField.text = work
     }
     
-    
     // brief: geheugenmanagement. laat de IPad zelf het management doen
     // reason to be called: geheugen raakt vol
     // Params: none
