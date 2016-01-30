@@ -137,12 +137,12 @@ class MainJson
 //        ]
         
         
-        var postData = NSMutableData(data: code.dataUsingEncoding(NSUTF8StringEncoding)!)
+        let postData = NSMutableData(data: code.dataUsingEncoding(NSUTF8StringEncoding)!)
         postData.appendData("&Id=\(id)".dataUsingEncoding(NSUTF8StringEncoding)!)
         postData.appendData("&Omschrijving=\(omschrijving)".dataUsingEncoding(NSUTF8StringEncoding)!)
         postData.appendData("&Code=\(code)".dataUsingEncoding(NSUTF8StringEncoding)!)
         
-        var dataBody = NSString(data: postData, encoding: NSUTF8StringEncoding) as! String
+        let dataBody = NSString(data: postData, encoding: NSUTF8StringEncoding) as! String
         var temp = ""
         
         

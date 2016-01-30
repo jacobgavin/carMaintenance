@@ -84,6 +84,9 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var omschrijvingLabel: UILabel!
     @IBOutlet weak var ingekloktOpLabel: UILabel!
     @IBOutlet weak var werkorderLabel: UILabel!
+    @IBOutlet weak var imprUrenButton: UIButton!
+    @IBOutlet weak var outklokkenButton: UIButton!
+
     
     var mainJson :MainJson = MainJson()
     var werkOrderDetails :Array<WerkorderDetail> = []
@@ -97,6 +100,33 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var otherWorkOrderButton: UIButton!
     @IBOutlet weak var myWorkOrderButton: UIButton!
 
+    func setLayout(){
+        let myColor : UIColor = UIColor.whiteColor()
+        let myWidth : CGFloat = 4
+        let myRadius : CGFloat = 10
+    
+        outklokkenButton.layer.cornerRadius = myRadius
+        outklokkenButton.layer.borderWidth = myWidth
+        outklokkenButton.layer.borderColor = myColor.CGColor
+        
+        imprUrenButton.layer.cornerRadius = myRadius
+        imprUrenButton.layer.borderWidth = myWidth
+        imprUrenButton.layer.borderColor = myColor.CGColor
+        
+        ingekloktOpLabel.layer.cornerRadius = myRadius
+        ingekloktOpLabel.layer.borderWidth = myWidth
+        ingekloktOpLabel.layer.borderColor = myColor.CGColor
+        
+        werkorderLabel.layer.cornerRadius = myRadius
+        werkorderLabel.layer.borderWidth = myWidth
+        werkorderLabel.layer.borderColor = myColor.CGColor
+        
+        otherWorkOrderButton.layer.cornerRadius = myRadius
+        myWorkOrderButton.layer.cornerRadius = myRadius
+        tableViewContainer.layer.cornerRadius = myRadius
+    }
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -122,7 +152,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             ingekloktOpLabel.text = "Niet ingeklokt op een werkorder"
         }
         getUserData(true)
-  
+        setLayout()
     }
     
     // brief: geheugenmanagement. laat de IPad zelf het management doen
