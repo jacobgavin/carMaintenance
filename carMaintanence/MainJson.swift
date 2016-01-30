@@ -167,9 +167,9 @@ class MainJson
                 //print(werkOrderDetail!.kenteken)
                 print("jsonNaarWerkorderDetails")
                 print(monteurCode)
-                print(werkOrderDetail?.monteurID)
-                if (werkOrderDetail?.monteurID == monteurCode) {
-                    print(werkOrderDetail?.monteurID)
+                print(werkOrderDetail?.monteurCode)
+                if (werkOrderDetail?.monteurCode == monteurCode) {
+                    print(werkOrderDetail?.monteurCode)
                     print("id was same")
                     print(monteurCode)
                     werkOrderDetails.append(werkOrderDetail!)
@@ -214,7 +214,7 @@ class MainJson
                 let werkOrderDetail = WerkorderDetail.build(object)
                 //print(werkOrderDetail!.kenteken)
                 //print(werkOrderDetail?.monteurID)
-                if (werkOrderDetail?.monteurID != monteurCode) {
+                if (werkOrderDetail?.monteurCode != monteurCode) {
                     werkOrderDetails.append(werkOrderDetail!)
                 }
                 
