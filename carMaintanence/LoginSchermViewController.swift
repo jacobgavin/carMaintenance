@@ -16,7 +16,6 @@ class LoginSchermViewController: UIViewController {
        
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        print(defaults.objectForKey("deviceAppleID") as! String)
         werknemerNaam.text = werknemerLabelTekst
         LogScreen.monteurCode = monteur.code
         // Setup the label for the employee and his pincode

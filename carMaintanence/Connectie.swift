@@ -56,7 +56,6 @@ class Connectie
         
         
     }
-
     func put(url:String, dataBody : String, completion: ((result:NSString?) -> Void)!)
     {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
@@ -87,10 +86,4 @@ class Connectie
         dataTask.resume()
     }
 }
-
-
-
-
-
-
-
+    

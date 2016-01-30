@@ -19,6 +19,7 @@ import Foundation
 */
 class MainJson
 {
+    let appleIdCanBeRegistered = false
     var connectie : Connectie
     var sessieId : String = ""
     var appleID : String = "IOS_01_V001"
@@ -53,7 +54,8 @@ class MainJson
     
     func setAppleID(appleid : String)
     {
-        appleID = appleid 
+        if (appleIdCanBeRegistered == true){
+            appleID = appleid}
     }
     /*!
     * @brief Get the current session ID.
@@ -196,6 +198,7 @@ class MainJson
             {
                 
                 let werkOrderDetail = WerkorderDetail.build(object)
+
                 werkOrderDetails.append(werkOrderDetail!)
                 
             }

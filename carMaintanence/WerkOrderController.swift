@@ -24,14 +24,6 @@ class TableViewCellForActivity: UITableViewCell {
     
     
     func setValueForColumn(string: String, col:Int, width:CGFloat) {
-//       
-//        let subViews: Array = self.contentView.subviews.
-//        for (var subview: NSView!) in subViews
-//        {
-//            subview.removeFromSuperview()
-//        }
-        
-        print(string)
         if (col==1) {
             let newLabel = UILabel(frame: CGRectMake(0.0, 14.0, width*0.1, 30.0))
             newLabel.numberOfLines = 0
@@ -41,8 +33,6 @@ class TableViewCellForActivity: UITableViewCell {
             self.contentView.subviews[0].hidden = true
             }
             self.contentView.addSubview(newLabel)
-            
-            
         }
         if (col==2) {
             let newLabel = UILabel(frame: CGRectMake(width*0.1, 14.0, width*0.15, 30.0))
@@ -73,13 +63,12 @@ class TableViewCellForActivity: UITableViewCell {
             let newLabel = UILabel(frame: CGRectMake(width*0.55, 14.0, width*0.45, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
+
             if( self.contentView.subviews.count == 4)
             {
                 self.contentView.subviews[3].hidden = true
                 self.contentView.subviews[3].removeFromSuperview()
             }
-           
-           
             self.contentView.addSubview(newLabel)
         }
         
@@ -94,14 +83,23 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var voertuigLabel: UILabel!
     @IBOutlet weak var kentekenLabel: UILabel!
     @IBOutlet weak var omschrijvingLabel: UILabel!
+    @IBOutlet weak var werkorderLabel: UILabel!
     
     var mainJson :MainJson = MainJson()
     var werkOrderDetails :Array<WerkorderDetail> = []
     var tableData: Array <Array <Any>> = []
     var screenWidth: CGFloat = 0.0
     var selectedOrder = 0
+    var werkorder: Array<Any> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (werkorder.count == 0){
+            werkorderLabel.text = "Nog niet ingeklokt"
+        }
+        else{
+            werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
+        }
         tableViewContainer.delegate = self
         tableViewContainer.dataSource = self
         
@@ -112,6 +110,10 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     
     }
     
+    // brief: geheugenmanagement. laat de IPad zelf het management doen
+    // reason to be called: geheugen raakt vol
+    // Params: none
+    // output: none
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -154,7 +156,6 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             
         }
         self.tableViewContainer.reloadData()
-        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -172,19 +173,22 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.setValueForColumn("\(tableData[row][1])", col:2, width:screenWidth)
         cell.setValueForColumn("\(tableData[row][2])", col:3, width:screenWidth)
         cell.setValueForColumn("\(tableData[row][3])", col:4, width:screenWidth)
-        
-        
-        
         return cell
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "werkordersNaarWerkorder")
         {
             let lsvc = segue.destinationViewController as! WerkOrderViewController
+            lsvc.huidigeWerkorder = werkorder
             lsvc.werkorder  = tableData[selectedOrder
             ]
             print( tableData[selectedOrder][1])
             lsvc.mainJson = mainJson
+        }
+        if (segue.identifier == "ordersNaarNonWork") {
+            let nac = segue.destinationViewController as! nonWorkorderScreenController
+            nac.mainJson = mainJson
+            nac.werkorder = werkorder
         }
     }
 }

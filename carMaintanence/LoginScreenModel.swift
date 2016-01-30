@@ -26,6 +26,7 @@ class LoginScreenModel {
     var pintry = ""
     var pinLabel = ""
     
+
     /*!
     *   @brief Sets a 'dot' to represent an entered pin-code.
     */

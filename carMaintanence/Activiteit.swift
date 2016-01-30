@@ -40,7 +40,6 @@ class Activiteit{
             if let omschrijving = json["Omschrijving"].string
             {
                 return Activiteit(
-
                     omschrijving : omschrijving,
                     artikels : artikels)
                 
