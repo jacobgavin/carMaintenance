@@ -49,7 +49,7 @@ class MainJson
     {
         sessieId = getSessieId()
         getMonteurs(sessieId)
-        getWerkorder(sessieId)
+        //getWerkorder(sessieId)
     }
     
     func setAppleID(appleid : String)

@@ -91,7 +91,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     var selectedOrder = 0
     var monteurCode: String = ""
     
-    var currentWorkOrder: Array<Any> = [] // [15346, "VR-782-L", "FORD Transit", "Gereedmaken t.b.v. Verkoop other"]
+    var werkorder: Array<Any> = []
     
     var cells: Array <Any> = []
     
@@ -108,10 +108,12 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         screenWidth = self.view.frame.size.width
         // print(currentWorkOrder)
         
-        if (currentWorkOrder.count > 1) {
-            ingekloktOpLabel.text = "Ingeklokt op werkorder \(currentWorkOrder[0]) (\(currentWorkOrder[1]))"
+        if (werkorder.count > 1) {
+            ingekloktOpLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
+            ingekloktOpLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
         }else
         {
+            
             ingekloktOpLabel.text = "Niet ingeklokt op een werkorder"
         }
         getUserData(true)
@@ -222,13 +224,13 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             lsvc.werkorder  = tableData[selectedOrder]
             lsvc.monteurCode = monteurCode
             lsvc.mainJson = mainJson
-            lsvc.huidigeWerkorder = currentWorkOrder
-            print( tableData[selectedOrder][1])
+            lsvc.huidigeWerkorder = werkorder
         }
         if (segue.identifier == "ordersNaarNonWork") {
             let nac = segue.destinationViewController as! nonWorkorderScreenController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
+            nac.huidigeWerkorder = werkorder
         }
     }
 }

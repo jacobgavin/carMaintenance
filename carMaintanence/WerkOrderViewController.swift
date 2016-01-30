@@ -122,9 +122,9 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if huidigeWerkorder.count == 0 {
-            huidigeWerkorder = werkorder
-        }
+//        if huidigeWerkorder.count == 0 {
+//            huidigeWerkorder = werkorder
+//        }
 
         setLayout()
         nummerBordLabel.text = (werkorder[1] as! String)
@@ -177,7 +177,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             let lsvc = segue.destinationViewController as! WerkOrderController
             lsvc.mainJson = mainJson
             lsvc.werkorder = huidigeWerkorder
-            lsvc.currentWorkOrder = huidigeWerkorder
+            lsvc.werkorder = huidigeWerkorder
             lsvc.monteurCode = monteurCode
             
         }
@@ -192,6 +192,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             let nac = segue.destinationViewController as! actController
             nac.mainJson = mainJson
             nac.werkorder = werkorder
+            nac.huidigeWerkorder = huidigeWerkorder
             // lsvc.monteurID = monteurID // implement in actController
         }
     }
