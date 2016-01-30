@@ -11,7 +11,18 @@ import UIKit
 class nonWorkorderScreenController: UIViewController {
     var mainJson: MainJson = MainJson()
     
+    @IBOutlet weak var Pauzebutton: UIButton!
+    
+    @IBOutlet weak var geenWerkButton: UIButton!
+    
+    @IBOutlet weak var halenButton: UIButton!
+    
+    @IBOutlet weak var vegenbutton: UIButton!
+    
     @IBOutlet weak var werkOrderLabel: UILabel!
+    
+    @IBOutlet weak var backButton: UIButton!
+    
     var werkorder: Array <Any> = []
     var vorigeScherm = ""
 //    @IBAction func Back(sender: UIButton) {
@@ -22,7 +33,38 @@ class nonWorkorderScreenController: UIViewController {
 //            performSegueWithIdentifier("nwNaarWo", sender: nil)
 //        }
 //    }
-    @IBOutlet weak var backButton: UIButton!
+
+    func setLayout(){
+        let myWidth : CGFloat = 4
+        let myRadius : CGFloat = 10
+        let myColor : UIColor = UIColor.whiteColor()
+        
+        backButton.layer.cornerRadius = myRadius
+        backButton.layer.borderWidth = myWidth
+        backButton.layer.borderColor = myColor.CGColor
+        
+        Pauzebutton.layer.cornerRadius = myRadius
+        Pauzebutton.layer.borderWidth = myWidth
+        Pauzebutton.layer.borderColor = myColor.CGColor
+        
+        vegenbutton.layer.cornerRadius = myRadius
+        vegenbutton.layer.borderWidth = myWidth
+        vegenbutton.layer.borderColor = myColor.CGColor
+        
+        geenWerkButton.layer.cornerRadius = myRadius
+        geenWerkButton.layer.borderWidth = myWidth
+        geenWerkButton.layer.borderColor = myColor.CGColor
+        
+        werkOrderLabel.layer.cornerRadius = myRadius
+        werkOrderLabel.layer.borderWidth = myWidth
+        werkOrderLabel.layer.borderColor = myColor.CGColor
+        
+        halenButton.layer.cornerRadius = myRadius
+        halenButton.layer.borderWidth = myWidth
+        halenButton.layer.borderColor = myColor.CGColor
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (werkorder.count == 0){
@@ -32,6 +74,8 @@ class nonWorkorderScreenController: UIViewController {
         else{
             werkOrderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
         }
+        setLayout()
+        
 //        print(vorigeScherm)
 //        print("hoi\n")
 //        if(vorigeScherm=="ac"){

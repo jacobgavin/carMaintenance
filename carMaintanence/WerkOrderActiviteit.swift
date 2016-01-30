@@ -38,7 +38,7 @@ class WerkOrderActiviteit{
         if let a = json["Activiteiten"].array
         {
             
-            var iets = JSON(a)
+            let iets = JSON(a)
             //     print(iets)
             for(_,object) in iets
             {
