@@ -9,6 +9,7 @@
 
 import UIKit
 class TableActivity: UITableViewCell {
+    var exist: Bool = false
     var column1: String = ""
     var column2: String = ""
     var column3: String = ""
@@ -35,12 +36,14 @@ class TableActivity: UITableViewCell {
             let newLabel = UILabel(frame: CGRectMake(0, 0.0, cellWidth/4.0, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
+            exist = true
             self.contentView.addSubview(newLabel)
         }
         if (col==2) {
             let newLabel = UILabel(frame: CGRectMake(cellWidth/4.0, 0.0, cellWidth/8.0, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
+            exist = true
             self.contentView.addSubview(newLabel)
             
         }
@@ -48,6 +51,7 @@ class TableActivity: UITableViewCell {
             let newLabel = UILabel(frame: CGRectMake(cellWidth/4.0+cellWidth/8.0, 0.0, 3*cellWidth/8.0, 30.0))
             newLabel.numberOfLines = 0
             newLabel.text = string
+            exist = true
             self.contentView.addSubview(newLabel)
         }
         
@@ -219,13 +223,15 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         let row = indexPath.row
         
-        
+        if(cell.exist == false){
         cell.setValueForColumn("\(tableData[row][0])", col:1)
         cell.setValueForColumn("\(tableData[row][1])", col:2)
         cell.setValueForColumn("\(tableData[row][2])", col:3)
         self.cellWidth = cell.layer.bounds.width
-        setHeaderLabels()
         
+ 
+        setHeaderLabels()
+        }
         if(row % 2 == 0) {
             cell.backgroundColor = UIColor.lightGrayColor()
         }
