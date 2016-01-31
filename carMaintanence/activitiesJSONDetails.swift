@@ -8,7 +8,15 @@
 
 import Foundation
 
-
+/*!
+*    @class ActivitiesDetail
+*
+*    @brief Deze klasse slaat de nodige informatie op can activiteit details.
+*
+*    @discussion Hij slaat de variabelen activiteiten, omschrijving, code en aantal op.
+*
+*
+*/
 class ActivitiesDetail{
     var activities : Array<Activiteit?> = Array<Activiteit?>()
     var omschrijving : String = ""

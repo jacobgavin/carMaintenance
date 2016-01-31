@@ -12,9 +12,9 @@ import Foundation
 
 /*!
 *    @class MainJson
-*    @brief This class handles all the API functions between the app and the server.
-*    @discussion This class contains all the functions that get information from the API.
-*    @warning TODO: apparaatid moet worden doorgegeven vanuit SelecteerpersoonView. Also un-hardcode Vestiging
+*    @brief Deze klasse handelt alle communicatie tussen de server en de app af
+*    @discussion Deze klasse heeft alle functies die informatie van de server krijgen.
+*    @warning TODO: apparaatid moet worden doorgegeven vanuit SelecteerpersoonView, die wordt daar al wel een aangemaakt. ook een un-hardcode Vestiging
 *   
 */
 class MainJson
@@ -33,13 +33,6 @@ class MainJson
     init()
     {
         connectie = Connectie()
-        
-        //     var werkOrderStatus = getWerkorderStatus(sessieId)
-        
-        // toJsonTest(werkOrderStatus)
-        // print(werkOrderStatus)
-        
-        // toJsonTest(getMonteurs(sessieId))
     }
     
     /*!
@@ -48,23 +41,28 @@ class MainJson
     func setSessieID()
     {
         sessieId = getSessieId()
-        getMonteurs(sessieId)
-        //getWerkorder(sessieId)
     }
     
+    /*!
+        @brief Slaat de vestiging op
+    */
     func setVestiging(v:String){
         vestiging = v
     }
     
+    /*!
+        @brief Slaat het apple ID op
+    */
     func setAppleID(appleid : String)
     {
         if (appleIdCanBeRegistered == true){
             appleID = appleid
         }
     }
+    
     /*!
-    * @brief Get the current session ID.
-    * @return returns the session ID as a String.
+    * @brief Krijgt het huidige sessie ID.
+    * @return returns de sessie ID als een String.
     */
     func getSessieId() -> String
     {
@@ -88,7 +86,7 @@ class MainJson
     
 
     /*!
-    * @brief Get all the Monteurs on the current vestiging.
+    * @brief krijgt alle Monteurs op de huidige vestiging.
     * 
     */
     func getMonteurs(sessieId: String) -> Array<Monteur>
@@ -107,7 +105,14 @@ class MainJson
         return jsonNaarMonteurs(monteurs)
     }
     
-    //geen json nodig voor response, server geeft direct al een boolean
+    /*!
+        @brief valideert de pincode voor een monteur hier heb je geen json voor nodig want het return true of false
+        @return true of false aan de hand van de juiste pincode of niet
+        @params sessieID is de huidige sessieID
+                monteurcode is de code van de monteur die geselecteerd is
+                vestiging is de vestiging gekozen(nu nog hardcoded)
+                pincode is de ingevoerde pincode
+    */
     func valideerPincodeVoorMonteur(sessieId : String, monteurCode : String, vestiging : String, pincode : String) -> Bool
     {
         var gevalideerd = false
@@ -128,15 +133,17 @@ class MainJson
         return gevalideerd
     }
     
+    /*!
+        @brief functie slaat een nieuwe activiteit op, op de server
+        @return none
+        @params kenteken is het kenteken waarvoor je een nieuwe activiteit aanmaakt
+                sessieID is het huidige sessieID
+                omschrijving is de meegegeven omschrijving door de monteur
+                id is de id die meegegeven moet worden voor de server
+                code is de company code in de api
+    */
     func opslaanActiviteit(kenteken: String, sessieId:String, omschrijving : String, id : Int, code : String )
     {
-//        let headers = [
-//            "code": code,
-//            "id": id,
-//            "omschrijving": omschrijving,
-//        ]
-        
-        
         let postData = NSMutableData(data: code.dataUsingEncoding(NSUTF8StringEncoding)!)
         postData.appendData("&Id=\(id)".dataUsingEncoding(NSUTF8StringEncoding)!)
         postData.appendData("&Omschrijving=\(omschrijving)".dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -145,30 +152,29 @@ class MainJson
         let dataBody = NSString(data: postData, encoding: NSUTF8StringEncoding) as! String
         var temp = ""
         
-        
-        //func put(url: String, dataBody: String, completion: ((result: NSString?) -> Void)!)
-        
         connectie.put(siteUrl + "WplWerkorder/MaakActiviteitUitServiceActie?kenteken="+kenteken+"&sessieId="+sessieId, dataBody: dataBody)
             {
                 (result) -> Void in
-                if let const = result
+                if let _ = result
                 {
-        //            gevalideerd = const.
                     temp = result as! String // if statement checkt de optional al dus dit kan veilig
                 }
         }
         while(temp == ""){}
-        print("LALALA"+temp)
-        
     }
     
+    /*!
+        @brief schrijft het object wat gekregen wordt van de server om naar een lijst van monteurs
+        @return een lijst van monteurs
+        @params een string van alle monteurs verkregen van de server
+    */
     func jsonNaarMonteurs(result : String) -> Array<Monteur>
     {
         var monteurs : Array<Monteur> = Array<Monteur>()
         if let json = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
         {
             let json2 = JSON(data: json) // NSData --> JSON object
-            for(index, object) in json2
+            for(_, object) in json2
             {
                 let monteur = Monteur.build(object)
                 monteurs.append(monteur!)
@@ -177,6 +183,11 @@ class MainJson
         return monteurs
     }
     
+    /*!
+        @brief vraagt de beschikbare vestigingen op aan de server
+        @return een array van de beschikbare vestigingen
+        @params SessieID is nodig om de beschikbare vestigingen op te vragen
+    */
     func getBeschikbareVestigingen(sessieId : String) -> Array<BeschikbareVestiging>
     {
         var vestigingen = ""
@@ -193,7 +204,11 @@ class MainJson
         
     }
     
-    
+    /*!
+        @brief de beschikbare vestigingen worden in een array gezet
+        @return een Array van beschikbare vestigingen
+        @params vestigingenJson is een string van alle beschikbare vestigingen
+    */
     func jsonNaarBeschikbareVestigingen(vestigingenJson : String) -> Array<BeschikbareVestiging>
     {
         var vestigingenLijst : Array<BeschikbareVestiging> = Array<BeschikbareVestiging>()
@@ -212,6 +227,13 @@ class MainJson
         
     }
     
+    /*!
+        @brief vraagt de werkorders op bij een vestiging
+        @return alle werkorders bij een vestiging in een lijst
+        @params sessieID is het huidige sessieID
+                monteurcode is de monteurcode van de ingelogde monteur
+        @TODO Datums zijn gehardcode, voor 2016 stonden er geen werkorders in
+    */
     func getWerkorder(sessieID: String, monteurCode: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
@@ -225,6 +247,12 @@ class MainJson
         return jsonNaarWerkorderDetails(werkorders, monteurCode: monteurCode)
     }
     
+    /*!
+        @brief schrijft de string met werkorders om naar een array van werkorderdetail
+        @return een array van werkorder details
+        @params WerkorderDetailsJson is een string van de informatie die op de server verkregen is
+                Monteurcode is een string van de code van de huidige monteur
+    */
     func jsonNaarWerkorderDetails(werkOrderDetailsJson : String, monteurCode: String) -> Array <WerkorderDetail>
     {
         var werkOrderDetails : Array<WerkorderDetail> = Array<WerkorderDetail>()
@@ -238,7 +266,6 @@ class MainJson
             {
                 
                 let werkOrderDetail = WerkorderDetail.build(object)
-                //print(werkOrderDetail!.kenteken)
                
                 if (werkOrderDetail?.monteurCode == monteurCode) {
                     werkOrderDetails.append(werkOrderDetail!)
@@ -251,7 +278,12 @@ class MainJson
         return werkOrderDetails
     }
     
-    
+    /*!
+        @brief vraagt de lijst op van overige werkorders, dit zijn alle werkorders die niet van de ingelogde monteur zijn, en geeft een array terug
+        @return een array van werkorderdetail
+        @params sessieID is het huidige sessieID
+                monteurCode is de monteurcode van de huidige monteur
+    */
     func getOtherWerkorders(sessieID: String, monteurCode: String) -> Array <WerkorderDetail>
     {
         var werkorders = ""
@@ -266,8 +298,12 @@ class MainJson
         return jsonOtherWerkorderDetails(werkorders, monteurCode: monteurCode)
     }
     
-    
-    
+    /*!
+        @brief Schrijft de string van werkorderdetails om naar een array
+        @return een array van werkorderdetails
+        @params WerkOrderDetailsJson is een string die op de server verkregen is met alle werkorders
+                monteurcode is de code van de huidige monteur
+    */
     func jsonOtherWerkorderDetails(werkOrderDetailsJson : String, monteurCode: String) -> Array <WerkorderDetail>
     {
         var werkOrderDetails : Array<WerkorderDetail> = Array<WerkorderDetail>()
@@ -281,8 +317,7 @@ class MainJson
             {
                 
                 let werkOrderDetail = WerkorderDetail.build(object)
-                //print(werkOrderDetail!.kenteken)
-                //print(werkOrderDetail?.monteurID)
+
                 if (werkOrderDetail?.monteurCode != monteurCode) {
                     werkOrderDetails.append(werkOrderDetail!)
                 }
@@ -294,7 +329,12 @@ class MainJson
         return werkOrderDetails
     }
     
-    
+    /*!
+        @brief Vraagt alle Activiteiten op bij een ordernummer
+        @return WerkOrderActiviteit waarin de activeiten bij een werkorder staan
+        @params sessieID is een string van het huidige sessieID
+                orderNummer is het rdernummer van de geselecteerde werkorder
+    */
     func getWerkOrderActiviteitenopKenteken(sessieID: String, orderNummer: Int) -> WerkOrderActiviteit
     {
         var werkOrderActiviteiten = ""
@@ -306,31 +346,35 @@ class MainJson
             }
         }
         while(werkOrderActiviteiten == ""){}
-        //print(werkOrderActiviteiten)
         return jsonNaarWerkorderActiviteiten(werkOrderActiviteiten)
     }
     
+    /*!
+        @brief Schrijft de string die verkregen is op de server om naar WerkOrderActiviteit
+        @return WerkOrderActiviteit waarin de activeiten bij een werkorder staan
+        @params WerkOrderDetailsJson is een string van de details van een werkorder
+    */
     func jsonNaarWerkorderActiviteiten(werkOrderDetailsJson : String) -> WerkOrderActiviteit
     {
         var werkOrderActiviteiten : WerkOrderActiviteit = WerkOrderActiviteit()
         
-        
         if let json = werkOrderDetailsJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
         {
             let json2 = JSON(data: json) // NSData --> JSON object
-            //for(index,object) in json2
-            //{
-                
-                if let werkOrderActiviteit = WerkOrderActiviteit.build(json2)
+            if let werkOrderActiviteit = WerkOrderActiviteit.build(json2)
                 {
                 werkOrderActiviteiten = werkOrderActiviteit
                 }
-            //}
-            
         }
         return werkOrderActiviteiten
     }
     
+    /*!
+        @brief  Vraagt de details op van activiteiten
+        @return ActivitiesDetail wat bestaat uit de details van activiteiten van een werkorder
+        @params sessieID is het huidige sessieID 
+                werkOrderNumber is het order nummer waarvan je de activiteiten wilt weten
+    */
     func getActivityDetails(sessieID: String, workOrderNumber: Int) -> ActivitiesDetail {
         var activities = ""
         connectie.post(siteUrl+"WplWerkorder/GetActiviteitDetails?sessieId=\(sessieID)&Werkordernummer=\(workOrderNumber)") { (result) ->
@@ -341,9 +385,13 @@ class MainJson
             }
         }
         return jsonToActivityDetails(activities)
-    
     }
     
+    /*!
+        @brief Schrijft de string met activiteitdetails om naar activitiesDetail
+        @return ActivitietsDetail
+        @params activityDetails is een string van de details van de activiteiten die op de server verkregen is
+    */
     func jsonToActivityDetails(activityDetails : String) -> ActivitiesDetail
     {
         var activities : ActivitiesDetail = ActivitiesDetail()
@@ -351,59 +399,12 @@ class MainJson
         if let json = activityDetails.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) // String --> NSData
         {
             let json2 = JSON(data: json) // NSData --> JSON object
-            //for(index,object) in json2
-            //{
-            
+
             if let activityJson = ActivitiesDetail.build(json2)
             {
                 activities = activityJson
             }
-            //}
-            
         }
-        
-        
-        
         return activities
     }
-    //    func getStandaardActiviteiten(sessieId: String) -> String
-    //    {
-    //    var standaardActiviteiten = ""
-    //        connectie.post(siteUrl + "WplWerkorder/GetStandaardActiviteiten?sessieId="+sessieId){ (result) ->
-    //            Void in
-    //            if let constActiviteiten = result as? String{
-    //                standaardActiviteiten = constActiviteiten
-    //            }
-    //        }
-    //        while(standaardActiviteiten == ""){}
-    //        return standaardActiviteiten
-    //    }
-    
-    //    func getWerkorderVestiging(sessieId: String) -> String werkt niet
-    //    {
-    //        var werkorderVestiging = ""
-    //        connectie.post(siteUrl + "WplWerkorder/GetOpVestiging?sessieId=" + sessieId + "&vestiging=V001&statusFilter=ONLINE"){ (result) ->
-    //            Void in
-    //            if let constWerkorderVestiging = result as? String{
-    //                werkorderVestiging = constWerkorderVestiging
-    //            }
-    //        }
-    //        while(werkorderVestiging == ""){}
-    //        return werkorderVestiging
-    //    }
-    
-    //    func getWerkorderStatus(sessieId: String) -> String
-    //    {
-    //        var werkorderStatus = ""
-    //        connectie.post(siteUrl+"WplWerkorder/GetWerkorderStatussen?sessieId=" + sessieId) { (result) ->
-    //            Void in
-    //            if let constWerkorderStatus = result as? String{
-    //                werkorderStatus = constWerkorderStatus
-    //            }
-    //        }
-    //        while(werkorderStatus == ""){}
-    //        return werkorderStatus
-    //    }
-    
-    
 }

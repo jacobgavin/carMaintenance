@@ -8,7 +8,15 @@
 
 import Foundation
 
-
+/*!
+*    @class Artikel
+*
+*    @brief Object voor Artikel. Heeft al de belangrijke informatie over Artikel
+*
+*    @discussion WerkOrderActiviteit heeft de variabelen: omschrijving, artikelID en aantal.
+*
+*
+*/
 class Artikel{
     
     var omschrijving : String = ""
@@ -27,7 +35,7 @@ class Artikel{
     class func build(json:JSON) -> Artikel?
     {
     
-        for(_,object) in json
+        for(_,_) in json
         {   
             if let omschrijving = json["Omschrijving"].string,
             let artikelID = json["ArtikelId"].string,

@@ -8,7 +8,15 @@
 
 import Foundation
 
-
+/*!
+*    @class WerkOrderActiviteit
+*
+*    @brief Object voor de WerkOrderactiviteit. Heeft al de belangrijke informatie over werkorderactiviteiten
+*
+*    @discussion WerkOrderActiviteit heeft de variabelen: activiteiten, omschrijving en kenteken.
+*
+*
+*/
 class WerkOrderActiviteit{
     var activiteiten : Array<Activiteit?> = Array<Activiteit>()
     var omschrijving : String = ""
