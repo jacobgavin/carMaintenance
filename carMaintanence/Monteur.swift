@@ -10,9 +10,9 @@ import Foundation
 /*!
 *    @class Monteur
 *    
-*    @brief Monteur is the main object for the users.
+*    @brief Monteur is het standaard object van gebruikers.
 *
-*    @discussion Monteur contains all the neccessary information like name, passcode and id, in order to login and start working.
+*    @discussion Monteur heeft al de belangrijke informatie: id, code en naam. Zodat ze kunnen beginnen met inklokken en werken
 *
 *
 */

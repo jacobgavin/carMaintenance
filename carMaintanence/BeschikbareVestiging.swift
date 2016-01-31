@@ -8,6 +8,15 @@
 
 import Foundation
 
+/*!
+*    @class beschikbareVestiging
+*
+*    @brief alle beschikbare vestigingen worden opgeslagen.
+*
+*    @discussion Beschikbare vestiging heeft de informatie: id en naam.
+*
+*
+*/
 class BeschikbareVestiging
 {
     var id : String = ""

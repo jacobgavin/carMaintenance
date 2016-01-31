@@ -9,10 +9,10 @@
 import UIKit
 
 
-/*
-Deze klasse hoort bij het loginscherm en slaat de ingedrukte pincode op om die op te slaan
-voor verifatie
-TODO: een button maken die ervoor zorgt dat je het laatste getal weer kan verwijderen, functie is er al wel in de loginscreenmodel, moet alleen een button bij die die functie aanroept
+/*!
+    @brief Deze klasse hoort bij het loginscherm en slaat de ingedrukte pincode op om die op te slaan
+    voor verifatie
+    @TODO: een button maken die ervoor zorgt dat je het laatste getal weer kan verwijderen, functie is er al wel in de loginscreenmodel, moet alleen een button bij die die functie aanroept
 */
 class LoginSchermViewController: UIViewController {
 
@@ -21,7 +21,7 @@ class LoginSchermViewController: UIViewController {
         
        
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        _ = NSUserDefaults.standardUserDefaults()
         werknemerNaam.text = monteur.naam
         LogScreen.monteurCode = monteur.code
         // Setup the label for the employee and his pincode
@@ -37,10 +37,11 @@ class LoginSchermViewController: UIViewController {
     var labelText = 0;
     var LogScreen = LoginScreenModel(monteurCode: "")
 
-    /*
-    Wanneer er op een knop gedrukt geeft zet deze het gedrukte getal in de pincode string.
-    Wanneer je 4 cijfers hebt ingevoerd (de pincode lengte) wordt de pincode naar het loginscherm model gestuurd voor verifatie van
-    de pincode
+    /*!
+    @brief Wanneer er op een knop gedrukt geeft zet deze het gedrukte getal in de pincode string.
+        Wanneer je 4 cijfers hebt ingevoerd (de pincode lengte) wordt de pincode naar het loginscherm model gestuurd voor verifatie van
+        de pincode
+    @params de knop waar je op hebt gedrukt
     */
     @IBAction func buttonClick(sender: UIButton) {
         let digit = sender.currentTitle! //get the value of the pressed number
@@ -57,16 +58,16 @@ class LoginSchermViewController: UIViewController {
             }
         }
     }
-    /*
-    Gaat terug naar het vorige scherm als er gedruktwordt op de knop monteurs
-    */
     
+    /*
+        @brief Gaat terug naar het vorige scherm als er gedruktwordt op de knop monteurs
+    */
     func goToMonteurs(){
         performSegueWithIdentifier("loginNaarWerkorders", sender: nil)
         }
     
     /*
-    *   Geeft de variabelen door aan het volgende scherm.
+    *   @brief Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
     *
@@ -83,6 +84,9 @@ class LoginSchermViewController: UIViewController {
         }
     }
     
+    /*!
+        @brief update de pincode op het scherm
+    */
     func updatePincode(){ //update the representation of the pincode
         pincodeLabel.text = LogScreen.getPinLabel()
     }

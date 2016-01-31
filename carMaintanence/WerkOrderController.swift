@@ -8,7 +8,13 @@
 
 import UIKit
 
-
+/*!
+*   @class TableViewCellForActivity
+*   @brief Tableview voor de workorders.
+*
+*   @discussion Deze class is de viewcontroller van de tabel in het WorkOrder scherm. Het zet maakt de tabel waar de werkorders in komen te staan.
+*
+*/
 class TableViewCellForActivity: UITableViewCell {
     var exist: Bool = false
     var newLabel1: UILabel!
@@ -29,7 +35,12 @@ class TableViewCellForActivity: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
+    /*!
+        @brief Deze functie maakt de verschillende kolommen in de tabel
+        @params string is de tekst die in de kolom komt te staan
+                col is het nummer van de kolom
+                width is de breedte van de kolom
+    */
     func setValueForColumn(string: String, col:Int, width:CGFloat) {
         
         if (col==1) {
@@ -64,6 +75,10 @@ class TableViewCellForActivity: UITableViewCell {
     
     }
     
+    /*!
+        @brief Deze functie update de tekst in de tabel
+        @params een Array vans trings wordt meegegeven en gebruikt om de tabel te vullen
+    */
     func updateValueForColumn(string: Array<String>) {
         
         self.newLabel1.text = string[0]
@@ -74,6 +89,13 @@ class TableViewCellForActivity: UITableViewCell {
     
 }
 
+/*!
+*   @class WerkOrderController
+*   @brief De controller van het werkorder scherm.
+*
+*   @discussion Deze klasse is de viewcontroller van het werkorderscherm. Het maakt de tabel waarje een werkorder kunt kiezen en het maakt de overige knoppen en opmaak
+*
+*/
 
 class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
@@ -100,6 +122,10 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var otherWorkOrderButton: UIButton!
     @IBOutlet weak var myWorkOrderButton: UIButton!
 
+    
+    /*!
+        @brief maakt de layout voor de knoppen. Maakt ze rond en geeft ze de goede rand en randkleur
+    */
     func setLayout(){
         let myColor : UIColor = UIColor.whiteColor()
         let myWidth : CGFloat = 4
@@ -124,24 +150,25 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         otherWorkOrderButton.layer.cornerRadius = myRadius
         myWorkOrderButton.layer.cornerRadius = myRadius
         tableViewContainer.layer.cornerRadius = myRadius
-    }
-    
-    
-    override func viewDidLoad() {
         
-        super.viewDidLoad()
         if (werkorder.count == 0){
             werkorderLabel.text = "Nog niet ingeklokt"
         }
         else{
             werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
         }
+    }
+    
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
         tableViewContainer.delegate = self
         tableViewContainer.dataSource = self
         
         tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
         screenWidth = self.view.frame.size.width
-        // print(currentWorkOrder)
         
         if (werkorder.count > 1) {
             ingekloktOpLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
@@ -155,10 +182,12 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         setLayout()
     }
     
-    // brief: geheugenmanagement. laat de IPad zelf het management doen
-    // reason to be called: geheugen raakt vol
-    // Params: none
-    // output: none
+    /*!
+        @brief: geheugenmanagement. laat de IPad zelf het management doen
+        @reason to be called: geheugen raakt vol
+        @Params: none
+        @output: none
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -175,28 +204,34 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         return tableData.count
     }
     
+    /*!
+        @brief wisselt de knop kleur als je myWorkOrdersButton indrukt
+        @params sender is de mijn werkorder button op het werkorderscherm
+    */
     @IBAction func myWorkOrdersButton(sender: UIButton) {
         myWorkOrderButton.backgroundColor = UIColor.blackColor()
         otherWorkOrderButton.backgroundColor = UIColor(red: 48.0/255.0, green: 42.0/255.0, blue: 42.0/255.0, alpha: 1.0)
         getUserData(true)
     }
     
-    
+    /*!
+    @brief wisselt de knop kleur als je otherWorkOrdersButton indrukt
+    @params sender is de andere werkorders button op het werkorderscherm
+    */
     @IBAction func otherWorkOrdersButton(sender: UIButton) {
         otherWorkOrderButton.backgroundColor = UIColor.blackColor()
         myWorkOrderButton.backgroundColor = UIColor(red: 48.0/255.0, green: 42.0/255.0, blue: 42.0/255.0, alpha: 1.0)
         getUserData(false)
     }
     
+    
+    /*!
+        @brief vult de tabel met of je eigen werkorders of de overige werkorders
+        @params myWorkOrder is true als de knop mijn werkorders is ingedrukt en false als je de overige werkorders button indrukt
+    */
     func getUserData (myWorkOrder: Bool) {
-        // empty the tableData
         tableData = []
-        
-        //for view in tableViewContainer.subviews {
-        //    view.removeFromSuperview()
-        //}
-        
-        // get user id
+
         if (myWorkOrder == true) {
             werkOrderDetails = mainJson.getWerkorder(mainJson.getSessieId(), monteurCode: monteurCode)
             for d in werkOrderDetails {
@@ -215,11 +250,23 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
+    /*!
+        @brief met deze functie ga je naar het volgende scherm. Hier wordt de werkorder waar je op klikt ook doorgegeven
+        @return none
+        @params tableview is de tableview waar je de informatie uithaalt
+                indexpath is de rij waar je op hebt geklikt in de tabel
+    */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedOrder = indexPath.row
         performSegueWithIdentifier("werkordersNaarWerkorder", sender: nil)
     }
     
+    /*!
+        @brief Deze functie maakt de tabel in het scherm en vult hem met de goede data
+        @return returned de tabel
+        @params tableView is de tabel die je gebruikt
+                cellForRowAtIndexPath is de index in welke rij de werkorders komen
+    */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableViewCellForActivity
@@ -281,5 +328,3 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 }
-
-

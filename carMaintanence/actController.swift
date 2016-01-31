@@ -9,7 +9,9 @@
 
 import UIKit
 /*!
+    @class TableActivity
     @brief deze klasse maakt de table view van de activiteiten
+    @discussion De tabel wordt gevuld met artikelen die nodig zijn voor de geselecteerde activiteit
 */
 class TableActivity: UITableViewCell {
     var exist: Bool = false
@@ -78,6 +80,7 @@ class TableActivity: UITableViewCell {
 }
 
 /*!
+    @actController
     @brief deze klasse zorgt voor de rest van de indeling van de view en zorgt ervoor dat alle knoppen werken
 */
 class actController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
@@ -198,6 +201,11 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.didReceiveMemoryWarning()
     }
     
+    /*!
+        @brief vult de tabel met de informatie van de server
+        @return een array met de activiteiten
+        @params activities zijn de activiteiten die bij een werkorder horen
+    */
     func setTableJsonData(activities: WerkOrderActiviteit) -> Array<Array<NSObject>> {
         tableData = []
         
@@ -217,7 +225,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     /*!
         @brief Als er op uitklokken wordt gedrukt ga je terug naar het inlogscherm
-        @output je komt bij het inlogscherm
+        @return je komt bij het inlogscherm
     */
     @IBOutlet weak var logOutButton: UIButton!
     @IBAction func logOut(sender: UIButton) {
@@ -232,7 +240,9 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     /*!
         @brief geeft de tableview het juiste aantal rijen
-        @output in de view wordt het aantal kolommen laten zien overeekomstig met de data op de server
+        @return het aantal activiteiten(rijen) in de tabel
+        @params tableview is de tabel met activiteiten
+                numbersOfRowsInSection is het aantal rijen
     */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
@@ -240,7 +250,9 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     /*!
         @brief zorgt ervoor dat elke cel van een rij gekoppeld wordt tot een rij
-        @output return per rij een cel die bestaat uit de hele rij
+        @return return per rij een cel die bestaat uit de hele rij
+        @params tableview is de tabel met activiteiten
+                indexPath is de index van de rij
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
@@ -265,7 +277,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     /*!
         @brief maakt de titels voor de kolommen
-        @output op het scherm zie je code, aantal en omschrijving boven een kolom staan
+        op het scherm zie je code, aantal en omschrijving boven een kolom staan
     */
     func setHeaderLabels () {
         // Sets the values for the headlines of table

@@ -9,7 +9,9 @@
 import UIKit
 
 /*!
+    @Class nonWorkOrderSreeController
     @brief deze klasse gaat over de improductieve uren
+    @discussion deze klasse zorgt ervoor dat je improductieve uren kan klokken en maakt het scherm erbij
     @TODO verbinden met de mainjson als er in de api improductieve uren geklokt kunnen worden, deze klasse doet verder nog niet veel
 */
 class nonWorkorderScreenController: UIViewController {
@@ -63,10 +65,6 @@ class nonWorkorderScreenController: UIViewController {
         halenButton.layer.borderWidth = myWidth
         halenButton.layer.borderColor = myColor.CGColor
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         if (huidigeWerkorder.count == 0){
             werkOrderLabel.text = "Nog niet ingeklokt"
         } else{
@@ -76,6 +74,11 @@ class nonWorkorderScreenController: UIViewController {
                 werkOrderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         setLayout()
     }
     
@@ -115,4 +118,3 @@ class nonWorkorderScreenController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
-

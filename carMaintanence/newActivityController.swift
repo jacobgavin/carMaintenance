@@ -9,7 +9,8 @@
 import UIKit
 
 /*
-    Laat een monteur een nieuwe activiteit aanmaken, je hebt alleen de omschrijving en de titel nodig
+    @Class newActivityController
+    @brief Laat een monteur een nieuwe activiteit aanmaken, je hebt alleen de omschrijving en de titel nodig
     TODO: In de api heb je geen titel nodig, dit is wel nodig volgens het strybord en moet dus nog aan de api toegevoegd worden
 */
 class newActivityController: UIViewController {
@@ -46,8 +47,8 @@ class newActivityController: UIViewController {
         mainJson.opslaanActiviteit("VR-786-L", sessieId: mainJson.getSessieId(), omschrijving: "lslkfjlskdjflksjfd",id: 42, code: "codeiets")
     }
     
-    /*
-        Maakt de layout voor het scherm met ronde knoppen en witte randen
+    /*!
+        @brief Maakt de layout voor het scherm met ronde knoppen en witte randen
     */
     func setLayout(){
         let myColor : UIColor = UIColor.whiteColor()
@@ -102,6 +103,9 @@ class newActivityController: UIViewController {
         setLayout()  
     }
     
+    /*!
+        @brief als je een omschrijving gaat invoeren verwijdert deze functie de standaard tekst
+    */
     func textViewDidBeginEditing(textview: UITextView){
         if (textview.text == "Omschrijving van de Activiteit"){
             textview.text = nil        
@@ -115,8 +119,8 @@ class newActivityController: UIViewController {
     
 
     
-    /*
-    *   Geeft de variabelen door aan het volgende scherm.
+    /*!
+    *   @brief Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
     *
@@ -133,6 +137,4 @@ class newActivityController: UIViewController {
             wovc.huidigeWerkorder = huidigeWerkorder
         }
     }
-    
-    
 }

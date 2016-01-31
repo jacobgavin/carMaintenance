@@ -9,7 +9,9 @@
 import UIKit
     
 /*!
-    Klasse laat de activiteiten zien die bij een geselecteerde workorder hoort
+    @class WerkOrderViewController
+    @brief Klasse laat de activiteiten zien die bij een geselecteerde workorder hoort
+    @discussion Deze klasse krijgt een werkorder van het vorige scherm en laat van deze werkorder de juiste activiteiten zien
 */
 
 class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
@@ -46,7 +48,8 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     @IBOutlet weak var textView: UITextView!
     
     /*!
-        Verandert the kleur van de inklokken button en de kleur van de werkorderlabel. Als je inklokken indrukt kun je hem niet meer opnieuw indrukken
+        @brief Verandert the kleur van de inklokken button en de kleur van de werkorderlabel. Als je inklokken indrukt kun je hem niet meer opnieuw indrukken
+        @params sender is de inklokken knop
         TODO: Api van inklokken ontbrak nog. Deze functie heb je hier nodig om in te klokken.
     */
     
@@ -60,8 +63,8 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
 
     
-    /*
-     Vult knoppen met informatie van de taken uit de werkorder
+    /*!
+        @brief Vult knoppen de knoppen met de informatie uit de werkorder
     */
     func vulKnoppenArray()
     {
@@ -80,8 +83,8 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         knoppenArray.addObject(knop);
     }
     
-    /*
-        Maakt de knoppen rond, en geeft er een witte border aan. Verandert ook kleuren naar of er ingeklokt is. De tekst wordt daar ook op aangepast
+    /*!
+        @brief Maakt de knoppen rond, en geeft er een witte border aan. Verandert ook kleuren naar of er ingeklokt is. De tekst wordt daar ook op aangepast
     */
     func setLayout() {
         let myColor : UIColor = UIColor.whiteColor()
@@ -161,7 +164,12 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
     
   
-    //aantal rijen in de tableView
+    /*!
+        @brief geeft het aantal rijen wat je nodig hebt in de table view
+        @return het aantal rijen in de tableview
+        @params tableview is de tableview waar de activiteiten inkomen
+                numbersOfRowsInSection is het aantal rijen
+    */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if(tableView == tabelView)
@@ -174,8 +182,8 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         return 0
     }
     
-    /*
-    *   Geeft de variabelen door aan het volgende scherm.
+    /*!
+    *   @brief Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
     *
@@ -210,8 +218,11 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
     
 
-   /*
-    cellen maken die goed opgevuld worden met de activiteiten die op de server staan
+   /*!
+        @brief cellen maken die goed opgevuld worden met de activiteiten die op de server staan
+        @params tableview is de tabelmet activiteiten
+                cellForRowAtIndexPath is de rij waar een activiteit komt te staan
+        @return de tabel met een toegevoegde rij met een activiteit
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -250,11 +261,12 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         return cell
     }
     
-    /*
-        Als er op een knop in de tabel gedrukt wordt, gaat hij naar het volgende scherm.
+    /*!
+        @brief Als er op een knop in de tabel gedrukt wordt, gaat hij naar het volgende scherm.
+        @params tableview is de tabel waar je op een knop hebt gedrukt
+                didSelectRowAtIndexPath is de rij die je hebt aangeklikt
     */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("\(indexPath.row) " + "was geselecteerd")
         if (indexPath.row == aantalKnoppen){
             performSegueWithIdentifier("naarNieuweActiviteit", sender: nil)
         } else {
@@ -262,8 +274,8 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         }
     }
     
-    /*
-        Geeft een donkerdere kleur terug.
+    /*!
+        @brief Geeft een donkerdere kleur terug.
     */
     func darkerColorForColor(color: UIColor) -> UIColor {
         var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0

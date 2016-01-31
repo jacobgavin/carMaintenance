@@ -9,19 +9,18 @@
 import UIKit
 /*!
 *    @class SelecteerPersoonViewController
-*    @brief ViewController of the user selection screen.
+*    @brief ViewController van het gebruiker selectie scherm.
 *    
-*    @discussion This class is the ViewController of the user selection screen. It gets all the Monteurs from the server, and displays their names in different tiles.
+*    @discussion Deze klasse is the ViewController van het gebruiker selctiescherm. Hij krijft allemonteurs van de server en laat de namen in vershillende velden zien.
 *
 */
 class SelecteerPersoonViewController: UICollectionViewController	 {
     var monteurs: Array<Monteur> = []
     var mainJson : MainJson  = MainJson()
-    var Pincodes = ["1111","2345","3456","4567","5678"]
     var appleID = ""
     
-    /**
-    *   Haalt de lijst van monteurs op.
+    /*!
+    *   @brief Haalt de lijst van monteurs op.
     */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +39,16 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
 //        monteurs = mainJson.getMonteurs(mainJson.getSessieId())
     }
 
-    /**
-    *   wordt aangeroepen door de app als het geheugen vol raakt
+    /*!
+    *   @brief wordt aangeroepen door de app als het geheugen vol raakt
     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    /**
-    *   Vertelt hoeveel cellen voor monteurs moeten worden gemaakt.
+    /*!
+    *   @brief Vertelt hoeveel cellen voor monteurs moeten worden gemaakt.
     * 
     *   Wordt aangeroepen door de app als het scherm wordt geladen.
     *
@@ -61,14 +60,14 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         return monteurs.count
     }
     
-    /**
-    *   opmaak van een monteurcel.
+    /*!
+    *   @brief opmaak van een monteurcel.
     *
     *   Wordt aangeroepen door de app als het scherm wordt geladen.
     *
     *   Maakt voor elke cell een button en een label met de naam van de monteur.
     *
-    *   TODO: als er foto's komen voor de monteurs moet je die hier instellen
+    *   @TODO: als er foto's komen voor de monteurs moet je die hier instellen
     *
     *   @Param collectionView           de collectionView waar de monteurs in komen te staan
     *   @param cellForItemAtPathIndex   Index van de op te maken cel
@@ -83,8 +82,8 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         return cell
     }
 
-    /*
-    *   Geeft de variabelen door aan het volgende scherm.
+    /*!
+    *   @brief Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
     *
@@ -107,4 +106,3 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     }
 
 }
-

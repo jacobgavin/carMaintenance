@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-/**
+/*!
 *   @class InstellingenSchermViewController
 *   @brief ViewController van het vestigingskeuze scherm.
 *
-*   @discussion Deze class is de ViewController va het vestigingskeuze scherm. Het haalt de beschikbare vestigingen op van de server en maakt een lijst met knoppen aan om een vestiging te kiezen.
+*   @discussion Deze class is de ViewController van het vestigingskeuze scherm. Het haalt de beschikbare vestigingen op van de server en maakt een lijst met knoppen aan om een vestiging te kiezen.
 *
 */
 
@@ -25,8 +25,8 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     
     @IBOutlet weak var tableView: UITableView!
 
-    /**
-    *   Haalt de lijst van beschikbare vestigingen op en roept de setup voor de layout aan.
+    /*!
+    *   @brief Haalt de lijst van beschikbare vestigingen op en roept de setup voor de layout aan.
     */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,8 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier:"cell")
     }
-    /**
-    *   wordt aangeroepen door de app als het geheugen vol raakt
+    /*!
+    *   @brief wordt aangeroepen door de app als het geheugen vol raakt
     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,8 +43,8 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     }
 
 
-    /**
-    *   Maakt de losse vestigingsknoppen.
+    /*!
+    *   @brief Maakt de losse vestigingsknoppen.
     *   
     *   Wordt aangeroepen door de app zodra het scherm wordt geladen.
     *
@@ -77,8 +77,8 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         return cell
     }
     
-    /**
-    *   Geeft het aantal cellen terug dat moet worden gemaakt gebaseerd op het aantal vestigingen.
+    /*!
+    *   @brief Geeft het aantal cellen terug dat moet worden gemaakt gebaseerd op het aantal vestigingen.
     *
     *   Wordt aangeroepen door de app als het scherm wordt geladen.
     *
@@ -91,7 +91,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         return vestigingenLijst.count
     }
     
-    /**
+    /*!
     *   Slaat de vestiging op in de mainJson.
     *
     *   Wordt aangeroepen door de app als er op een vestiging is geklikt.
@@ -105,10 +105,9 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         geselecteerdeVestiging  = vestigingenLijst[indexPath.row]
         mj.setVestiging(geselecteerdeVestiging!.id) //sla gekozen vestiging op in de mainJson.
         performSegueWithIdentifier("instellingenSchermNaarMonteurs", sender:nil)
-        print(geselecteerdeVestiging!.naam)
     }
     
-    /*
+    /*!
     *   Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen.
@@ -120,7 +119,6 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        print("click!")
         if (segue.identifier == "instellingenSchermNaarMonteurs")
         {
             let lsvc = segue.destinationViewController as! SelecteerPersoonViewController
