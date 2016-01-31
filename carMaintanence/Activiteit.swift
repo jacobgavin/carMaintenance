@@ -26,7 +26,7 @@ class Activiteit{
         if let a = json["Artikelen"].array
         {
             
-            var iets = JSON(a)
+            let iets = JSON(a)
             //     print(iets)
             for(_,object) in iets
             {
@@ -35,7 +35,7 @@ class Activiteit{
                 artikels.append(artikel)
             }
         }
-        for(_,object) in json
+        for(_,_) in json
         {
             if let omschrijving = json["Omschrijving"].string
             {

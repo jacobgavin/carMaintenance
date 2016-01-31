@@ -65,6 +65,7 @@ class newActivityController: UIViewController {
         
         //regNumberOfCar.text = regNum
 
+
         regNumberOfCar.text = (werkorder[1] as! String)
         regNumberOfCar.userInteractionEnabled = false
         
@@ -74,7 +75,6 @@ class newActivityController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setLayout()  
         //loggedInOnWorkOrder.text = "Ingeklokt op werkorder " + workOrder + "("+regNum+")"
     }
@@ -118,6 +118,16 @@ class newActivityController: UIViewController {
         mainJson.opslaanActiviteit("VR-786-L", sessieId: mainJson.getSessieId(), omschrijving: "lslkfjlskdjflksjfd",id: 42, code: "codeiets")
     }
     
+    /*
+    *   Geeft de variabelen door aan het volgende scherm.
+    *
+    *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
+    *
+    *   Short desciption of what variables are passed
+    *
+    *   @param segue    De verbinding tussen dit scherm en de volgende
+    *   @param sender   De oorzaak van het overgaan naar het volgende scherm
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "nieuweActiviteitNaarWerkorder"){
             let wovc = segue.destinationViewController as! WerkOrderViewController

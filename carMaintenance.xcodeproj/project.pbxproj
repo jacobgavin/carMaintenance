@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123631BF11A490045D8D4 /* WorkorderViewController.swift */; };
 		D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */; };
 		D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */; };
 		D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */; };
@@ -26,16 +25,16 @@
 		D593346D1C4D7DE500E4977E /* Activiteit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593346C1C4D7DE500E4977E /* Activiteit.swift */; };
 		D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */; };
 		D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */; };
-		D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */; };
 		D5ACB8A11BF12D810087C3E2 /* newActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */; };
-		D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */; };
-		D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */; };
 		D5D8BB011C3EA23A00951C11 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5D8BB001C3EA23A00951C11 /* Info.plist */; };
 		D5D8BBBD1C3FC8E800951C11 /* WerkOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */; };
 		D5F1BDA41C3EA13D00BF4472 /* Connectie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */; };
 		D5F1BDA61C3EA16600BF4472 /* MainJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA51C3EA16600BF4472 /* MainJson.swift */; };
 		D5F1BDA81C3EA1A100BF4472 /* Monteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */; };
 		D5F1BDAA1C3EA1BD00BF4472 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */; };
+		D5F634DE1C5D69CC00E2AA46 /* instellingenSchermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F634DD1C5D69CB00E2AA46 /* instellingenSchermViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D5F634E01C5D6A3600E2AA46 /* BeschikbareVestiging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F634DF1C5D6A3600E2AA46 /* BeschikbareVestiging.swift */; settings = {ASSET_TAGS = (); }; };
+		D5F634E21C5D724900E2AA46 /* WerkorderKnop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F634E11C5D724900E2AA46 /* WerkorderKnop.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +55,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D53123631BF11A490045D8D4 /* WorkorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkorderViewController.swift; sourceTree = "<group>"; };
 		D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nonWorkorderScreenController.swift; sourceTree = "<group>"; };
 		D54B3DCF1BCFA4E1009B9D9C /* carMaintanence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carMaintanence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,16 +78,16 @@
 		D593346C1C4D7DE500E4977E /* Activiteit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activiteit.swift; sourceTree = "<group>"; };
 		D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelecteerPersoonViewController.swift; sourceTree = "<group>"; };
 		D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrderViewController.swift; sourceTree = "<group>"; };
-		D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkorderKnop.swift; sourceTree = "<group>"; };
 		D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newActivityController.swift; sourceTree = "<group>"; };
-		D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrdersDummyViewController.swift; sourceTree = "<group>"; };
-		D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiviteitDummyViewController.swift; sourceTree = "<group>"; };
 		D5D8BB001C3EA23A00951C11 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkOrderController.swift; sourceTree = "<group>"; };
 		D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectie.swift; sourceTree = "<group>"; };
 		D5F1BDA51C3EA16600BF4472 /* MainJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainJson.swift; sourceTree = "<group>"; };
 		D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monteur.swift; sourceTree = "<group>"; };
 		D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D5F634DD1C5D69CB00E2AA46 /* instellingenSchermViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = instellingenSchermViewController.swift; sourceTree = "<group>"; };
+		D5F634DF1C5D6A3600E2AA46 /* BeschikbareVestiging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeschikbareVestiging.swift; sourceTree = "<group>"; };
+		D5F634E11C5D724900E2AA46 /* WerkorderKnop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WerkorderKnop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,32 +139,31 @@
 			isa = PBXGroup;
 			children = (
 				D54B3DD21BCFA4E1009B9D9C /* AppDelegate.swift */,
+				D5D8BB001C3EA23A00951C11 /* Info.plist */,
+				D5F634DD1C5D69CB00E2AA46 /* instellingenSchermViewController.swift */,
 				D59696BC1BE2828600E80805 /* SelecteerPersoonViewController.swift */,
-				D574E7161C4EA19A00C64BDC /* actController.swift */,
-				D574E7171C4EA19A00C64BDC /* camera.swift */,
 				D54B3DD41BCFA4E1009B9D9C /* LoginSchermViewController.swift */,
-				D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */,
 				D5D8BBBC1C3FC8E800951C11 /* WerkOrderController.swift */,
 				D53123651BF11B160045D8D4 /* nonWorkorderScreenController.swift */,
-				D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */,
 				D5ACB89C1BF129DC0087C3E2 /* WerkOrderViewController.swift */,
-				D5ACB89E1BF12A360087C3E2 /* WerkorderKnop.swift */,
+				D574E7161C4EA19A00C64BDC /* actController.swift */,
 				D5ACB8A01BF12D810087C3E2 /* newActivityController.swift */,
-				D5ACB8A41BF143160087C3E2 /* ActiviteitDummyViewController.swift */,
-				D5F1BDA51C3EA16600BF4472 /* MainJson.swift */,
-				D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */,
-				D5D8BB001C3EA23A00951C11 /* Info.plist */,
+				D574E7171C4EA19A00C64BDC /* camera.swift */,
 				D573361E1BE22FD700F51CBD /* Main.storyboard */,
-				D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */,
-				D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */,
-				D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */,
-				D593346C1C4D7DE500E4977E /* Activiteit.swift */,
-				D555BF4B1C524E510085179F /* Artikel.swift */,
-				D53123631BF11A490045D8D4 /* WorkorderViewController.swift */,
-				D593346A1C4D7D7500E4977E /* WerkOrderActiviteit.swift */,
-				D5ACB8A21BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift */,
+				D5F634DF1C5D6A3600E2AA46 /* BeschikbareVestiging.swift */,
+				D5F1BDA71C3EA1A100BF4472 /* Monteur.swift */,
+				D573361A1BE22CF500F51CBD /* LoginScreenModel.swift */,
+				D5F634E11C5D724900E2AA46 /* WerkorderKnop.swift */,
 				D574E7141C47B9ED00C64BDC /* WerkorderDetail.swift */,
+				D593346C1C4D7DE500E4977E /* Activiteit.swift */,
+				D593346A1C4D7D7500E4977E /* WerkOrderActiviteit.swift */,
+				D555BF4B1C524E510085179F /* Artikel.swift */,
+				D54B3DD91BCFA4E1009B9D9C /* Assets.xcassets */,
+				D5F1BDA51C3EA16600BF4472 /* MainJson.swift */,
+				D5F1BDA31C3EA13D00BF4472 /* Connectie.swift */,
+				D5F1BDA91C3EA1BD00BF4472 /* SwiftyJSON.swift */,
 				D555BF491C5155D70085179F /* activitiesJSONDetails.swift */,
+				D54B3DDB1BCFA4E1009B9D9C /* LaunchScreen.storyboard */,
 			);
 			path = carMaintanence;
 			sourceTree = "<group>";
@@ -326,21 +323,20 @@
 				D574E7151C47B9ED00C64BDC /* WerkorderDetail.swift in Sources */,
 				D555BF4A1C5155D70085179F /* activitiesJSONDetails.swift in Sources */,
 				D5F1BDAA1C3EA1BD00BF4472 /* SwiftyJSON.swift in Sources */,
+				D5F634E21C5D724900E2AA46 /* WerkorderKnop.swift in Sources */,
 				D59696BD1BE2828600E80805 /* SelecteerPersoonViewController.swift in Sources */,
+				D5F634DE1C5D69CC00E2AA46 /* instellingenSchermViewController.swift in Sources */,
 				D53123661BF11B160045D8D4 /* nonWorkorderScreenController.swift in Sources */,
 				D574E7191C4EA19A00C64BDC /* camera.swift in Sources */,
 				D593346B1C4D7D7500E4977E /* WerkOrderActiviteit.swift in Sources */,
+				D5F634E01C5D6A3600E2AA46 /* BeschikbareVestiging.swift in Sources */,
 				D54B3DD51BCFA4E1009B9D9C /* LoginSchermViewController.swift in Sources */,
 				D555BF4C1C524E510085179F /* Artikel.swift in Sources */,
 				D5F1BDA41C3EA13D00BF4472 /* Connectie.swift in Sources */,
 				D5F1BDA81C3EA1A100BF4472 /* Monteur.swift in Sources */,
-				D5ACB89F1BF12A360087C3E2 /* WerkorderKnop.swift in Sources */,
 				D54B3DD31BCFA4E1009B9D9C /* AppDelegate.swift in Sources */,
 				D5ACB89D1BF129DC0087C3E2 /* WerkOrderViewController.swift in Sources */,
-				D5ACB8A31BF13BB80087C3E2 /* WerkOrdersDummyViewController.swift in Sources */,
-				D53123641BF11A490045D8D4 /* WorkorderViewController.swift in Sources */,
 				D5D8BBBD1C3FC8E800951C11 /* WerkOrderController.swift in Sources */,
-				D5ACB8A51BF143160087C3E2 /* ActiviteitDummyViewController.swift in Sources */,
 				D573361B1BE22CF500F51CBD /* LoginScreenModel.swift in Sources */,
 				D574E7181C4EA19A00C64BDC /* actController.swift in Sources */,
 				D593346D1C4D7DE500E4977E /* Activiteit.swift in Sources */,

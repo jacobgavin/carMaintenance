@@ -19,7 +19,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     
     
     var monteurs: Array<Monteur> = []
-    let mainJson : MainJson  = MainJson()
+    var mainJson : MainJson  = MainJson()
     var Pincodes = ["1111","2345","3456","4567","5678"]
     var appleID = ""
     
@@ -29,10 +29,9 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     // output: none
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         mainJson.setSessieID()
         monteurs = mainJson.getMonteurs(mainJson.getSessieId())
-
         let defaults = NSUserDefaults.standardUserDefaults()
         if let savedAppleId = defaults.objectForKey("deviceAppleID"){
             appleID = savedAppleId as! String
@@ -76,10 +75,16 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         return cell
     }
 
-    // brief: geef de mainJson class en de gekozen monteur door naar het volgende scherm.
-    // reason to be called: er wordt op een monteur geklikt.
-    // Params: {de segue die is geactiveerd, de monteurButton die is aangeklikt}
-    // Return: nothing
+    /*
+    *   Geeft de variabelen door aan het volgende scherm.
+    *
+    *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
+    *
+    *   Short desciption of what variables are passed
+    *
+    *   @param segue    De verbinding tussen dit scherm en de volgende
+    *   @param sender   De oorzaak van het overgaan naar het volgende scherm
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("click!")
         if (segue.identifier == "monteursNaarLogin")

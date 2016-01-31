@@ -21,7 +21,6 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     
     //Knop rechtsboven voor wisselen van werkorder
   
-
     @IBOutlet weak var inklokKnop: UIButton!
     
     @IBOutlet weak var uitklokKnop: UIButton!
@@ -169,14 +168,21 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         return 0
     }
     
-
-    // Voorbereiding op doorgaan naar het volgende scherm. Onder ander de variabelen meegeven.
+    /*
+    *   Geeft de variabelen door aan het volgende scherm.
+    *
+    *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
+    *
+    *   Short desciption of what variables are passed
+    *
+    *   @param segue    De verbinding tussen dit scherm en de volgende
+    *   @param sender   De oorzaak van het overgaan naar het volgende scherm
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "orderNaarOrders1" || segue.identifier == "orderNaarOrders2")
         {
             let lsvc = segue.destinationViewController as! WerkOrderController
             lsvc.mainJson = mainJson
-            lsvc.werkorder = huidigeWerkorder
             lsvc.werkorder = huidigeWerkorder
             lsvc.monteurCode = monteurCode
             
@@ -221,7 +227,6 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             {
                 cell.backgroundColor = UIColor(red: 247/255,green:150/255,blue:70/255, alpha:1.0)
             }
-        
             cell.textLabel?.textAlignment = NSTextAlignment.Center
         }
         else // dan is het in het werkorder scherm de linker tabel
@@ -233,16 +238,11 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             cell.backgroundColor = UIColor(red: 79/255,green:129/255,blue:189/255, alpha:1.0)
             
-       //     let meldingView : UIImageView = UIImageView()
-      //      meldingView.image = UIImage(named: "melding.png")
-       //     cell.contentView.addSubview(meldingView)
-            
             cell.imageView!.image = UIImage(named: "melding.png" )
         }
         return cell
     }
     
-
     //Als er op een knop in de tabel gedrukt wordt, gaat hij naar het volgende scherm.
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("\(indexPath.row) " + "was geselecteerd")

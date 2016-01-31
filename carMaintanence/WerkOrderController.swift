@@ -83,6 +83,10 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var kentekenLabel: UILabel!
     @IBOutlet weak var omschrijvingLabel: UILabel!
     @IBOutlet weak var ingekloktOpLabel: UILabel!
+    @IBOutlet weak var werkorderLabel: UILabel!
+    @IBOutlet weak var imprUrenButton: UIButton!
+    @IBOutlet weak var outklokkenButton: UIButton!
+
     
     var mainJson :MainJson = MainJson()
     var werkOrderDetails :Array<WerkorderDetail> = []
@@ -90,17 +94,48 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     var screenWidth: CGFloat = 0.0
     var selectedOrder = 0
     var monteurCode: String = ""
-    
     var werkorder: Array<Any> = []
-    
     var cells: Array <Any> = []
-    
+
     @IBOutlet weak var otherWorkOrderButton: UIButton!
     @IBOutlet weak var myWorkOrderButton: UIButton!
+
+    func setLayout(){
+        let myColor : UIColor = UIColor.whiteColor()
+        let myWidth : CGFloat = 4
+        let myRadius : CGFloat = 10
+    
+        outklokkenButton.layer.cornerRadius = myRadius
+        outklokkenButton.layer.borderWidth = myWidth
+        outklokkenButton.layer.borderColor = myColor.CGColor
+        
+        imprUrenButton.layer.cornerRadius = myRadius
+        imprUrenButton.layer.borderWidth = myWidth
+        imprUrenButton.layer.borderColor = myColor.CGColor
+        
+        ingekloktOpLabel.layer.cornerRadius = myRadius
+        ingekloktOpLabel.layer.borderWidth = myWidth
+        ingekloktOpLabel.layer.borderColor = myColor.CGColor
+        
+        werkorderLabel.layer.cornerRadius = myRadius
+        werkorderLabel.layer.borderWidth = myWidth
+        werkorderLabel.layer.borderColor = myColor.CGColor
+        
+        otherWorkOrderButton.layer.cornerRadius = myRadius
+        myWorkOrderButton.layer.cornerRadius = myRadius
+        tableViewContainer.layer.cornerRadius = myRadius
+    }
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        if (werkorder.count == 0){
+            werkorderLabel.text = "Nog niet ingeklokt"
+        }
+        else{
+            werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
+        }
         tableViewContainer.delegate = self
         tableViewContainer.dataSource = self
         
@@ -117,10 +152,9 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             ingekloktOpLabel.text = "Niet ingeklokt op een werkorder"
         }
         getUserData(true)
-  
+        setLayout()
     }
     
-
     // brief: geheugenmanagement. laat de IPad zelf het management doen
     // reason to be called: geheugen raakt vol
     // Params: none
@@ -215,12 +249,20 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-
+    /*
+    *   Geeft de variabelen door aan het volgende scherm.
+    *
+    *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
+    *
+    *   Short desciption of what variables are passed
+    *
+    *   @param segue    De verbinding tussen dit scherm en de volgende
+    *   @param sender   De oorzaak van het overgaan naar het volgende scherm
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "werkordersNaarWerkorder")
         {
             let lsvc = segue.destinationViewController as! WerkOrderViewController
-
             lsvc.werkorder  = tableData[selectedOrder]
             lsvc.monteurCode = monteurCode
             lsvc.mainJson = mainJson
@@ -231,6 +273,11 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             nac.mainJson = mainJson
             nac.werkorder = werkorder
             nac.huidigeWerkorder = werkorder
+        }
+        if (segue.identifier == "ordersNaarNonWork") {
+            let nac = segue.destinationViewController as! nonWorkorderScreenController
+            nac.mainJson = mainJson
+            nac.werkorder = werkorder
         }
     }
 }
