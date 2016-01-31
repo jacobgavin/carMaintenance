@@ -15,18 +15,14 @@ import UIKit
 *
 */
 class SelecteerPersoonViewController: UICollectionViewController	 {
-    
-    
-    
     var monteurs: Array<Monteur> = []
     var mainJson : MainJson  = MainJson()
     var Pincodes = ["1111","2345","3456","4567","5678"]
     var appleID = ""
     
-    // brief: het opmaken van het scherm en het voorbereiden van de background
-    // reason to be called: het scherm wort geladen om op de Ipad te komen
-    // Params: none
-    // output: none
+    /**
+    *   Haalt de lijst van monteurs op.
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,38 +36,50 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
             defaults.setObject(appleID, forKey: "deviceAppleID")
         }
         mainJson.setAppleID(appleID)
-        mainJson.setSessieID()
-        monteurs = mainJson.getMonteurs(mainJson.getSessieId())
+//        mainJson.setSessieID()
+//        monteurs = mainJson.getMonteurs(mainJson.getSessieId())
     }
 
-    // brief: geheugenmanagement. laat de IPad zelf het management doen
-    // reason to be called: geheugen raakt vol
-    // Params: none
-    // output: none
+    /**
+    *   wordt aangeroepen door de app als het geheugen vol raakt
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    // brief: vertelt hoeveel cellen voor monteurs moeten worden gemaakt
-    // reason to be called: collectionView wil weten hoeveel cellen moeten worden gemaakt
-    // Params: {collectionview, numberofItemsInSection}
-    // output: aantal monteurs
+    /**
+    *   Vertelt hoeveel cellen voor monteurs moeten worden gemaakt.
+    * 
+    *   Wordt aangeroepen door de app als het scherm wordt geladen.
+    *
+    *   @param collectionview           De collectionView waar de monteurs in komen
+    *   @param numberofItemsInSection   Het standaard aantal cellen.
+    *   @return                         Het aantal cellen, gebaseerd op het aantal monteurs, dat in de collectionview moet komen.
+    */
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return monteurs.count
     }
     
-    // brief: opmaak van een monteurcel
-    // reason to be called: collectionView wil weten hoe de cellen eruit moeten zien
-    // Params: {collectionView, cellindex voor cell om op te maken}
-    // output: de opgemaakte monteurcel
+    /**
+    *   opmaak van een monteurcel.
+    *
+    *   Wordt aangeroepen door de app als het scherm wordt geladen.
+    *
+    *   Maakt voor elke cell een button en een label met de naam van de monteur.
+    *
+    *   TODO: als er foto's komen voor de monteurs moet je die hier instellen
+    *
+    *   @Param collectionView           de collectionView waar de monteurs in komen te staan
+    *   @param cellForItemAtPathIndex   Index van de op te maken cel
+    *   @return                         de opgemaakte monteurcel
+    */
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
         let Button = cell.viewWithTag(1) as! UILabel
         Button.text = monteurs[indexPath.row].naam
     
-
         return cell
     }
 
@@ -80,7 +88,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
     *
-    *   Short desciption of what variables are passed
+    *   Geeft de gekozen monteur en de mainJson door aan de LoginSchermViewController
     *
     *   @param segue    De verbinding tussen dit scherm en de volgende
     *   @param sender   De oorzaak van het overgaan naar het volgende scherm
@@ -95,8 +103,6 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
             let lsvc = segue.destinationViewController as! LoginSchermViewController
             lsvc.monteur = monteurs[indexPath.row]
             lsvc.mainJson = mainJson
-            
-         
         }
     }
 

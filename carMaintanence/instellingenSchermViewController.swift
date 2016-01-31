@@ -11,7 +11,7 @@ import UIKit
 
 /**
 *   @class InstellingenSchermViewController
-*   @brief ViewController van het vestigingskeuze scherm
+*   @brief ViewController van het vestigingskeuze scherm.
 *
 *   @discussion Deze class is de ViewController va het vestigingskeuze scherm. Het haalt de beschikbare vestigingen op van de server en maakt een lijst met knoppen aan om een vestiging te kiezen.
 *
@@ -26,7 +26,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     @IBOutlet weak var tableView: UITableView!
 
     /**
-    *   brief Haalt de lijst van beschikbare vestigingen op en roept de setup voor de layout aan
+    *   Haalt de lijst van beschikbare vestigingen op en roept de setup voor de layout aan.
     */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier:"cell")
     }
     /**
-    *   brief word aangeroepen als het geheugen vol raakt
+    *   wordt aangeroepen door de app als het geheugen vol raakt
     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,9 +48,9 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     *   
     *   Wordt aangeroepen door de app zodra het scherm wordt geladen.
     *
-    *   @param tableView                De tableView waar de cellen in komen te staan
-    *   @param cellForRowIndexAtPath    De index van de cell die moet worden opgemaakt
-    *   @return                         De cell met de juiste tekst en opmaak
+    *   @param tableView                De tableView waar de cellen in komen te staan.
+    *   @param cellForRowIndexAtPath    De index van de cell die moet worden opgemaakt.
+    *   @return                         De cell met de juiste tekst en opmaak.
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
@@ -78,13 +78,13 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     }
     
     /**
-    *   Geeft het aantal cellen terug dat moet worden gemaakt gebaseerd op het aantal vestigingen
+    *   Geeft het aantal cellen terug dat moet worden gemaakt gebaseerd op het aantal vestigingen.
     *
-    *   Wordt aangeroepen door de app als het scherm wordt geladen
+    *   Wordt aangeroepen door de app als het scherm wordt geladen.
     *
-    *   @param tableView                De tableView die de vestigingcellen heeft
-    *   @param numberOfRowsInSection    het huidige aantal rijen
-    *   @return                         het aantal rijen gelijk aan de vestigingen
+    *   @param tableView                De tableView die de vestigingcellen heeft.
+    *   @param numberOfRowsInSection    het huidige aantal rijen.
+    *   @return                         het aantal rijen gelijk aan de vestigingen.
     */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -96,8 +96,8 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     *
     *   Wordt aangeroepen door de app als er op een vestiging is geklikt.
     *
-    *   @param tableView            de tableView waarin de knoppen staan
-    *   @param didSelectRowAtIndex  de Index van de geselecteerde cel
+    *   @param tableView            de tableView waarin de knoppen staan.
+    *   @param didSelectRowAtIndex  de Index van de geselecteerde cel.
     */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
@@ -111,12 +111,12 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     /*
     *   Geeft de variabelen door aan het volgende scherm.
     *
-    *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
+    *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen.
     *
-    *   Geeft de mainJson door aan de SelecteerPersoonViewController
+    *   Geeft de mainJson door aan de SelecteerPersoonViewController.
     *
-    *   @param segue    De verbinding tussen dit scherm en de volgende
-    *   @param sender   De oorzaak van het overgaan naar het volgende scherm
+    *   @param segue    De verbinding tussen dit scherm en de volgende.
+    *   @param sender   De oorzaak van het overgaan naar het volgende scherm.
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
