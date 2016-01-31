@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*!
+/**
 *    @class WerkOrderActiviteit
 *
 *    @brief Object voor de WerkOrderactiviteit. Heeft al de belangrijke informatie over werkorderactiviteiten

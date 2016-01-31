@@ -7,7 +7,7 @@
 //
 
 import UIKit
-/*!
+/**
 *    @class SelecteerPersoonViewController
 *    @brief ViewController van het gebruiker selectie scherm.
 *    
@@ -19,7 +19,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
     var mainJson : MainJson  = MainJson()
     var appleID = ""
     
-    /*!
+    /**
     *   @brief Haalt de lijst van monteurs op.
     */
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
 //        monteurs = mainJson.getMonteurs(mainJson.getSessieId())
     }
 
-    /*!
+    /**
     *   @brief wordt aangeroepen door de app als het geheugen vol raakt
     */
     override func didReceiveMemoryWarning() {
@@ -47,7 +47,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         // Dispose of any resources that can be recreated.
     }
     
-    /*!
+    /**
     *   @brief Vertelt hoeveel cellen voor monteurs moeten worden gemaakt.
     * 
     *   Wordt aangeroepen door de app als het scherm wordt geladen.
@@ -60,7 +60,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         return monteurs.count
     }
     
-    /*!
+    /**
     *   @brief opmaak van een monteurcel.
     *
     *   Wordt aangeroepen door de app als het scherm wordt geladen.
@@ -82,7 +82,7 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         return cell
     }
 
-    /*!
+    /**
     *   @brief Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen

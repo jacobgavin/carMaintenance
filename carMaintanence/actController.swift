@@ -8,7 +8,7 @@
 //
 
 import UIKit
-/*!
+/**
     @class TableActivity
     @brief deze klasse maakt de table view van de activiteiten
     @discussion De tabel wordt gevuld met artikelen die nodig zijn voor de geselecteerde activiteit
@@ -38,7 +38,7 @@ class TableActivity: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    /*!
+    /**
         @brief maakt het juiste aantal kolommen van de goede grootte
         @params col is het aantal kolommen nodig in totaal
                 string vult de initiele tableview met lege tekst, dit wordt later geupdate in de code
@@ -79,7 +79,7 @@ class TableActivity: UITableViewCell {
     
 }
 
-/*!
+/**
     @actController
     @brief deze klasse zorgt voor de rest van de indeling van de view en zorgt ervoor dat alle knoppen werken
 */
@@ -113,8 +113,8 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // 3 different strings
     var tableData = [["Verrichting 1",0.5,"APK met viergastest"],["Onderd. 1",1,"Sticker 'APK zonder afspraak'"],[3.1,3.2,3.3]] // illustration only
   
-    /*!
-        @brief maakt de layout voor de hele view dat alles ronde hoeken heeft en waar nodig witte randen
+    /**
+     @brief Maakt de layout voor de hele view dat alles ronde hoeken heeft en waar nodig witte randen
     */
     func setLayout(){
         let myColor : UIColor = UIColor.whiteColor()
@@ -191,7 +191,8 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         setLayout()
 
     }
-    /*!
+    
+    /**
         @brief: geheugenmanagement. laat de IPad zelf het management doen
         @reason to be called: geheugen raakt vol
         @Params: none
@@ -201,7 +202,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.didReceiveMemoryWarning()
     }
     
-    /*!
+    /**
         @brief vult de tabel met de informatie van de server
         @return een array met de activiteiten
         @params activities zijn de activiteiten die bij een werkorder horen
@@ -223,7 +224,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
     }
     
-    /*!
+    /**
         @brief Als er op uitklokken wordt gedrukt ga je terug naar het inlogscherm
         @return je komt bij het inlogscherm
     */
@@ -238,7 +239,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 1
     }
     
-    /*!
+    /**
         @brief geeft de tableview het juiste aantal rijen
         @return het aantal activiteiten(rijen) in de tabel
         @params tableview is de tabel met activiteiten
@@ -248,7 +249,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return tableData.count
     }
     
-    /*!
+    /**
         @brief zorgt ervoor dat elke cel van een rij gekoppeld wordt tot een rij
         @return return per rij een cel die bestaat uit de hele rij
         @params tableview is de tabel met activiteiten
@@ -275,7 +276,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
     }
     
-    /*!
+    /**
         @brief maakt de titels voor de kolommen
         op het scherm zie je code, aantal en omschrijving boven een kolom staan
     */

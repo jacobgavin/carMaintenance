@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*!
+/**
 *    @class beschikbareVestiging
 *
 *    @brief alle beschikbare vestigingen worden opgeslagen.

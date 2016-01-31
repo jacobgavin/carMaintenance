@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*!
+/**
     *   @class LoginScreenModel
     *   @brief Model Controleert de ingevoerde pincode vanout loginschermcontroller.
     *   @warning TODO: Werkt op dit moment alleen op vestiging 1, vestiging is dus nog gehardcode en moet aangepast worden.
@@ -29,7 +29,7 @@ class LoginScreenModel {
     var pinLabel = ""
     
 
-    /*!
+    /**
     *   @brief Maakt een '.' aan om de pincode the representeren.
     */
     func setLabel(){
@@ -47,7 +47,7 @@ class LoginScreenModel {
     }
     
 
-    /*!
+    /**
     *   @brief Controleert of er 4 cijfers zijn ingevoerd voor de pincode.
     *   @return True als er 4 cijfers zijn ingevoerd voor de pincode
     */
@@ -56,7 +56,7 @@ class LoginScreenModel {
         return (pintry.characters.count == 4)
     }
 
-    /*!
+    /**
     *   @brief zorgt ervoor dat de pincode de goede representatie is om hem te gebruiken.
     *   @return De pincode als een string
     */
@@ -65,7 +65,7 @@ class LoginScreenModel {
         return pinLabel;
     }
 
-    /*!
+    /**
     *   @brief Controleert of de ingevoerde pincode hetzelfde is als op de server.
     *   @param monteurCode is de ingevoerde pincode door de monteur.
     *   @return True wanneer de pincode overeenkomt met die op de server.
@@ -76,7 +76,7 @@ class LoginScreenModel {
         return mainJson.valideerPincodeVoorMonteur(mainJson.getSessieId(), monteurCode: monteurCode, vestiging: vestiging, pincode: pintry)
         
     }
-    /*!
+    /**
     *   @brief verwijdert de pincode zodat de gebruiker een nieuwe can invoeren
     */
     func erasePincode(){
@@ -84,7 +84,7 @@ class LoginScreenModel {
         setLabel()
     }
     
-    /*!
+    /**
     *   @brief Voegt het ingedrukte getal toe aan de huidige pincode
     *   @param pinDigit pincode waarde
     */
@@ -94,7 +94,7 @@ class LoginScreenModel {
         setLabel()
     }
     
-    /*!
+    /**
     *   @brief Verwijdert de laatst ingevoerde waarde van de pincode.
     */
     func deleteDigit(){

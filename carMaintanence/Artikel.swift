@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*!
+/**
 *    @class Artikel
 *
 *    @brief Object voor Artikel. Heeft al de belangrijke informatie over Artikel

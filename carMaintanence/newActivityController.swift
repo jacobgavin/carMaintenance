@@ -47,7 +47,7 @@ class newActivityController: UIViewController {
         mainJson.opslaanActiviteit("VR-786-L", sessieId: mainJson.getSessieId(), omschrijving: "lslkfjlskdjflksjfd",id: 42, code: "codeiets")
     }
     
-    /*!
+    /**
         @brief Maakt de layout voor het scherm met ronde knoppen en witte randen
     */
     func setLayout(){
@@ -103,7 +103,7 @@ class newActivityController: UIViewController {
         setLayout()  
     }
     
-    /*!
+    /**
         @brief als je een omschrijving gaat invoeren verwijdert deze functie de standaard tekst
     */
     func textViewDidBeginEditing(textview: UITextView){
@@ -119,7 +119,7 @@ class newActivityController: UIViewController {
     
 
     
-    /*!
+    /**
     *   @brief Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen

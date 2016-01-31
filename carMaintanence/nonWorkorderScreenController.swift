@@ -8,7 +8,7 @@
 
 import UIKit
 
-/*!
+/**
     @Class nonWorkOrderSreeController
     @brief deze klasse gaat over de improductieve uren
     @discussion deze klasse zorgt ervoor dat je improductieve uren kan klokken en maakt het scherm erbij
@@ -32,7 +32,7 @@ class nonWorkorderScreenController: UIViewController {
     
     @IBOutlet weak var vegenbutton: UIButton!
     
-    /*!
+    /**
         @brief maakt de layout voor het scherm
         @output ronde knoppen met een witte rand waar nodig
     */
@@ -107,7 +107,7 @@ class nonWorkorderScreenController: UIViewController {
             ac.werkorder = werkorder
         }
     }
-    /*!
+    /**
         @brief: geheugenmanagement. laat de IPad zelf het management doen
         @reason to be called: geheugen raakt vol
         @Params: none

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-/*!
+/**
 *   @class InstellingenSchermViewController
 *   @brief ViewController van het vestigingskeuze scherm.
 *
@@ -25,7 +25,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     
     @IBOutlet weak var tableView: UITableView!
 
-    /*!
+    /**
     *   @brief Haalt de lijst van beschikbare vestigingen op en roept de setup voor de layout aan.
     */
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier:"cell")
     }
-    /*!
+    /**
     *   @brief wordt aangeroepen door de app als het geheugen vol raakt
     */
     override func didReceiveMemoryWarning() {
@@ -43,7 +43,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
     }
 
 
-    /*!
+    /**
     *   @brief Maakt de losse vestigingsknoppen.
     *   
     *   Wordt aangeroepen door de app zodra het scherm wordt geladen.
@@ -77,7 +77,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         return cell
     }
     
-    /*!
+    /**
     *   @brief Geeft het aantal cellen terug dat moet worden gemaakt gebaseerd op het aantal vestigingen.
     *
     *   Wordt aangeroepen door de app als het scherm wordt geladen.
@@ -91,7 +91,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         return vestigingenLijst.count
     }
     
-    /*!
+    /**
     *   Slaat de vestiging op in de mainJson.
     *
     *   Wordt aangeroepen door de app als er op een vestiging is geklikt.
@@ -107,7 +107,7 @@ class InstellingenSchermViewController : UIViewController, UITableViewDelegate, 
         performSegueWithIdentifier("instellingenSchermNaarMonteurs", sender:nil)
     }
     
-    /*!
+    /**
     *   Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen.

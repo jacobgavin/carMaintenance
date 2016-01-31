@@ -8,7 +8,7 @@
 
 import UIKit
     
-/*!
+/**
     @class WerkOrderViewController
     @brief Klasse laat de activiteiten zien die bij een geselecteerde workorder hoort
     @discussion Deze klasse krijgt een werkorder van het vorige scherm en laat van deze werkorder de juiste activiteiten zien
@@ -47,7 +47,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     
     @IBOutlet weak var textView: UITextView!
     
-    /*!
+    /**
         @brief Verandert the kleur van de inklokken button en de kleur van de werkorderlabel. Als je inklokken indrukt kun je hem niet meer opnieuw indrukken
         @params sender is de inklokken knop
         TODO: Api van inklokken ontbrak nog. Deze functie heb je hier nodig om in te klokken.
@@ -63,7 +63,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
 
     
-    /*!
+    /**
         @brief Vult knoppen de knoppen met de informatie uit de werkorder
     */
     func vulKnoppenArray()
@@ -83,7 +83,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         knoppenArray.addObject(knop);
     }
     
-    /*!
+    /**
         @brief Maakt de knoppen rond, en geeft er een witte border aan. Verandert ook kleuren naar of er ingeklokt is. De tekst wordt daar ook op aangepast
     */
     func setLayout() {
@@ -164,7 +164,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
     
   
-    /*!
+    /**
         @brief geeft het aantal rijen wat je nodig hebt in de table view
         @return het aantal rijen in de tableview
         @params tableview is de tableview waar de activiteiten inkomen
@@ -182,7 +182,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         return 0
     }
     
-    /*!
+    /**
     *   @brief Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
@@ -218,7 +218,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
     
 
-   /*!
+   /**
         @brief cellen maken die goed opgevuld worden met de activiteiten die op de server staan
         @params tableview is de tabelmet activiteiten
                 cellForRowAtIndexPath is de rij waar een activiteit komt te staan
@@ -261,7 +261,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         return cell
     }
     
-    /*!
+    /**
         @brief Als er op een knop in de tabel gedrukt wordt, gaat hij naar het volgende scherm.
         @params tableview is de tabel waar je op een knop hebt gedrukt
                 didSelectRowAtIndexPath is de rij die je hebt aangeklikt
@@ -274,7 +274,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         }
     }
     
-    /*!
+    /**
         @brief Geeft een donkerdere kleur terug.
     */
     func darkerColorForColor(color: UIColor) -> UIColor {

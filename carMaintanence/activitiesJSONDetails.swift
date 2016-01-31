@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*!
+/**
 *    @class ActivitiesDetail
 *
 *    @brief Deze klasse slaat de nodige informatie op can activiteit details.

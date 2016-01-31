@@ -10,7 +10,7 @@
 
 import Foundation
 
-/*!
+/**
 *    @class MainJson
 *    @brief Deze klasse handelt alle communicatie tussen de server en de app af
 *    @discussion Deze klasse heeft alle functies die informatie van de server krijgen.
@@ -35,7 +35,7 @@ class MainJson
         connectie = Connectie()
     }
     
-    /*!
+    /**
     * @brief Sets the session ID
     */
     func setSessieID()
@@ -43,14 +43,14 @@ class MainJson
         sessieId = getSessieId()
     }
     
-    /*!
+    /**
         @brief Slaat de vestiging op
     */
     func setVestiging(v:String){
         vestiging = v
     }
     
-    /*!
+    /**
         @brief Slaat het apple ID op
     */
     func setAppleID(appleid : String)
@@ -60,7 +60,7 @@ class MainJson
         }
     }
     
-    /*!
+    /**
     * @brief Krijgt het huidige sessie ID.
     * @return returns de sessie ID als een String.
     */
@@ -85,7 +85,7 @@ class MainJson
     }
     
 
-    /*!
+    /**
     * @brief krijgt alle Monteurs op de huidige vestiging.
     * 
     */
@@ -105,7 +105,7 @@ class MainJson
         return jsonNaarMonteurs(monteurs)
     }
     
-    /*!
+    /**
         @brief valideert de pincode voor een monteur hier heb je geen json voor nodig want het return true of false
         @return true of false aan de hand van de juiste pincode of niet
         @params sessieID is de huidige sessieID
@@ -133,7 +133,7 @@ class MainJson
         return gevalideerd
     }
     
-    /*!
+    /**
         @brief functie slaat een nieuwe activiteit op, op de server
         @return none
         @params kenteken is het kenteken waarvoor je een nieuwe activiteit aanmaakt
@@ -163,7 +163,7 @@ class MainJson
         while(temp == ""){}
     }
     
-    /*!
+    /**
         @brief schrijft het object wat gekregen wordt van de server om naar een lijst van monteurs
         @return een lijst van monteurs
         @params een string van alle monteurs verkregen van de server
@@ -183,7 +183,7 @@ class MainJson
         return monteurs
     }
     
-    /*!
+    /**
         @brief vraagt de beschikbare vestigingen op aan de server
         @return een array van de beschikbare vestigingen
         @params SessieID is nodig om de beschikbare vestigingen op te vragen
@@ -204,7 +204,7 @@ class MainJson
         
     }
     
-    /*!
+    /**
         @brief de beschikbare vestigingen worden in een array gezet
         @return een Array van beschikbare vestigingen
         @params vestigingenJson is een string van alle beschikbare vestigingen
@@ -227,7 +227,7 @@ class MainJson
         
     }
     
-    /*!
+    /**
         @brief vraagt de werkorders op bij een vestiging
         @return alle werkorders bij een vestiging in een lijst
         @params sessieID is het huidige sessieID
@@ -247,7 +247,7 @@ class MainJson
         return jsonNaarWerkorderDetails(werkorders, monteurCode: monteurCode)
     }
     
-    /*!
+    /**
         @brief schrijft de string met werkorders om naar een array van werkorderdetail
         @return een array van werkorder details
         @params WerkorderDetailsJson is een string van de informatie die op de server verkregen is
@@ -278,7 +278,7 @@ class MainJson
         return werkOrderDetails
     }
     
-    /*!
+    /**
         @brief vraagt de lijst op van overige werkorders, dit zijn alle werkorders die niet van de ingelogde monteur zijn, en geeft een array terug
         @return een array van werkorderdetail
         @params sessieID is het huidige sessieID
@@ -298,7 +298,7 @@ class MainJson
         return jsonOtherWerkorderDetails(werkorders, monteurCode: monteurCode)
     }
     
-    /*!
+    /**
         @brief Schrijft de string van werkorderdetails om naar een array
         @return een array van werkorderdetails
         @params WerkOrderDetailsJson is een string die op de server verkregen is met alle werkorders
@@ -329,7 +329,7 @@ class MainJson
         return werkOrderDetails
     }
     
-    /*!
+    /**
         @brief Vraagt alle Activiteiten op bij een ordernummer
         @return WerkOrderActiviteit waarin de activeiten bij een werkorder staan
         @params sessieID is een string van het huidige sessieID
@@ -349,7 +349,7 @@ class MainJson
         return jsonNaarWerkorderActiviteiten(werkOrderActiviteiten)
     }
     
-    /*!
+    /**
         @brief Schrijft de string die verkregen is op de server om naar WerkOrderActiviteit
         @return WerkOrderActiviteit waarin de activeiten bij een werkorder staan
         @params WerkOrderDetailsJson is een string van de details van een werkorder
@@ -369,7 +369,7 @@ class MainJson
         return werkOrderActiviteiten
     }
     
-    /*!
+    /**
         @brief  Vraagt de details op van activiteiten
         @return ActivitiesDetail wat bestaat uit de details van activiteiten van een werkorder
         @params sessieID is het huidige sessieID 
@@ -387,7 +387,7 @@ class MainJson
         return jsonToActivityDetails(activities)
     }
     
-    /*!
+    /**
         @brief Schrijft de string met activiteitdetails om naar activitiesDetail
         @return ActivitietsDetail
         @params activityDetails is een string van de details van de activiteiten die op de server verkregen is

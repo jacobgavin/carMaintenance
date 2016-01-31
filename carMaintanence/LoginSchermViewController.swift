@@ -9,7 +9,7 @@
 import UIKit
 
 
-/*!
+/**
     @brief Deze klasse hoort bij het loginscherm en slaat de ingedrukte pincode op om die op te slaan
     voor verifatie
     @TODO: een button maken die ervoor zorgt dat je het laatste getal weer kan verwijderen, functie is er al wel in de loginscreenmodel, moet alleen een button bij die die functie aanroept
@@ -37,7 +37,7 @@ class LoginSchermViewController: UIViewController {
     var labelText = 0;
     var LogScreen = LoginScreenModel(monteurCode: "")
 
-    /*!
+    /**
     @brief Wanneer er op een knop gedrukt geeft zet deze het gedrukte getal in de pincode string.
         Wanneer je 4 cijfers hebt ingevoerd (de pincode lengte) wordt de pincode naar het loginscherm model gestuurd voor verifatie van
         de pincode
@@ -84,7 +84,7 @@ class LoginSchermViewController: UIViewController {
         }
     }
     
-    /*!
+    /**
         @brief update de pincode op het scherm
     */
     func updatePincode(){ //update the representation of the pincode

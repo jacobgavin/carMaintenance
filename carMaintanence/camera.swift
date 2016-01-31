@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-/*!
+/**
 *    @class CamaraView
 *
 *    @brief Camaraview laat je fotos maken en in de app tijdelijk opslaan.
@@ -38,7 +38,7 @@ class CameraView: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         workField.text = work
     }
     
-    /*!
+    /**
         @brief: geheugenmanagement. laat de IPad zelf het management doen
         @reason to be called: geheugen raakt vol
         @Params: none
@@ -49,7 +49,7 @@ class CameraView: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         
     }
     
-    /*!
+    /**
         @brief zorgt dat je een foto kunt kiezen uit de foto library
     */
     @IBAction func chooseImageFromPhoto() {
@@ -61,7 +61,7 @@ class CameraView: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         presentViewController(picker, animated: true, completion:nil)
     }
     
-    /*!
+    /**
         @brief zorgt ervoor dat je met de camera fotos kunt maken
     */
     @IBAction func chooseImageFromCamera() {
@@ -73,7 +73,7 @@ class CameraView: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         presentViewController(picker, animated: true, completion:nil)
     }
    
-    /*!
+    /**
         @brief sluit de camera af als je hem niet meer nodig hebt
     */
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [NSObject : AnyObject]?) {
@@ -83,7 +83,7 @@ class CameraView: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     @IBOutlet weak var stackImageView: UIStackView!
     
-    /*!
+    /**
         @brief voegt een foto toe aan de tijdelijke verzameling fotos in de app
     */
     @IBAction func addPhotoToStack(sender: AnyObject) {

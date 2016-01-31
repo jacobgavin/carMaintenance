@@ -9,7 +9,7 @@
 import Foundation
 
 
-/*!
+/**
 *    @class WerkorderDetail
 *    
 *    @brief Object for the Werkorder. Contains all necessary information

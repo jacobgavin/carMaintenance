@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*!
+/**
 *    @class Connectie
 *
 *    @brief Deze klasse verwerkt de basis API met de server.
@@ -24,7 +24,7 @@ class Connectie
     
     var responseFinal = ""
     
-    /*!
+    /**
     *   @brief Post de request en krijgt eventueel een response
     *   @param url Link waar de request naartoe moet.
     *   @return Een NSstring met de response.
@@ -58,7 +58,7 @@ class Connectie
         
     }
 
-    /*!
+    /**
     *   @brief Post de request met een body om op de server op te slaan en krijgt eventueel een response
     *   @param url Link waar de request naartoe moet.
     *   @return Een NSstring met de response.

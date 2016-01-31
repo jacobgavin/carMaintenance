@@ -8,7 +8,7 @@
 
 import UIKit
 
-/*!
+/**
 *   @class TableViewCellForActivity
 *   @brief Tableview voor de workorders.
 *
@@ -35,7 +35,7 @@ class TableViewCellForActivity: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    /*!
+    /**
         @brief Deze functie maakt de verschillende kolommen in de tabel
         @params string is de tekst die in de kolom komt te staan
                 col is het nummer van de kolom
@@ -75,7 +75,7 @@ class TableViewCellForActivity: UITableViewCell {
     
     }
     
-    /*!
+    /**
         @brief Deze functie update de tekst in de tabel
         @params een Array vans trings wordt meegegeven en gebruikt om de tabel te vullen
     */
@@ -89,7 +89,7 @@ class TableViewCellForActivity: UITableViewCell {
     
 }
 
-/*!
+/**
 *   @class WerkOrderController
 *   @brief De controller van het werkorder scherm.
 *
@@ -120,7 +120,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var myWorkOrderButton: UIButton!
 
     
-    /*!
+    /**
         @brief maakt de layout voor de knoppen. Maakt ze rond en geeft ze de goede rand en randkleur
     */
     func setLayout(){
@@ -184,7 +184,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         setLayout()
     }
     
-    /*!
+    /**
         @brief: geheugenmanagement. laat de IPad zelf het management doen
         @reason to be called: geheugen raakt vol
         @Params: none
@@ -206,7 +206,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         return tableData.count
     }
     
-    /*!
+    /**
         @brief wisselt de knop kleur als je myWorkOrdersButton indrukt
         @params sender is de mijn werkorder button op het werkorderscherm
     */
@@ -216,7 +216,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         getUserData(true)
     }
     
-    /*!
+    /**
     @brief wisselt de knop kleur als je otherWorkOrdersButton indrukt
     @params sender is de andere werkorders button op het werkorderscherm
     */
@@ -227,7 +227,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
-    /*!
+    /**
         @brief vult de tabel met of je eigen werkorders of de overige werkorders
         @params myWorkOrder is true als de knop mijn werkorders is ingedrukt en false als je de overige werkorders button indrukt
     */
@@ -252,7 +252,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
-    /*!
+    /**
         @brief met deze functie ga je naar het volgende scherm. Hier wordt de werkorder waar je op klikt ook doorgegeven
         @return none
         @params tableview is de tableview waar je de informatie uithaalt
@@ -263,7 +263,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         performSegueWithIdentifier("werkordersNaarWerkorder", sender: nil)
     }
     
-    /*!
+    /**
         @brief Deze functie maakt de tabel in het scherm en vult hem met de goede data
         @return returned de tabel
         @params tableView is de tabel die je gebruikt
@@ -298,7 +298,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    /*!
+    /**
     @brief maakt de titels voor de kolommen
     op het scherm zie je code, aantal en omschrijving boven een kolom staan
     */

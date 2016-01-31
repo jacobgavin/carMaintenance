@@ -7,7 +7,7 @@
 //
 
 import Foundation
-/*!
+/**
 *    @class Activiteit
 *
 *    @brief Object voor de activiteiten, heeft alle informatie die een activiteit nodig heeft.

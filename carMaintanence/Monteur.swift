@@ -7,7 +7,7 @@
 //
 
 import Foundation
-/*!
+/**
 *    @class Monteur
 *    
 *    @brief Monteur is het standaard object van gebruikers.
