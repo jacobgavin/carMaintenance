@@ -8,16 +8,47 @@
 
 import UIKit
 
-
-
+/*
+    Laat een monteur een nieuwe activiteit aanmaken, je hebt alleen de omschrijving en de titel nodig
+    TODO: In de api heb je geen titel nodig, dit is wel nodig volgens het strybord en moet dus nog aan de api toegevoegd worden
+*/
 class newActivityController: UIViewController {
-    var regNum = "ABC 123"
-    var workOrder = "1460"
+    var regNum = ""
+    var workOrder = ""
     var mainJson: MainJson = MainJson()
     var werkorder: Array<Any> = []
     var huidigeWerkorder: Array<Any> = []
     let placeholder_text = "Omschrijving van Activiteit"
     
+    @IBOutlet weak var logOutButton: UIButton!
+    
+    @IBOutlet weak var loggedInOnWorkOrder: UILabel!
+    
+    @IBOutlet weak var regNumberOfCar: UITextField!
+    
+    @IBOutlet weak var workNumAndCarModel: UITextField!
+    
+    @IBOutlet weak var descTextField: UITextView! // the Editable textfield
+    
+    @IBOutlet weak var titleOfNewActivity: UITextField!
+    
+    @IBOutlet weak var newActivityButton: UIButton!
+    
+    @IBOutlet weak var cameraButton: UIButton!
+    
+    @IBOutlet weak var editButton: UIButton!
+    
+    @IBAction func saveButton(sender: UIButton) {
+        let title = titleOfNewActivity.text!
+        let description = descTextField.text!
+        print(title)
+        print(description)
+        mainJson.opslaanActiviteit("VR-786-L", sessieId: mainJson.getSessieId(), omschrijving: "lslkfjlskdjflksjfd",id: 42, code: "codeiets")
+    }
+    
+    /*
+        Maakt de layout voor het scherm met ronde knoppen en witte randen
+    */
     func setLayout(){
         let myColor : UIColor = UIColor.whiteColor()
         let purpleColor : UIColor = UIColor.purpleColor()
@@ -59,24 +90,16 @@ class newActivityController: UIViewController {
         descTextField.layer.borderWidth = myWidth
         descTextField.layer.cornerRadius = myRadius
         descTextField.text = ""
-        
-        //regNum = werkorder[1] as! String
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //regNumberOfCar.text = regNum
-
 
         regNumberOfCar.text = (werkorder[1] as! String)
         regNumberOfCar.userInteractionEnabled = false
-        
-        //workNumAndCarModel.text = "WO \(werkorder[0]), \(werkorder[2])"
+
         workNumAndCarModel.userInteractionEnabled = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()  
-        //loggedInOnWorkOrder.text = "Ingeklokt op werkorder " + workOrder + "("+regNum+")"
     }
     
     func textViewDidBeginEditing(textview: UITextView){
@@ -84,39 +107,13 @@ class newActivityController: UIViewController {
             textview.text = nil        
         }
     }
-
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var logOutButton: UIButton!
-    
-    @IBOutlet weak var loggedInOnWorkOrder: UILabel!
-    
-    @IBOutlet weak var regNumberOfCar: UITextField!
-    
-    @IBOutlet weak var workNumAndCarModel: UITextField!
-    
-    @IBOutlet weak var descTextField: UITextView! // the Editable textfield
-    
-    @IBOutlet weak var titleOfNewActivity: UITextField!
-    
-    @IBOutlet weak var newActivityButton: UIButton!
-    
-    @IBOutlet weak var cameraButton: UIButton!
-    
-    @IBOutlet weak var editButton: UIButton!
-    
-    @IBAction func saveButton(sender: UIButton) {
-        let title = titleOfNewActivity.text!
-        let description = descTextField.text!
-        print(title)
-        print(description)
-        mainJson.opslaanActiviteit("VR-786-L", sessieId: mainJson.getSessieId(), omschrijving: "lslkfjlskdjflksjfd",id: 42, code: "codeiets")
-    }
+
     
     /*
     *   Geeft de variabelen door aan het volgende scherm.

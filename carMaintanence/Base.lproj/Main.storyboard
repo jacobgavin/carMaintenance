@@ -1075,9 +1075,6 @@
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="10" y="352" width="582" height="240"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Fvw-SB-A04" id="8cr-46-DPh"/>
                                     <outlet property="delegate" destination="Fvw-SB-A04" id="wEH-b5-HFx"/>
@@ -1100,8 +1097,7 @@
                                         <exclude reference="Xpc-yx-4j1"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="472" y="20" width="120" height="70"/>
+                                <variation key="widthClass=regular">
                                     <mask key="constraints">
                                         <include reference="Xpc-yx-4j1"/>
                                     </mask>
@@ -1127,8 +1123,7 @@
                                         <exclude reference="lNq-4R-XDb"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="214" y="20" width="121" height="70"/>
+                                <variation key="widthClass=regular">
                                     <mask key="constraints">
                                         <include reference="lNq-4R-XDb"/>
                                     </mask>
@@ -1142,9 +1137,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="268" y="98" width="332" height="36"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuH-JR-ioN">
                                 <rect key="frame" x="385" y="20" width="210" height="38"/>
@@ -1163,8 +1155,7 @@
                                         <exclude reference="laj-ow-ggN"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="343" y="20" width="121" height="70"/>
+                                <variation key="widthClass=regular">
                                     <mask key="constraints">
                                         <include reference="laj-ow-ggN"/>
                                     </mask>
@@ -1218,8 +1209,7 @@
                                         <exclude reference="zfJ-Oq-vlX"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="10" y="20" width="199" height="70"/>
+                                <variation key="widthClass=regular">
                                     <mask key="constraints">
                                         <exclude reference="jIx-v9-HpH"/>
                                         <include reference="yUI-qy-XKh"/>
@@ -1232,9 +1222,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="260" y="142" width="332" height="182"/>
-                                </variation>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.30980392159999998" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2921,9 +2908,9 @@ uren</string>
         <image name="nummerbordLeeg" width="224" height="43"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GZ3-c8-7Z0"/>
+        <segue reference="Lsx-30-9pY"/>
         <segue reference="kcx-EW-EIu"/>
         <segue reference="qlC-aB-Jhj"/>
-        <segue reference="T9B-bE-gIz"/>
+        <segue reference="GZ3-c8-7Z0"/>
     </inferredMetricsTieBreakers>
 </document>

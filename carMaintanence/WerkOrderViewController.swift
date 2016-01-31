@@ -7,6 +7,10 @@
 //
 
 import UIKit
+    
+/*!
+    Klasse laat de activiteiten zien die bij een geselecteerde workorder hoort
+*/
 
 class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
@@ -27,6 +31,25 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     
     @IBOutlet weak var werkorderLabel: UILabel!
     
+    @IBOutlet weak var nummerbordPlaatje: UIImageView!
+    
+    @IBOutlet weak var terugButton: UIButton!
+    
+    @IBOutlet weak var nummerBordLabel: UILabel!
+    
+    @IBOutlet weak var tabelView: UITableView!
+    
+    @IBOutlet weak var tabelViewLinks: UITableView!
+    
+    @IBOutlet weak var autoLabel: UILabel!
+    
+    @IBOutlet weak var textView: UITextView!
+    
+    /*!
+        Verandert the kleur van de inklokken button en de kleur van de werkorderlabel. Als je inklokken indrukt kun je hem niet meer opnieuw indrukken
+        TODO: Api van inklokken ontbrak nog. Deze functie heb je hier nodig om in te klokken.
+    */
+    
     @IBAction func inklokkenIngedrukt(sender: UIButton) {
         werkorderLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
         print(terugButton.backgroundColor)
@@ -34,31 +57,12 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         inklokKnop.enabled = false
         inklokKnop.backgroundColor = darkerColorForColor(inklokKnop.backgroundColor!)
         huidigeWerkorder = werkorder
-        
-        //doe dingen die de backend vertellen dat je bent ingeklokt
-        
     }
-    //view voor nummerbordplaatje
-    @IBOutlet weak var nummerbordPlaatje: UIImageView!
-    
-    @IBOutlet weak var terugButton: UIButton!
 
-    //label bovenop het plaatje, geeft tekst van het nummerbord weer
-    @IBOutlet weak var nummerBordLabel: UILabel!
     
-    // de scrollende tabelview voor de knoppen van de activiteiten
-    @IBOutlet weak var tabelView: UITableView!
-    
-    @IBOutlet weak var tabelViewLinks: UITableView!
-    
-    @IBOutlet weak var autoLabel: UILabel!
-    
-    
-    @IBOutlet weak var textView: UITextView!
-    
-    /**
-    Vult knoppen met informatie van de taken uit de werkorder
-    **/
+    /*
+     Vult knoppen met informatie van de taken uit de werkorder
+    */
     func vulKnoppenArray()
     {
         var knop = WerkorderKnop()
@@ -69,40 +73,45 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
                 knop = WerkorderKnop()
                 knop.setTitle( "\(activiteiten.activiteiten[i-1]!.omschrijving)", forState: UIControlState.Normal);
                 knoppenArray.addObject(knop);
-         //       print("hallo " + knop.description);
             }
         }
         knop = WerkorderKnop()
         knop.setTitle( "Nieuwe activiteit", forState: UIControlState.Normal);
         knoppenArray.addObject(knop);
-        
-        
     }
-    //Maakt de knoppen rond, en geeft er een witte border aan. Verandert ook kleuren naar of er ingeklokt is. De tekst wordt daar ook op aangepast
+    
+    /*
+        Maakt de knoppen rond, en geeft er een witte border aan. Verandert ook kleuren naar of er ingeklokt is. De tekst wordt daar ook op aangepast
+    */
     func setLayout() {
-        autoLabel.layer.cornerRadius = 10
-        autoLabel.layer.borderWidth = 4
-        autoLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        let myColor : UIColor = UIColor.whiteColor()
+        let purpleColor : UIColor = UIColor.purpleColor()
+        let myWidth : CGFloat = 4
+        let myRadius : CGFloat = 10
         
-        textView.layer.cornerRadius = 10
+        autoLabel.layer.cornerRadius = myRadius
+        autoLabel.layer.borderWidth = myWidth
+        autoLabel.layer.borderColor = myColor.CGColor
+        
+        textView.layer.cornerRadius = myRadius
         textView.layer.borderWidth = 3
-        textView.layer.borderColor = UIColor(red: 128/255, green:100/255, blue:162/255, alpha:1.0).CGColor
+        textView.layer.borderColor = purpleColor.CGColor
         
-        terugButton.layer.cornerRadius = 10
-        terugButton.layer.borderWidth = 4
-        terugButton.layer.borderColor = UIColor.whiteColor().CGColor
+        terugButton.layer.cornerRadius = myRadius
+        terugButton.layer.borderWidth = myWidth
+        terugButton.layer.borderColor = myColor.CGColor
         
-        inklokKnop.layer.cornerRadius = 10
-        inklokKnop.layer.borderWidth = 4
-        inklokKnop.layer.borderColor = UIColor.whiteColor().CGColor
+        inklokKnop.layer.cornerRadius = myRadius
+        inklokKnop.layer.borderWidth = myWidth
+        inklokKnop.layer.borderColor = myColor.CGColor
         
-        uitklokKnop.layer.cornerRadius = 10
-        uitklokKnop.layer.borderWidth = 4
-        uitklokKnop.layer.borderColor = UIColor.whiteColor().CGColor
+        uitklokKnop.layer.cornerRadius = myRadius
+        uitklokKnop.layer.borderWidth = myWidth
+        uitklokKnop.layer.borderColor = myColor.CGColor
         
-        werkorderLabel.layer.cornerRadius = 10
-        werkorderLabel.layer.borderWidth = 4
-        werkorderLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        werkorderLabel.layer.cornerRadius = myRadius
+        werkorderLabel.layer.borderWidth = myWidth
+        werkorderLabel.layer.borderColor = myColor.CGColor
         werkorderLabel.layer.masksToBounds = true
         if (huidigeWerkorder.count == 0){
             werkorderLabel.text = "Nog niet ingeklokt"
@@ -119,15 +128,16 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         }
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if huidigeWerkorder.count == 0 {
-//            huidigeWerkorder = werkorder
-//        }
 
         setLayout()
+        
+        //geeft het juiste kenteken op het kenteken bord
         nummerBordLabel.text = (werkorder[1] as! String)
         
+        //Maakt de juiste hoeveelheid knoppen aan
         activiteiten = mainJson.getWerkOrderActiviteitenopKenteken(mainJson.getSessieId(), orderNummer: werkorder[0] as! Int)
         aantalKnoppen = activiteiten.activiteiten.count
         autoLabel.text = "WO \(werkorder[0]), \(werkorder[2])"
@@ -142,11 +152,7 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         nummerbordPlaatje.image = myImage
         nummerbordPlaatje.addSubview(nummerBordLabel)
         
-        
         tabelView.rowHeight = 120;
-       
-        // Do any additional setup after loading the view, typically from a nib.
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -204,8 +210,9 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
     }
     
 
-   
-    //cellen maken
+   /*
+    cellen maken die goed opgevuld worden met de activiteiten die op de server staan
+    */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = UITableViewCell()
@@ -243,7 +250,9 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         return cell
     }
     
-    //Als er op een knop in de tabel gedrukt wordt, gaat hij naar het volgende scherm.
+    /*
+        Als er op een knop in de tabel gedrukt wordt, gaat hij naar het volgende scherm.
+    */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("\(indexPath.row) " + "was geselecteerd")
         if (indexPath.row == aantalKnoppen){
@@ -253,7 +262,9 @@ class WerkOrderViewController: UIViewController, UITableViewDelegate,UITableView
         }
     }
     
-    //Geeft een donkerdere kleur terug.
+    /*
+        Geeft een donkerdere kleur terug.
+    */
     func darkerColorForColor(color: UIColor) -> UIColor {
         var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
         if color.getRed(&r, green: &g, blue: &b, alpha: &a){
