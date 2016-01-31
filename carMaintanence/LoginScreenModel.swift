@@ -10,8 +10,8 @@ import Foundation
 
 /*!
     *   @class LoginScreenModel
-    *   @brief Model (logic) for the login screen.
-    *   @warning TODO: Un-hardcode the vestiging so it can be modified in settings. Currently only works on V001
+    *   @brief Model Controleert de ingevoerde pincode vanout loginschermcontroller.
+    *   @warning TODO: Werkt op dit moment alleen op vestiging 1, vestiging is dus nog gehardcode en moet aangepast worden.
 
 */
 class LoginScreenModel {
@@ -30,7 +30,7 @@ class LoginScreenModel {
     
 
     /*!
-    *   @brief Sets a 'dot' to represent an entered pin-code.
+    *   @brief Maakt een '.' aan om de pincode the representeren.
     */
     func setLabel(){
         let points = pintry.characters.count
@@ -48,8 +48,8 @@ class LoginScreenModel {
     
 
     /*!
-    *   @brief Checks if 4 pin-characters are pushed.
-    *   @return True if 4 pin-characters are entered
+    *   @brief Controleert of er 4 cijfers zijn ingevoerd voor de pincode.
+    *   @return True als er 4 cijfers zijn ingevoerd voor de pincode
     */
     func pinCompleet() -> Bool
     {
@@ -57,8 +57,8 @@ class LoginScreenModel {
     }
 
     /*!
-    *   @brief Lets the model have the representation of the pincode.
-    *   @return returns the label
+    *   @brief zorgt ervoor dat de pincode de goede representatie is om hem te gebruiken.
+    *   @return De pincode als een string
     */
     func getPinLabel() -> String
     {
@@ -66,9 +66,9 @@ class LoginScreenModel {
     }
 
     /*!
-    *   @brief Checks the local pincode that has been entered with the correct pincode that is on the server.
-    *   @param monteurCode Entered pincode of the monteur .
-    *   @return True when the monteurCode matches.
+    *   @brief Controleert of de ingevoerde pincode hetzelfde is als op de server.
+    *   @param monteurCode is de ingevoerde pincode door de monteur.
+    *   @return True wanneer de pincode overeenkomt met die op de server.
     */
     func pincodeIsCorrect(monteurCode: String) ->	Bool //check of the pincode is consistent with the entered one
     {
@@ -77,7 +77,7 @@ class LoginScreenModel {
         
     }
     /*!
-    *   @brief Empties the pin label so the user can enter it again
+    *   @brief verwijdert de pincode zodat de gebruiker een nieuwe can invoeren
     */
     func erasePincode(){
         pintry = ""
@@ -85,8 +85,8 @@ class LoginScreenModel {
     }
     
     /*!
-    *   @brief Adds the entered digit to the current pinlist
-    *   @param pinDigit pincode value
+    *   @brief Voegt het ingedrukte getal toe aan de huidige pincode
+    *   @param pinDigit pincode waarde
     */
     func addDigit(pinDigit: String) {
         pintry = pintry + pinDigit; //add digit to the try
@@ -95,7 +95,7 @@ class LoginScreenModel {
     }
     
     /*!
-    *   @brief Deletes the last entered digit from the current pinlist.
+    *   @brief Verwijdert de laatst ingevoerde waarde van de pincode.
     */
     func deleteDigit(){
         if !pintry.isEmpty{ //delete the last digit
