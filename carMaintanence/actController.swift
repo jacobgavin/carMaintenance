@@ -255,7 +255,16 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.headerForLabels.addSubview(col3Label)
     }
     
-    
+    /*
+    *   Geeft de variabelen door aan het volgende scherm.
+    *
+    *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
+    *
+    *   Short desciption of what variables are passed
+    *
+    *   @param segue    De verbinding tussen dit scherm en de volgende
+    *   @param sender   De oorzaak van het overgaan naar het volgende scherm
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if (segue.identifier == "goToCamera") {

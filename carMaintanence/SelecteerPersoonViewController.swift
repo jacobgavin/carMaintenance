@@ -75,10 +75,16 @@ class SelecteerPersoonViewController: UICollectionViewController	 {
         return cell
     }
 
-    // brief: geef de mainJson class en de gekozen monteur door naar het volgende scherm.
-    // reason to be called: er wordt op een monteur geklikt.
-    // Params: {de segue die is geactiveerd, de monteurButton die is aangeklikt}
-    // Return: nothing
+    /*
+    *   Geeft de variabelen door aan het volgende scherm.
+    *
+    *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
+    *
+    *   Short desciption of what variables are passed
+    *
+    *   @param segue    De verbinding tussen dit scherm en de volgende
+    *   @param sender   De oorzaak van het overgaan naar het volgende scherm
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("click!")
         if (segue.identifier == "monteursNaarLogin")
