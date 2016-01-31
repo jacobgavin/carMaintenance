@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*!
+    @brief deze klasse gaat over de improductieve uren
+    @TODO verbinden met de mainjson als er in de api improductieve uren geklokt kunnen worden, deze klasse doet verder nog niet veel
+*/
 class nonWorkorderScreenController: UIViewController {
     var mainJson: MainJson = MainJson()
     
@@ -26,15 +30,10 @@ class nonWorkorderScreenController: UIViewController {
     
     @IBOutlet weak var vegenbutton: UIButton!
     
-//    @IBAction func Back(sender: UIButton) {
-//        if(vorigeScherm=="ac"){
-//            performSegueWithIdentifier("nwNaarAc", sender: nil)
-//        }
-//        else{
-//            performSegueWithIdentifier("nwNaarWo", sender: nil)
-//        }
-//    }
-
+    /*!
+        @brief maakt de layout voor het scherm
+        @output ronde knoppen met een witte rand waar nodig
+    */
     func setLayout(){
         let myWidth : CGFloat = 4
         let myRadius : CGFloat = 10
@@ -65,6 +64,7 @@ class nonWorkorderScreenController: UIViewController {
         halenButton.layer.borderColor = myColor.CGColor
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (huidigeWerkorder.count == 0){
@@ -80,7 +80,7 @@ class nonWorkorderScreenController: UIViewController {
     }
     
     /*
-    *   Geeft de variabelen door aan het volgende scherm.
+    *   @brief Geeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
     *
@@ -104,16 +104,15 @@ class nonWorkorderScreenController: UIViewController {
             ac.werkorder = werkorder
         }
     }
-
-    // brief: geheugenmanagement. laat de IPad zelf het management doen
-    // reason to be called: geheugen raakt vol
-    // Params: none
-    // output: none
+    /*!
+        @brief: geheugenmanagement. laat de IPad zelf het management doen
+        @reason to be called: geheugen raakt vol
+        @Params: none
+        @output: none
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

@@ -11,11 +11,11 @@ import Foundation
 /*!
 *    @class Connectie
 *
-*    @brief This class handles the basic API connection with the server.
+*    @brief Deze klasse verwerkt de basis API met de server.
 *
-*    @discussion The Connectie class establishes the JSON API connection with the server (only GET requests).
+*    @discussion De connectie maakt een JSON API verbinding met de server.
 *
-*    @warning The response could be "error", we did not catched/processed the errors yet.
+*    @warning De response kan een error zijn, hij vangt deze er nog niet uit.
 *
 */
 
@@ -25,10 +25,10 @@ class Connectie
     var responseFinal = ""
     
     /*!
-    *   @brief Posts the requests and eventually returns the response
-    *   @param url Link of where the request has to be send to.
-    *   @return (eventually) returns a NSString with the response.
-    *   @warning The response could also be "error"!
+    *   @brief Post de request en krijgt eventueel een response
+    *   @param url Link waar de request naartoe moet.
+    *   @return Een NSstring met de response.
+    *   @warning De response kan een error zijn!
     */
     func post(url : String, completion: ((result:NSString?) -> Void)!)
     {
@@ -58,6 +58,12 @@ class Connectie
         
     }
 
+    /*!
+    *   @brief Post de request met een body om op de server op te slaan en krijgt eventueel een response
+    *   @param url Link waar de request naartoe moet.
+    *   @return Een NSstring met de response.
+    *   @warning De response kan een error zijn!
+    */
     func put(url:String, dataBody : String, completion: ((result:NSString?) -> Void)!)
     {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
@@ -82,9 +88,6 @@ class Connectie
             completion(result: jsonStr)
             
         }
-        
-
-        print("kjsdhf")
         dataTask.resume()
     }
 }

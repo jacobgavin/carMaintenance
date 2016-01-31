@@ -7,7 +7,15 @@
 //
 
 import Foundation
-
+/*!
+*    @class Activiteit
+*
+*    @brief Object voor de activiteiten, heeft alle informatie die een activiteit nodig heeft.
+*
+*    @discussion WerkorderDetail heeft de variabelen: artikelen en omschrijving
+*
+*
+*/
 class Activiteit{
     
     var omschrijving : String = ""
@@ -23,14 +31,12 @@ class Activiteit{
     class func build(json:JSON) -> Activiteit?
     {
         var artikels : Array<Artikel?> = Array<Artikel>()
-        if let a = json["Artikelen"].array
+        if let temp = json["Artikelen"].array
         {
             
-            let iets = JSON(a)
-            //     print(iets)
-            for(_,object) in iets
+            let tempjson = JSON(temp)
+            for(_,object) in tempjson
             {
-                // print("Object = ", object)
                 let artikel : Artikel? = Artikel.build(object)
                 artikels.append(artikel)
             }

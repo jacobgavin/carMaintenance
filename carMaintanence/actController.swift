@@ -8,6 +8,9 @@
 //
 
 import UIKit
+/*!
+    @brief deze klasse maakt de table view van de activiteiten
+*/
 class TableActivity: UITableViewCell {
     var exist: Bool = false
     var column1: String = ""
@@ -33,8 +36,12 @@ class TableActivity: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    /*!
+        @brief maakt het juiste aantal kolommen van de goede grootte
+        @params col is het aantal kolommen nodig in totaal
+                string vult de initiele tableview met lege tekst, dit wordt later geupdate in de code
+    */
     func setValueForColumn(string: String, col:Int) {
-        // frame: CGRectMake(x, y, width, height)
         let cellWidth = self.layer.bounds.width
         
         if (col==1) {
@@ -70,13 +77,16 @@ class TableActivity: UITableViewCell {
     
 }
 
-
+/*!
+    @brief deze klasse zorgt voor de rest van de indeling van de view en zorgt ervoor dat alle knoppen werken
+*/
 class actController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     var workOrder: Int = 0
     var carModel: String = ""
     var titleActivity: String = ""
     var license: String = ""
-    @IBOutlet weak var carLicenceNum: UITextField! 
+    
+    @IBOutlet weak var carLicenceNum: UITextField!
     @IBOutlet weak var workAndCarModel: UITextField!  
     @IBOutlet weak var titleOfActivity: UITextField!
     @IBOutlet weak var loggedInAtLabel: UILabel!    
@@ -86,19 +96,23 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var backButton: UIButton!  // not implemented
     @IBOutlet weak var tableViewContainer: UITableView!
     @IBOutlet weak var headerForLabels: UICustomView!
+    
     var cellWidth: CGFloat = 0.0
     
 
-    // json stuff
+    // json information
     var huidigeWerkorder: Array<Any> = []
     var werkorder: Array <Any> = [] //doorgeven van welke werkorder geselecteerd is in werkOrderController
     var activities: WerkOrderActiviteit = WerkOrderActiviteit()
     var mainJson: MainJson = MainJson()
     var sessionID: String = ""
     // This array is populated with data and every nested array is one row containing
-    // 3 different string or whatever
+    // 3 different strings
     var tableData = [["Verrichting 1",0.5,"APK met viergastest"],["Onderd. 1",1,"Sticker 'APK zonder afspraak'"],[3.1,3.2,3.3]] // illustration only
   
+    /*!
+        @brief maakt de layout voor de hele view dat alles ronde hoeken heeft en waar nodig witte randen
+    */
     func setLayout(){
         let myColor : UIColor = UIColor.whiteColor()
         let purpleColor : UIColor = UIColor.purpleColor()
@@ -154,7 +168,6 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
             loggedInAtLabel.text = "Ingeklokt op werkorder \(huidigeWerkorder[0]) (\(huidigeWerkorder[1]))"
         }
-
         
         workOrder = werkorder[0] as! Int
         carModel = werkorder[2] as! String
@@ -175,11 +188,12 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         setLayout()
 
     }
-
-    // brief: geheugenmanagement. laat de IPad zelf het management doen
-    // reason to be called: geheugen raakt vol
-    // Params: none
-    // output: none
+    /*!
+        @brief: geheugenmanagement. laat de IPad zelf het management doen
+        @reason to be called: geheugen raakt vol
+        @Params: none
+        @output: none
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -201,7 +215,10 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
     }
     
-    
+    /*!
+        @brief Als er op uitklokken wordt gedrukt ga je terug naar het inlogscherm
+        @output je komt bij het inlogscherm
+    */
     @IBOutlet weak var logOutButton: UIButton!
     @IBAction func logOut(sender: UIButton) {
         performSegueWithIdentifier("logOutFromActivity", sender: nil)
@@ -213,11 +230,18 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 1
     }
     
+    /*!
+        @brief geeft de tableview het juiste aantal rijen
+        @output in de view wordt het aantal kolommen laten zien overeekomstig met de data op de server
+    */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
     
-    
+    /*!
+        @brief zorgt ervoor dat elke cel van een rij gekoppeld wordt tot een rij
+        @output return per rij een cel die bestaat uit de hele rij
+    */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // declare the cell as TableViewCell which is a separate class declared in a separate file
         let cell = tableView.dequeueReusableCellWithIdentifier("cellForActivity", forIndexPath: indexPath) as! TableActivity
@@ -239,7 +263,10 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
     }
     
-
+    /*!
+        @brief maakt de titels voor de kolommen
+        @output op het scherm zie je code, aantal en omschrijving boven een kolom staan
+    */
     func setHeaderLabels () {
         // Sets the values for the headlines of table
         let col1Label = UILabel(frame: CGRectMake(0, 0.0, cellWidth/4.0, 30.0))
@@ -256,7 +283,7 @@ class actController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     /*
-    *   Geeft de variabelen door aan het volgende scherm.
+    *   @briefGeeft de variabelen door aan het volgende scherm.
     *
     *   Wordt aangeroepen door de app als laatste voor het volgende scherm wordt geladen
     *
