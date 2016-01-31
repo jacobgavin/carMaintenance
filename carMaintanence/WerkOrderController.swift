@@ -99,17 +99,14 @@ class TableViewCellForActivity: UITableViewCell {
 
 class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
-    @IBOutlet weak var hashtagLabel: UILabel!
     @IBOutlet weak var tableViewContainer: UITableView!
-    @IBOutlet weak var voertuigLabel: UILabel!
-    @IBOutlet weak var kentekenLabel: UILabel!
-    @IBOutlet weak var omschrijvingLabel: UILabel!
     @IBOutlet weak var ingekloktOpLabel: UILabel!
     @IBOutlet weak var werkorderLabel: UILabel!
     @IBOutlet weak var imprUrenButton: UIButton!
     @IBOutlet weak var outklokkenButton: UIButton!
-
+    @IBOutlet weak var tableHeader: UIView!
     
+
     var mainJson :MainJson = MainJson()
     var werkOrderDetails :Array<WerkorderDetail> = []
     var tableData: Array <Array <Any>> = []
@@ -157,6 +154,8 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         else{
             werkorderLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
         }
+        
+        
     }
     
     
@@ -170,6 +169,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         tableViewContainer.registerClass(TableViewCellForActivity.classForCoder(), forCellReuseIdentifier: "cellForActivity")
         screenWidth = self.view.frame.size.width
         
+        
         if (werkorder.count > 1) {
             ingekloktOpLabel.text = "Ingeklokt op werkorder \(werkorder[0]) (\(werkorder[1]))"
             ingekloktOpLabel.backgroundColor = UIColor(red: 33/255, green: 169/255, blue: 6/255, alpha: 1)
@@ -178,6 +178,8 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             
             ingekloktOpLabel.text = "Niet ingeklokt op een werkorder"
         }
+        
+        
         getUserData(true)
         setLayout()
     }
@@ -284,7 +286,7 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.setValueForColumn("\(tableData[row][2])", col:3, width:screenWidth)
             cell.setValueForColumn("\(tableData[row][3])", col:4, width:screenWidth)
         }
-        
+        setHeaderLabels()
         if(row % 2 == 0) {
             cell.backgroundColor = UIColor.lightGrayColor()
         }
@@ -294,6 +296,28 @@ class WerkOrderController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         return cell
+    }
+    
+    /*!
+    @brief maakt de titels voor de kolommen
+    op het scherm zie je code, aantal en omschrijving boven een kolom staan
+    */
+    func setHeaderLabels () {
+        // Sets the values for the headlines of table
+        let hashtagLabel = UILabel(frame: CGRectMake(0.0, 14.0, screenWidth*0.1, 30.0))
+        let kentekenLabel = UILabel(frame: CGRectMake(screenWidth*0.1, 14.0, screenWidth*0.15, 30.0))
+        let voertuigLabel = UILabel(frame: CGRectMake(screenWidth*0.25, 14.0, screenWidth*0.3, 30.0))
+        let omschrijvingLabel = UILabel(frame: CGRectMake(screenWidth*0.55, 14.0, screenWidth*0.45, 30.0))
+        
+        hashtagLabel.text = "#"
+        kentekenLabel.text = "Kenteken"
+        voertuigLabel.text = "Voertuig"
+        omschrijvingLabel.text = "Omschrijving"
+        
+        self.tableHeader.addSubview(hashtagLabel)
+        self.tableHeader.addSubview(kentekenLabel)
+        self.tableHeader.addSubview(voertuigLabel)
+        self.tableHeader.addSubview(omschrijvingLabel)
     }
     
     /*
